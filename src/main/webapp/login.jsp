@@ -1,4 +1,7 @@
-<%@page import="in.poovi.service.Login"%>
+<%@page import="in.poovi.model.service.Login"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +13,9 @@
 	<main class="container-fluid">
 
 <h2>LOGIN</h2>
-<form action=login_action.jsp>
+	<jsp:include page="register_action.jsp"></jsp:include>
+
+<form action="LoginServlet">
 
         <br>
         <br>
