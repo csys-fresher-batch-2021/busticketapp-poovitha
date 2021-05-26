@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="in.poovi.model.MyList" %>
+<%@page import="java.util.List"%>
+<%@page import="in.poovi.model.service.Display" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,25 +10,39 @@
 <title>BUS ROUTES</title>
 </head>
 <body>
+
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-<form>
-<h2>List the Bus Routes</h2>
-<br>
-<br>
-<table class="table table-bordered">
-<tbody>
-            <thead>
-            <tr><th>ROUTE NO</th><th>BUS NO</th><th>BUS ROUTE </th></tr>
-            </thead>
+	<form >
+		<h3> DISPLAY ROUTES</h3>
+		<table class="table table-bordered">
+			<caption>Display <br>Bus Routes<br> along with <br>Bus Number</caption>
+			<thead>
+				<tr>
+					<th scope="col">S.NO</th>
+					<th scope="col">FROM</th>
+					<th scope="col">TO</th>
+					<%
+					List<MyList> books = Display.getList();
+					int i = 0;
+					for (MyList listDetails : books) {
+						i++;
+					%>
+				</tr>
+				<tr>
+					<td><%=i%></td>
+					<td><%=listDetails.from()%></td>
+					<td><%=listDetails.to()%></td>
+				</tr>
+				<%
+				}
+				%>
+			</thead>
+		</table>
+					<a href="addList.jsp">Add Routes</a>
+		
 
-            <tr><td>1</td><td>TN 58 G7654</td><td>CHENNAI TO MADURAI</td></tr>
-            <tr><td>2</td><td>TN 56 G7600</td><td>CHENNAI TO TRICHY</td></tr>
-            <tr><td>3</td><td>TN 68 G3054</td><td>CHENNAI TO THENI</td></tr>
-            <tr><td>4</td><td>TN 54 G7504</td><td>CHENNAI TO VILUPURAM</td></tr>
-            <tr><td>5</td><td>TN 64 G4354</td><td>CHENNAI TO KOVAI</td></tr>
-</tbody>
-</table>
+
 </form>
 </main>
 </body>
