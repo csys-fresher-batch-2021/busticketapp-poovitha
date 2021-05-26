@@ -22,7 +22,6 @@ public class AddServlet extends HttpServlet {
      */
     public AddServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -32,11 +31,6 @@ public class AddServlet extends HttpServlet {
 		try {
 			String from = request.getParameter("from");
 			String to= request.getParameter("to");
-			//String noOfBook = request.getParameter("noOfBooks");
-			//int noOfBooks = BookService.isParsable(noOfBook);
-			//boolean validNoOfBooks = BookService.isValidNumber(noOfBooks);
-			//String price = request.getParameter("cost");
-			//int cost = BookService.isParsable(price);
 
 
 			boolean isAdded = false;
