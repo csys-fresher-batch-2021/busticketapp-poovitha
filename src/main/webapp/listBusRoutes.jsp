@@ -4,7 +4,7 @@
 <%@page import="java.util.List"%>
 <%@page import="in.poovi.model.service.Display" %>    
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>BUS ROUTES</title>
