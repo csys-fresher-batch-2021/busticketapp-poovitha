@@ -1,6 +1,7 @@
 package in.poovi.model.service;
 import in.poovi.dao.PassengerDAO;
 import in.poovi.model.PassengerModel;
+import java.util.List;
 
 public class PassengerService {
 	
