@@ -13,24 +13,16 @@ import com.google.gson.JsonObject;
 
 import in.poovi.model.service.Display;
 
-/**
- * Servlet implementation class AddServletJson
- */
+
 @WebServlet("/AddServletJson")
 public class AddServletJson extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public AddServletJson() {
         super();
-        // Default constructor
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String from=request.getParameter("from");
 		String to=request.getParameter("to");
