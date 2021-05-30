@@ -70,16 +70,6 @@ public class ConnectionUtil {
 	}
 
 		public static void main(String[] args) throws Exception{
-			//String driverClass = "org.postgresql.Driver";
-			//String url = "jdbc:postgresql://localhost/Busticket";
-			//String username = "postgres";
-			//String password = "postgres";
-			//Step 1: Load the jdbc driver in memory
-			///Class.forName(driverClass);
-			//Step 2: Get the connection
-			//Connection connection = DriverManager.getConnection(url, username,password);
-			//System.out.println(connection);
-			//System.out.println("connected");
 		ConnectionUtil.getConnection();
 		}
 	
