@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.dao.PassengerDAO;
-//import in.poovi.dao.PassengerDaoImpl;
-
 import in.poovi.model.PassengerModel;
 
 public class PassengerService {
