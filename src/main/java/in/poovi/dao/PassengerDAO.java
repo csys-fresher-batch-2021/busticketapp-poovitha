@@ -2,8 +2,6 @@ package in.poovi.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-
-//import in.poovi.exception.DBException;
 import in.poovi.model.PassengerModel;
 
 public class PassengerDAO {
