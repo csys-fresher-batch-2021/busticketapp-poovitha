@@ -5,7 +5,10 @@ import java.util.List;
 import in.poovi.model.PassengerModel;
 
 public class PassengerDAO {
-	public static List<PassengerModel> passengermodel = new ArrayList<>();
+	public static final List<PassengerModel> passengermodel = new ArrayList<>();
+        public static final String FEMALE="F";
+	public static final String MALE="M";
+
 
 	static {
 		passengermodel.add(new PassengerModel(101, "poovi", 20, "female", 9876987608L));
