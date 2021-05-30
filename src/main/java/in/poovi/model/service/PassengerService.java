@@ -13,7 +13,7 @@ private PassengerService()
 	
 }
 	
-public static PassengerDAO passengerdao=new PassengerDAO();
+public static final PassengerDAO passengerdao=new PassengerDAO();
 
 public static boolean addpassenger(int pid, String name, int page, String pgender,long pmobileno) {
 	boolean isAdded = false;
