@@ -12,7 +12,10 @@
 <body>
 	<h1>ADD PassengerList</h1>
 	<form action="PassengerListServlet" method="get">
-		<table>
+				<figure>
+		<figcaption>Add passenger</figcaption>
+
+		<table class="add passenger">
 
 			<tr>
 				<th scope="col">p_id :</th>
@@ -42,6 +45,7 @@
 			</tr>
 
 		</table>
+		</figure>
 		<button type="submit">SUBMIT</button>
 	</form>
 
