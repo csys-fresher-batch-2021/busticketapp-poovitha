@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+import in.poovi.dao.PassengerDAO;
+//import in.poovi.dao.PassengerDaoImpl;
 //import in.poovi.exception.DBException;
 import in.poovi.model.PassengerModel;
 import in.poovi.model.service.PassengerService;
@@ -22,31 +24,37 @@ import in.poovi.model.service.PassengerService;
 @WebServlet("/PassengerListServlet")
 public class PassengerListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PassengerListServlet() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    
-	    
-		List<PassengerModel> passenger=PassengerService.getAllPassengerListDB();
-		Gson gson = new Gson();
-		// converting the list to json
-		String json = gson.toJson(passenger);
-		// writting JSon response
-		PrintWriter out = response.getWriter();
-		out.print(json);
-		out.flush();
-
-		
+	public PassengerListServlet() {
+		super();
 	}
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+         try {
+        	 int pid=Integer.parseInt(request.getParameter("pid"));
+        	 String pname=request.getParameter("pname");
+        	 int page=Integer.parseInt(request.getParameter("page"));
+        	 String pgender=request.getParameter("pgender");
+        	 long pmobileno=Long.parseLong(request.getParameter("pmobileno"));
+        	 boolean isadded=false;
+        	 isadded= PassengerService.addpassenger(pid, pname, page, pgender, pmobileno);
+        	 if(isadded) {
+        		 String message="added";
+        		 response.sendRedirect("PassengerList.jsp?infomessage="+message);
+        	 }
+        	 }
+        	 catch(Exception e) {
+        		 response.sendRedirect("AddPassengerList.jsp");
+        	 }
+         }
+         
+	}
 
-}

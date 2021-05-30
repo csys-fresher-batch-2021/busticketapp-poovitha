@@ -32,7 +32,6 @@
 				event.preventDefault();
 				let from = document.querySelector("#from").value;
 				let to = document.querySelector("#to").value;
-				//let rating = document.querySelector("#rating").value;
 				const queryParams = "?from=" + from + "&to=" + to ;
 				let url = "AddServletJson" + queryParams ;				
 				fetch(url).then(res=> res.json()).then(res=>{

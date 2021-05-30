@@ -33,10 +33,13 @@
 					<td><%=i%></td>
 					<td><%=listDetails.from()%></td>
 					<td><%=listDetails.to()%></td>
+					<td><a href="BusList.jsp?" class="btn-btn-primary">clickhere</a></td>
+					
 				</tr>
 				<%
 				}
 				%>
+				
 			</thead>
 		</table>
 					<a href="addList.jsp">Add Routes</a>
