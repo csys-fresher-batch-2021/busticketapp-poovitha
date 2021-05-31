@@ -24,10 +24,11 @@ public class AddServletJson extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String from=request.getParameter("from");
-		String to=request.getParameter("to");
 		PrintWriter out = response.getWriter();
 		try {
+		String from=request.getParameter("from");
+		String to=request.getParameter("to");
+
 			Display.addList(from,to);
 			JsonObject object = new JsonObject();
 			object.addProperty("infoMessage", "Successfully Added");
