@@ -31,8 +31,6 @@ public class AddServlet extends HttpServlet {
 		try {
 			String from = request.getParameter("from");
 			String to= request.getParameter("to");
-
-
 			boolean isAdded = false;
 		
 				isAdded = Display.addList(from,to);

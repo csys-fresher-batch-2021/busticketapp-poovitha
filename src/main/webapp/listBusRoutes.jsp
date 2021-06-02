@@ -4,7 +4,7 @@
 <%@page import="java.util.List"%>
 <%@page import="in.poovi.model.service.Display" %>    
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>BUS ROUTES</title>
@@ -33,10 +33,13 @@
 					<td><%=i%></td>
 					<td><%=listDetails.from()%></td>
 					<td><%=listDetails.to()%></td>
+					<td><a href="BusList.jsp?" class="btn-btn-primary">clickhere</a></td>
+					
 				</tr>
 				<%
 				}
 				%>
+				
 			</thead>
 		</table>
 					<a href="addList.jsp">Add Routes</a>
