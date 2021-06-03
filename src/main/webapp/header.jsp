@@ -26,6 +26,9 @@ String loggedInUsername = (String)session.getAttribute("LOGGED_IN_USER");
             <li class="nav-item">
        <a class="nav-link" href="PassengerList.jsp">PassengerList</a>
       </li>
+                  <li class="nav-item">
+       <a class="nav-link" href="BusList.jsp">BusList</a>
+      </li>
       
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>

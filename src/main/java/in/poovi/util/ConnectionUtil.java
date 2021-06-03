@@ -9,31 +9,28 @@ import java.sql.Statement;
 
 public class ConnectionUtil {
 
-	private static final String DRIVER_CLASS_NAME = "org.postgresql.Driver";
-	private static final String DATABASE_NAME = "Busticket";
-	private static final String DB_USERNAME = "postgres";
-	private static final String DB_PASSWORD = "postgres";
-	private static final String HOST = "localhost";
-	private static final int PORT = 5432;
-	private static final String DB_URL = "jdbc:postgresql://" + HOST + ":" + PORT + "/" + DATABASE_NAME; // jdbc:postgres://localhost:5432/Busticket
+	private ConnectionUtil() {
+		
+	}
 
-	public static Connection getConnection() {
-
+	public static Connection getConnection() throws SQLException {
 		Connection connection = null;
+
+		String driverClass = System.getenv("spring.datasource.driver-class-name");
+		String url = System.getenv("spring.datasource.url");
+		String username = System.getenv("spring.datasource.username");
+		String password = System.getenv("spring.datasource.password");
 		try {
-			// Step 1: Load the database driver into memory ( ClassNotFoundException )
-			Class.forName(DRIVER_CLASS_NAME);
+			Class.forName(driverClass);
+			// getting connection from db
+		connection = DriverManager.getConnection(url, username, password);
 
-			// Step 2: Get the Database Connection (SQLException)
-			connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-			System.out.println(connection);
-			System.out.println("connected");
-
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			throw new RuntimeException("Unable to get the database connection");
 		}
 
+	
+        System.out.println("connected");
 		return connection;
 	}
 	
