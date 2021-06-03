@@ -1,6 +1,7 @@
 package in.poovi.model.service.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,15 +19,17 @@ public class PassengerListServlet extends HttpServlet {
 	}
 
 protected void doGet(HttpServletRequest request, HttpServletResponse response)
+
 			throws ServletException, IOException {
          try {
-        	 int pid=Integer.parseInt(request.getParameter("pid"));
         	 String pname=request.getParameter("pname");
+        	 int pid=Integer.parseInt(request.getParameter("pid"));
+
         	 int page=Integer.parseInt(request.getParameter("page"));
         	 String pgender=request.getParameter("pgender");
         	 long pmobileno=Long.parseLong(request.getParameter("pmobileno"));
         	 boolean isadded=false;
-        	 isadded= PassengerService.addpassenger(pid, pname, page, pgender, pmobileno);
+        	 isadded= PassengerService.addpassenger(pname,pid, page, pgender, pmobileno);
         	 if(isadded) {
         		 String message="added";
         		 response.sendRedirect("PassengerList.jsp?infomessage="+message);
