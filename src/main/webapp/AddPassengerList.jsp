@@ -12,6 +12,7 @@
 <body>
 	<h1>ADD PassengerList</h1>
 	<form action="PassengerListServlet" method="get">
+
 		<figure>
 			<figcaption>Add Passenger</figcaption>
 
@@ -49,7 +50,9 @@
 						required autofocus></td>
 
 				</tr>
-				</table>
+			
+		</table>
+
 		</figure>
 		<button type="submit">SUBMIT</button>
 	</form>
