@@ -7,7 +7,7 @@ import java.util.List;
 
 public class PassengerService {
 	
-public PassengerService()
+private PassengerService()
 {
 	
 }
