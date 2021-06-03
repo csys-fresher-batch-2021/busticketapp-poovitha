@@ -5,18 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-//import java.sql.Time;
-//import java.time.LocalTime;
-//import java.time.LocalTime;
 import java.util.ArrayList;
-//import java.util.HashSet;
 import java.util.List;
 
 import in.poovi.exception.DBException;
-//import in.poovi.exception.DBException;
 import in.poovi.model.BusDetails;
-//import in.poovi.model.BusTiming;
-//import in.poovi.model.service.BusDetailsService;
 import in.poovi.util.ConnectionUtil;
 
 public class BusDetailsDao {
@@ -38,8 +31,6 @@ public class BusDetailsDao {
 				int busnumber = rs.getInt("b_no");
 				String bustype = rs.getString("bustype");
 				double amount = rs.getDouble("amount");
-				// LocalTime departuretime=rs.getTime("departuretime").toLocalTime();
-				// LocalTime arrivaltime=rs.getTime("arrivaltime").toLocalTime();
 				BusDetails bus = new BusDetails();
 				bus.setAgency(agency);
 				bus.setAmount(amount);
@@ -74,8 +65,7 @@ public class BusDetailsDao {
 			pst.setInt(2, busdetails.getBusnumber());
 			pst.setString(3, busdetails.getBusType());
 			pst.setDouble(4, busdetails.getAmount());
-			// pst.setTime(5, Time.valueOf(busdetails.getDepartureTime()));
-			// pst.setTime(6, Time.valueOf(busdetails.getArrivalTime()));
+			
 			pst.executeUpdate();
 
 		} catch (SQLException e) {
@@ -94,9 +84,7 @@ public class BusDetailsDao {
 			connection = ConnectionUtil.getConnection();
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, agency);
-			//pst.setInt(2, busdetails.getBusnumber());
-			//pst.setString(3, busdetails.getBusType());
-			//pst.setDouble(4,busdetails.getAmount());
+	
 			
 			int rows=pst.executeUpdate();
 			System.out.println("no of rows deleted"+ rows + agency + agency.length());
