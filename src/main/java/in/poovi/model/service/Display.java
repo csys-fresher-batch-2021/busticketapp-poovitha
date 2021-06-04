@@ -13,10 +13,10 @@ public class Display {
 	private static final List<MyList> list = new ArrayList<>();
 	static {
 		list.add(new MyList("chennai", "madurai"));
-		list.add(new MyList("chennai", "theni"));
-		list.add(new MyList("madurai", "dindugal"));
-		list.add(new MyList("theni", "madurai"));
-		list.add(new MyList("kovai", "chennai"));
+		list.add(new MyList("karur", "theni"));
+		list.add(new MyList("thirchy", "dindugal"));
+		list.add(new MyList("theni", "nellai"));
+		list.add(new MyList("kovai", "virudunagar"));
 
 	}
 

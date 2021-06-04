@@ -62,6 +62,7 @@ public class BusDetailsDao {
 			pst.setInt(2, busdetails.getBusnumber());
 			pst.setString(3, busdetails.getBusType());
 			pst.setDouble(4, busdetails.getAmount());
+
 			pst.executeUpdate();
 
 		} catch (SQLException e) {
@@ -80,6 +81,7 @@ public class BusDetailsDao {
 			connection = ConnectionUtil.getConnection();
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, agency);
+
 			int rows=pst.executeUpdate();
 			System.out.println("no of rows deleted"+ rows + agency + agency.length());
 		} catch (SQLException e) {

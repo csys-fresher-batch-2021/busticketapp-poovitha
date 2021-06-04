@@ -9,6 +9,9 @@
 <body>
 	<h1>add bus</h1>
 	<form action="BusListServlet" method="get">
+		<figure>
+  <figcaption>bus list </figcaption>
+
 		<table>
 			<tr>
 				<th scope="col">agency</th>
@@ -41,6 +44,7 @@
 
 			</tr>
 		</table>
+		</figure>
 		<button type="submit">SUBMIT</button>
 	</form>
 </body>

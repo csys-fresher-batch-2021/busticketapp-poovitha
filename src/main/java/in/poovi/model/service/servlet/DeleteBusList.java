@@ -8,8 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import in.poovi.dao.BusDetailsDao;
-//import in.poovi.model.BusDetails;
-//import in.poovi.model.service.BusDetailsService;
+
 import in.poovi.model.BusDetails;
 import in.poovi.model.service.BusDetailsService;
 
@@ -23,7 +22,6 @@ public class DeleteBusList extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			//String agency = request.getParameter("agency");
 			String agency = request.getParameter("agency");
 			System.out.println("Agency=" + agency);
             BusDetailsService.deletebus(agency);

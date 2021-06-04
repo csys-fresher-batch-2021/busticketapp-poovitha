@@ -2,15 +2,16 @@ package in.poovi.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-
-//import in.poovi.exception.DBException;
 import in.poovi.model.PassengerModel;
 
 public class PassengerDAO {
 	public static final List<PassengerModel> passengermodel = new ArrayList<>();
+
 	
 	public static final String FEMALE="F";
 	public static final String MALE="M";
+
+
 
 	static {
 		passengermodel.add(new PassengerModel("poovi",101, 20, FEMALE, 9876987608L));
@@ -35,4 +36,7 @@ public void deletePassenger(String pname) {
 	  passengermodel.remove(pname);
   }
 
+
+
 }
+

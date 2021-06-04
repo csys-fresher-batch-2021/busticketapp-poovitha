@@ -40,7 +40,6 @@ public double getAmount() {
 public void setAmount(double amount) {
 	this.amount = amount;
 }
-
 @Override
 public String toString() {
 	return "BusDetails [agency=" + agency + ", busnumber=" + busnumber + ", busType=" + busType + ", amount=" + amount
