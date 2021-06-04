@@ -6,7 +6,7 @@ import in.poovi.model.PassengerModel;
 
 public class PassengerService {
 	
-public PassengerService()
+private PassengerService()
 {
 	
 }
@@ -41,7 +41,7 @@ private static boolean isPresent(String pname) {
 	}
 
 public void deletePassenger(String pname) {
-	//boolean isDeleted = false;
+
 PassengerModel searchpassenger = null;
 	List<PassengerModel> passengers = PassengerDAO.allpassengerList();
 	for (PassengerModel passenger : passengers) {
@@ -50,10 +50,9 @@ PassengerModel searchpassenger = null;
 			break;
 		}
 	}
-   //passengers.remove(pname);
+   
 	if (searchpassenger != null) {
 		passengers.remove(searchpassenger);
-		//isDeleted = true;
 		System.out.println("delete");
 	}
 	return;

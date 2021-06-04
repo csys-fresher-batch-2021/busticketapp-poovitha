@@ -30,7 +30,8 @@ public class PassengerDAO {
 	public static List<PassengerModel> getSearch(){
 		return name;
 	}
-  public void deletePassenger(String pname) {
+  @SuppressWarnings("unlikely-arg-type")
+public void deletePassenger(String pname) {
 	  passengermodel.remove(pname);
   }
 
