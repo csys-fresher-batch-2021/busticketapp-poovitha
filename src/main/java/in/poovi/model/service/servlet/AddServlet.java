@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-import in.poovi.model.service.Display;
+import in.poovi.model.service.BusRouteService;
 
 
 @WebServlet("/AddServlet")
@@ -24,7 +24,7 @@ public class AddServlet extends HttpServlet {
 			String to= request.getParameter("to");
 			boolean isAdded = false;
 		
-				isAdded = Display.addList(from,to);
+				isAdded = BusRouteService.addList(from,to);
 				if (isAdded) {
 					response.sendRedirect("listBusRoutes.jsp");
 				} else {

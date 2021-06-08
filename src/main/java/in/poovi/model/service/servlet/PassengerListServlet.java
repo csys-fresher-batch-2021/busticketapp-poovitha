@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import in.poovi.model.service.PassengerService;
 
-
 @WebServlet("/PassengerListServlet")
 public class PassengerListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -18,26 +17,25 @@ public class PassengerListServlet extends HttpServlet {
 	public PassengerListServlet() {
 		super();
 	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-         try {
-        	 String pname=request.getParameter("pname");
-        	 int pid=Integer.parseInt(request.getParameter("pid"));
+		try {
+			String pname = request.getParameter("pname");
+			int pid = Integer.parseInt(request.getParameter("pid"));
 
-        	 int page=Integer.parseInt(request.getParameter("page"));
-        	 String pgender=request.getParameter("pgender");
-        	 long pmobileno=Long.parseLong(request.getParameter("pmobileno"));
-        	 boolean isadded=false;
-        	 isadded= PassengerService.addpassenger(pname,pid, page, pgender, pmobileno);
-        	 if(isadded) {
-        		 String message="added";
-        		 response.sendRedirect("PassengerList.jsp?infomessage="+message);
-        	 }
-        	 }
-        	 catch(Exception e) {
-        		 response.sendRedirect("AddPassengerList.jsp");
-        	 }
-         }
-         
+			int page = Integer.parseInt(request.getParameter("page"));
+			String pgender = request.getParameter("pgender");
+			long pmobileno = Long.parseLong(request.getParameter("pmobileno"));
+			boolean isadded = false;
+			isadded = PassengerService.addpassenger(pname, pid, page, pgender, pmobileno);
+			if (isadded) {
+				String message = "added";
+				response.sendRedirect("PassengerList.jsp?infomessage=" + message);
+			}
+		} catch (Exception e) {
+			response.sendRedirect("AddPassengerList.jsp");
+		}
 	}
 
+}
