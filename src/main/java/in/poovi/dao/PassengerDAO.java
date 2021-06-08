@@ -6,29 +6,37 @@ import in.poovi.model.PassengerModel;
 
 public class PassengerDAO {
 	public static final List<PassengerModel> passengermodel = new ArrayList<>();
-        public static final String FEMALE="F";
+
+	
+	public static final String FEMALE="F";
 	public static final String MALE="M";
 
 
+
 	static {
-		passengermodel.add(new PassengerModel(101, "poovi", 20, "female", 9876987608L));
-		passengermodel.add(new PassengerModel(102, "yamini", 22, "female", 9999999999L));
+		passengermodel.add(new PassengerModel("poovi",101, 20, FEMALE, 9876987608L));
+		passengermodel.add(new PassengerModel("yamini", 102,22, FEMALE, 9999999999L));
 	}
 
 	private static List<PassengerModel> name = new ArrayList<>();
 
-	public void addpassenger(int pid, String pname, int page, String gender, long mobileno) {
-		passengermodel.add(new PassengerModel(pid, pname, page, gender, mobileno));
+	public void addpassenger(String pname, int pid,int page, String gender, long mobileno) {
+		passengermodel.add(new PassengerModel(pname, pid,page, gender, mobileno));
 	}
 
 	public static List<PassengerModel> allpassengerList() {
 		return passengermodel;
 
 	}
-	public void addSearchbyname(int pid1,String pname1,int page1,String gender1,long mobileno1) {
-		name.add(new PassengerModel(pid1,pname1,page1,gender1,mobileno1));
-	}
 	public static List<PassengerModel> getSearch(){
 		return name;
 	}
+  @SuppressWarnings("unlikely-arg-type")
+public void deletePassenger(String pname) {
+	  passengermodel.remove(pname);
+  }
+
+
+
 }
+

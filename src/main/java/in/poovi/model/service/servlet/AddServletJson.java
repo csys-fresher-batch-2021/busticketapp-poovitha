@@ -17,18 +17,18 @@ import in.poovi.model.service.Display;
 @WebServlet("/AddServletJson")
 public class AddServletJson extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     public AddServletJson() {
         super();
     }
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		try {
-		String from=request.getParameter("from");
-		String to=request.getParameter("to");
 
+		try {
+
+        String from=request.getParameter("from");
+		String to=request.getParameter("to");
 			Display.addList(from,to);
 			JsonObject object = new JsonObject();
 			object.addProperty("infoMessage", "Successfully Added");
