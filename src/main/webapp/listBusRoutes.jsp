@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="in.poovi.model.MyList" %>
+<%@ page import="in.poovi.model.BusRoute" %>
 <%@page import="java.util.List"%>
-<%@page import="in.poovi.model.service.Display" %>    
+<%@page import="in.poovi.model.service.BusRouteService" %>    
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>BUS ROUTES</title>
@@ -23,20 +23,23 @@
 					<th scope="col">FROM</th>
 					<th scope="col">TO</th>
 					<%
-					List<MyList> books = Display.getList();
-					int i = 0;
-					for (MyList listDetails : books) {
-						i++;
+					List<BusRoute> books = BusRouteService.getList();
+											int i = 0;
+											for (BusRoute listDetails : books) {
+												i++;
 					%>
 				</tr>
 				<tr>
 					<td><%=i%></td>
 					<td><%=listDetails.from()%></td>
 					<td><%=listDetails.to()%></td>
+					<td><a href="BusList.jsp?" class="btn-btn-primary">clickhere</a></td>
+					
 				</tr>
 				<%
 				}
 				%>
+				
 			</thead>
 		</table>
 					<a href="addList.jsp">Add Routes</a>
