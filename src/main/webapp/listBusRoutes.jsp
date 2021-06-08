@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="in.poovi.model.MyList" %>
+<%@ page import="in.poovi.model.BusRoute" %>
 <%@page import="java.util.List"%>
-<%@page import="in.poovi.model.service.Display" %>    
+<%@page import="in.poovi.model.service.BusRouteService" %>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,10 +23,10 @@
 					<th scope="col">FROM</th>
 					<th scope="col">TO</th>
 					<%
-					List<MyList> books = Display.getList();
-					int i = 0;
-					for (MyList listDetails : books) {
-						i++;
+					List<BusRoute> books = BusRouteService.getList();
+											int i = 0;
+											for (BusRoute listDetails : books) {
+												i++;
 					%>
 				</tr>
 				<tr>
