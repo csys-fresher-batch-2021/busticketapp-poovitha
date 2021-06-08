@@ -7,7 +7,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import in.poovi.model.service.PassengerService;
 
 @WebServlet("/PassengerListServlet")
@@ -19,6 +18,7 @@ public class PassengerListServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+
 			throws ServletException, IOException {
 		try {
 			String pname = request.getParameter("pname");

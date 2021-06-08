@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import in.poovi.model.BusDetails;
 import in.poovi.util.ConnectionUtil;
 
@@ -67,6 +68,7 @@ public class BusDetailsDao {
 			pst.setInt(2, busdetails.getBusnumber());
 			pst.setString(3, busdetails.getBusType());
 			pst.setDouble(4, busdetails.getAmount());
+
 			pst.executeUpdate();
 
 		} catch (SQLException e) {
@@ -93,6 +95,7 @@ public class BusDetailsDao {
 			pst.setString(1, agency);
 			int rows = pst.executeUpdate();
 			System.out.println("no of rows deleted" + rows + agency + agency.length());
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

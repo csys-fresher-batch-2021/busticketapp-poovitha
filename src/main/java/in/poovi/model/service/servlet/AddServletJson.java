@@ -17,6 +17,7 @@ import in.poovi.model.service.BusRouteService;
 @WebServlet("/AddServletJson")
 public class AddServletJson extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
     public AddServletJson() {
         super();
     }
@@ -25,6 +26,7 @@ public class AddServletJson extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		try {
+
         String from=request.getParameter("from");
 		String to=request.getParameter("to");
 			BusRouteService.addList(from,to);

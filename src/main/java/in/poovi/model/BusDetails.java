@@ -18,16 +18,16 @@ public class BusDetails {
 		this.amount = amount;
 	}
 
-	public int getBusnumber() {
-		return busnumber;
-	}
-
 	public String getAgency() {
 		return agency;
 	}
 
 	public void setAgency(String agency) {
 		this.agency = agency;
+	}
+
+	public int getBusnumber() {
+		return busnumber;
 	}
 
 	public void setBusnumber(int busnumber) {
