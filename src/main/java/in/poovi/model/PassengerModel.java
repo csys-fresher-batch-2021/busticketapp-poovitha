@@ -35,14 +35,6 @@ public class PassengerModel {
 		return pgender;
 	}
 
-	public PassengerModel(String pname, int pid, int page, String pgender, long pmobileno) {
-		super();
-		this.pname = pname;
-		this.pid = pid;
-		this.page = page;
-		this.pgender = pgender;
-		this.pmobileno = pmobileno;
-	}
 
 	public void setPgender(String pgender) {
 		this.pgender = pgender;
@@ -55,5 +47,20 @@ public class PassengerModel {
 	public void setPmobileno(long pmobileno) {
 		this.pmobileno = pmobileno;
 	}
+	
+	public PassengerModel(String pname, int pid, int page, String pgender, long pmobileno) {
+		super();
+		this.pname = pname;
+		this.pid = pid;
+		this.page = page;
+		this.pgender = pgender;
+		this.pmobileno = pmobileno;
+	}
+
+	public PassengerModel() {
+		super();
+	}
+
+	
 
 }

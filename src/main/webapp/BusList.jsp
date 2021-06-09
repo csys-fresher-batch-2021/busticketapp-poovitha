@@ -26,7 +26,6 @@
 					<th scope="col">AMOUNT</th>
 					
 					<%
-					//BusDetailsService busDetailsService =new BusDetailsService();
 					BusDetailsDao busdetailsdao=new BusDetailsDao();
 					List<BusDetails> bus = busdetailsdao.allBusDetails();
 					int i = 0;

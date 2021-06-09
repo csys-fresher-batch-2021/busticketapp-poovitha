@@ -66,9 +66,6 @@ public class ConnectionUtil {
 		}
 	}
 
-		public static void main(String[] args) throws Exception{
-		ConnectionUtil.getConnection();
-		}
 	
 
 }
