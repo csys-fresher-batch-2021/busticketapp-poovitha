@@ -2,6 +2,7 @@ package in.poovi.model;
 
 public class BusRoute {
 
+
 	private int routeNo;
 	private String source;
 	private String destination;
@@ -39,8 +40,6 @@ public class BusRoute {
 
 	public void setDestination(String destination) {
 		this.destination = destination;
-	}
-
 	@Override
 	public String toString() {
 		return "BusRoute [routeNo=" + routeNo + ", source=" + source + ", destination=" + destination + "]";
