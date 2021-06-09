@@ -26,17 +26,9 @@ public class AddServletJson extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		try {
-<<<<<<< HEAD
-
-
 			String from = request.getParameter("from");
 			String to = request.getParameter("to");
 			Display.addList(from, to);
-=======
-                String from=request.getParameter("from");
-		String to=request.getParameter("to");
-			BusRouteService.addList(from,to);
->>>>>>> 32a175a67f5e0b70b49862ddbcd4b038c7b31d7f
 			JsonObject object = new JsonObject();
 			object.addProperty("infoMessage", "Successfully Added");
 			out.println(object);
