@@ -14,22 +14,22 @@
 
 			<table class="add BusRoute">
 				<tr>
-						<th scope="col">from</th>
-						<td><input type="text" name="fromlocation" placeholder="Enter from"
-							id="fromId" required autofocus></td>
-					</tr>
+					<th scope="col">from</th>
+					<td><input type="text" name="fromlocation"
+						placeholder="Enter from" id="fromId" required autofocus></td>
+				</tr>
 
-					<tr>
-						<th scope="col">to</th>
-						<td><input type="text" name="tolocation" placeholder="Enter to"
-							id="toId" required></td>
+				<tr>
+					<th scope="col">to</th>
+					<td><input type="text" name="tolocation"
+						placeholder="Enter to" id="toId" required></td>
 
-					</tr>
+				</tr>
 
 
-				</table>
-				<button type="submit">SUBMIT</button>
-				</figure>
+			</table>
+			<button type="submit">SUBMIT</button>
+		</figure>
 	</form>
 
 

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,8 +18,7 @@
 				name="from" id="from" autocomplete="off" required
 				placeholder="Enter from" autofocus><br /> <br> <label
 				for="name">To :</label> <input type="text" name="to" id="to"
-				autocomplete="off" required placeholder="Enter to"><br />
-			<br>
+				autocomplete="off" required placeholder="Enter to"><br /> <br>
 			<button class="btn btn-secondary" type="submit">Add Route</button>
 			<button class="btn btn-danger" type="reset">Reset</button>
 			<br />
