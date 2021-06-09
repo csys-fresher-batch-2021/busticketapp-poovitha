@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import in.poovi.model.service.Display;
 
 /**
@@ -16,39 +15,38 @@ import in.poovi.model.service.Display;
 @WebServlet("/AddServlet")
 public class AddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AddServlet() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public AddServlet() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		try {
 			String from = request.getParameter("from");
-			String to= request.getParameter("to");
+			String to = request.getParameter("to");
 			boolean isAdded = false;
-		
-				isAdded = Display.addList(from,to);
-				if (isAdded) {
-					response.sendRedirect("listBusRoutes.jsp");
-				} else {
-					String errorMessage = "Unable to add Books ";
-					response.sendRedirect("addList.jsp?errorMessage=" + errorMessage);
-				}
-			
+
+			isAdded = Display.addList(from, to);
+			if (isAdded) {
+				response.sendRedirect("listBusRoutes.jsp");
+			} else {
+				String errorMessage = "Unable to add Books ";
+				response.sendRedirect("addList.jsp?errorMessage=" + errorMessage);
+			}
 
 		} catch (Exception e) {
 			String errorMessage = "add";
 			response.sendRedirect("addList.jsp?errorMessage=" + errorMessage);
 		}
 
-		
 	}
-
 
 }

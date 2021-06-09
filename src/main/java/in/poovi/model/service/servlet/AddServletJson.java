@@ -13,26 +13,26 @@ import com.google.gson.JsonObject;
 
 import in.poovi.model.service.Display;
 
-
 @WebServlet("/AddServletJson")
 public class AddServletJson extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public AddServletJson() {
-        super();
-    }
+	public AddServletJson() {
+		super();
+	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 
 		try {
 
-        String from=request.getParameter("from");
-		String to=request.getParameter("to");
-			Display.addList(from,to);
+			String from = request.getParameter("from");
+			String to = request.getParameter("to");
+			Display.addList(from, to);
 			JsonObject object = new JsonObject();
 			object.addProperty("infoMessage", "Successfully Added");
-			out.println(object); 	
+			out.println(object);
 		} catch (Exception e) {
 			e.printStackTrace();
 			JsonObject object = new JsonObject();
@@ -41,8 +41,6 @@ public class AddServletJson extends HttpServlet {
 		}
 		out.flush();
 
-	
 	}
-
 
 }
