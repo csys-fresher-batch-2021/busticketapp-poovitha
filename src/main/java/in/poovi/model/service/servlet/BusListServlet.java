@@ -1,10 +1,6 @@
- package in.poovi.model.service.servlet;
+package in.poovi.model.service.servlet;
 
 import java.io.IOException;
-
-import java.time.LocalTime;
-
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,26 +22,23 @@ public class BusListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		
-
-			String agency = request.getParameter("agency");
-			System.out.println(agency+ agency.length());
-			int busno = Integer.parseInt(request.getParameter("b_no"));
-			String bustype = request.getParameter("bustype");
-			double amount = Integer.parseInt(request.getParameter("amount"));
-			try {
-	     	BusDetails bus = new BusDetails(agency, busno, bustype, amount);
+		String agency = request.getParameter("agency");
+		System.out.println(agency + agency.length());
+		int busno = Integer.parseInt(request.getParameter("b_no"));
+		String bustype = request.getParameter("bustype");
+		double amount = Integer.parseInt(request.getParameter("amount"));
+		try {
+			BusDetails bus = new BusDetails(agency, busno, bustype, amount);
 			BusDetailsService busdetailsservice = new BusDetailsService();
 			busdetailsservice.addBusList(bus);
 
 			String message = "added";
 			response.sendRedirect("BusList.jsp?infomessage=" + message);
 
-
 		} catch (Exception e) {
 			e.printStackTrace();
-			 String message="unable to add";
-			response.sendRedirect("addBusList.jsp" +message);
+			String message = "unable to add";
+			response.sendRedirect("addBusList.jsp" + message);
 		}
 
 	}
