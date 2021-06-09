@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.JsonObject;
 
-import in.poovi.model.service.BusRouteService;
+import in.poovi.model.service.Display;
 
 @WebServlet("/AddServletJson")
 public class AddServletJson extends HttpServlet {
@@ -27,15 +27,10 @@ public class AddServletJson extends HttpServlet {
 
 		try {
 
-<<<<<<< HEAD
+
 			String from = request.getParameter("from");
 			String to = request.getParameter("to");
 			Display.addList(from, to);
-=======
-        String from=request.getParameter("from");
-		String to=request.getParameter("to");
-			BusRouteService.addList(from,to);
->>>>>>> b846ff54936bcc13e4ca8d1beb959fd6c1cfe14a
 			JsonObject object = new JsonObject();
 			object.addProperty("infoMessage", "Successfully Added");
 			out.println(object);
