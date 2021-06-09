@@ -3,44 +3,28 @@ package in.poovi.model.service;
 import java.util.ArrayList;
 import java.util.List;
 
+
+import in.poovi.dao.BusRouteDao;
 import in.poovi.model.BusRoute;
 
 public class BusRouteService {
-	private BusRouteService() {
 
+	public static final List<BusRoute> busroute = new ArrayList<>();
+	static BusRouteDao busroutedao = new BusRouteDao();
+
+	public static List<BusRoute> getBusRoute() {
+		return busroutedao.allBusRoute();
 	}
 
-	private static final List<BusRoute> list = new ArrayList<>();
-	static {
-		list.add(new BusRoute("chennai", "madurai"));
-		list.add(new BusRoute("chennai", "theni"));
-		list.add(new BusRoute("madurai", "dindugal"));
-		list.add(new BusRoute("theni", "madurai"));
-		list.add(new BusRoute("kovai", "chennai"));
-
+	public void addRouteList(BusRoute busRoute) {
+		busroutedao.save(busRoute);
 	}
 
-	/**
-	 * This method is used to get all busroutes....
-	 * 
-	 * @return list
-	 */
-	public static List<BusRoute> getList() {
-		return list;
-	}
+	public static void deleteRoute(int routeno) {
 
-	/**
-	 * This method is used to add the busroute.....
-	 * 
-	 * @param from
-	 * @param to
-	 * @return isAdded
-	 */
-	public static boolean addList(String from, String to) {
-		boolean isAdded = false;
-		list.add(new BusRoute(from, to));
-		isAdded = true;
-		return isAdded;
+		busroutedao.deleteRoute(routeno);
+
 	}
+	
 
 }

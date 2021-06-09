@@ -11,28 +11,35 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.JsonObject;
 
-import in.poovi.model.service.BusRouteService;
-
+import in.poovi.model.service.Display;
 
 @WebServlet("/AddServletJson")
 public class AddServletJson extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public AddServletJson() {
-        super();
-    }
+	public AddServletJson() {
+		super();
+	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 
 		try {
+<<<<<<< HEAD
 
-        String from=request.getParameter("from");
+
+			String from = request.getParameter("from");
+			String to = request.getParameter("to");
+			Display.addList(from, to);
+=======
+                String from=request.getParameter("from");
 		String to=request.getParameter("to");
 			BusRouteService.addList(from,to);
+>>>>>>> 32a175a67f5e0b70b49862ddbcd4b038c7b31d7f
 			JsonObject object = new JsonObject();
 			object.addProperty("infoMessage", "Successfully Added");
-			out.println(object); 	
+			out.println(object);
 		} catch (Exception e) {
 			e.printStackTrace();
 			JsonObject object = new JsonObject();
@@ -41,8 +48,6 @@ public class AddServletJson extends HttpServlet {
 		}
 		out.flush();
 
-	
 	}
-
 
 }

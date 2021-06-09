@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,24 +9,27 @@
 <body>
 	<h1>ADD ROUTE</h1>
 	<form action="AddServlet" method="get">
-		<caption>Add Route List</caption>
-		<table>
-			<tr>
-				<th scope="col">from</th>
-				<td><input type="text" name="from"
-					placeholder="Enter from" id="fromId" required autofocus></td>
-			</tr>
-		
-			<tr>
-				<th scope="col">to</th>
-				<td><input type="text" name="to"
-					placeholder="Enter to" id="toId" required></td>
-					
-			</tr>
-			
+		<figure>
+			<figcaption>Add BusRoute</figcaption>
 
-		</table>
-		<button type="submit">SUBMIT</button>
+			<table class="add BusRoute">
+				<tr>
+					<th scope="col">from</th>
+					<td><input type="text" name="fromlocation"
+						placeholder="Enter from" id="fromId" required autofocus></td>
+				</tr>
+
+				<tr>
+					<th scope="col">to</th>
+					<td><input type="text" name="tolocation"
+						placeholder="Enter to" id="toId" required></td>
+
+				</tr>
+
+
+			</table>
+			<button type="submit">SUBMIT</button>
+		</figure>
 	</form>
 
 
