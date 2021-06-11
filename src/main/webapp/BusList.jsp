@@ -39,6 +39,7 @@
 					<td><%=busdetails.getBusnumber()%></td>
 					<td><%=busdetails.getBusType()%></td>
 					<td><%=busdetails.getAmount()%></td>
+					<td><a href="Booking.jsp">book</a>
 					<td><a href="DeleteBusList?agency=<%=busdetails.getAgency()%>" 
 					class="btn-btn-danger">Delete</a></td>
 					
