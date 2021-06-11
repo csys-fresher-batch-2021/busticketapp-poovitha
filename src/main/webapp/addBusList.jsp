@@ -16,18 +16,18 @@
 			<tr>
 				<th scope="col">agency</th>
 				<td><input type="text" name="agency" placeholder="Enter agency"
-					id="agencyId" required autofocus></td>
+					id="agencyId" readonly></td>
 			</tr>
 
 			<tr>
 				<th scope="col">busnumber</th>
 				<td><input type="number" name="b_no" placeholder="Enter no"
-					id="busnumberId" min=100 required></td>
+					id="busnumberId" min=100 required readonly></td>
 
 			</tr>
 			<tr>
 				<th scope="col">bustype</th>
-				<td><select name="bustype" required>
+				<td><select name="bustype" required >
 						<option value="NON AC SLEEPER">NON AC SLEEPER</option>
 						<option value="AC SLEEPER">AC SLEEPER</option>
 						<option value="NON AC SEATER">NON AC SEATER</option>
@@ -40,7 +40,7 @@
 			<tr>
 				<th scope="col">amount</th>
 				<td><input type="number" name="amount"
-					placeholder="Enter amount" id="amountId" min=300 required></td>
+					placeholder="Enter amount" id="amountId" min=300 required readonly></td>
 
 			</tr>
 		</table>
