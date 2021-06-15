@@ -14,7 +14,7 @@ public class SeatAvailableService {
 	/**
 	 * This method is used to display the all available seat.....
 	 * 
-	 * @return totalSeats
+	 * @return allAvailableSeat
 	 * @throws Exception
 	 */
 

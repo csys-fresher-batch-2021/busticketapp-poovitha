@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import in.poovi.model.PassengerModel;
 
-public class PassengerDAO {
+public class PassengerDao {
 	public static final List<PassengerModel> passengermodel = new ArrayList<>();
 
 	public static final String FEMALE = "F";

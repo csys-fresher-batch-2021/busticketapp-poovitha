@@ -55,7 +55,7 @@ public class SeatAvailableDao {
 	}
 
 	/**
-	 * used to add the bus route......
+	 * used to add the seatavailable in bus......
 	 * 
 	 * @param busRoute
 	 */
