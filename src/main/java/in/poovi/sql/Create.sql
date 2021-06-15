@@ -13,6 +13,15 @@ bustype varchar(40),
 amount real
 );
 
+create table userregister(
+	username varchar(40) not null,
+	age int ,
+	email varchar(40) unique,
+	mobileno bigint not null,
+	userid int unique ,
+	password varchar(40)
+);
+
 create table booking(
 	bookingno int primary key,
 	source varchar(40),
@@ -24,4 +33,10 @@ create table booking(
 	nooftickets int not null,
 	totalamount real,
 	status varchar(40)
+);
+
+create table seatavailable(
+	busnumber int primary key,
+	availableseat int ,
+	totalseat int
 );
