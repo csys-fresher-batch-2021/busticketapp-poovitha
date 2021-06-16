@@ -81,7 +81,7 @@ public class UserRegisterDao {
 			pst.setInt(5, userregister.getUserId());
 			pst.setString(6, userregister.getPassword());
 
-			int row=pst.executeUpdate();
+			int row = pst.executeUpdate();
 			System.out.println(row);
 
 		} catch (SQLException e) {
@@ -137,7 +137,7 @@ public class UserRegisterDao {
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, userid);
 			rs = pst.executeQuery();
-			userregister=new ArrayList<>();
+			userregister = new ArrayList<>();
 			while (rs.next()) {
 				String username = rs.getString("username");
 				int age = rs.getInt("age");
@@ -165,27 +165,31 @@ public class UserRegisterDao {
 		return userregister;
 	}
 
-	public int noOfUsers() throws Exception{
+	/**
+	 * This method is used to count the Number of users.....
+	 * 
+	 * @return usercount
+	 * @throws Exception
+	 */
+	public int noOfUsers() throws Exception {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		int usercount=0;
-         String sql="select count(*) as usercount from userregister";
- 		try {
+		int usercount = 0;
+		String sql = "select count(*) as usercount from userregister";
+		try {
 			connection = ConnectionUtil.getConnection();
 			pst = connection.prepareStatement(sql);
 			rs = pst.executeQuery();
-			while(rs.next()) {
-			 usercount=rs.getInt("usercount");
+			while (rs.next()) {
+				usercount = rs.getInt("usercount");
 			}
- 		}
-         catch(Exception e) {
-        	 e.printStackTrace();
-        	 throw new DBException("no data found");
-         }
-         finally {
-        	 ConnectionUtil.close(connection, pst, rs);
-         }
-         return usercount;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DBException("no data found");
+		} finally {
+			ConnectionUtil.close(connection, pst, rs);
+		}
+		return usercount;
 	}
 }
