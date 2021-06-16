@@ -1,11 +1,15 @@
-package in.poovi.test;
+package in.poovi.test.busdetails;
 
 import java.util.Scanner;
 
 import in.poovi.dao.BusDetailsDao;
 
-public class TestDeleteBusList {
-
+public class DeleteBusDetailsTest {
+	/**
+	 * This main method is used to delete the bus details...
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the delete busname:");

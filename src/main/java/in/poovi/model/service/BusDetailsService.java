@@ -26,7 +26,7 @@ public class BusDetailsService {
 	 * 
 	 * @param bus
 	 */
-	public void addBusList(BusDetails bus) {
+	public void addBusDetails(BusDetails bus) {
 		busdetailsdao.save(bus);
 	}
 
