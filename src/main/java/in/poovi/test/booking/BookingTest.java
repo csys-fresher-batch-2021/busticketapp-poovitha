@@ -7,15 +7,20 @@ import in.poovi.dao.BookingDao;
 import in.poovi.model.Booking;
 
 public class BookingTest {
-
+	/**
+	 * Get the all booking details
+	 * 
+	 * @param args
+	 * @throws Exception
+	 */
 	public static void main(String[] args) throws Exception {
 
-		BookingDao bookingdao=new BookingDao();
+		BookingDao bookingdao = new BookingDao();
 		List<Booking> booking = new ArrayList<>();
-        booking=bookingdao.allBookingDetails(); 
-        for(Booking book:booking) {
-        	System.out.println(book);
-        }
+		booking = bookingdao.allBookingDetails();
+		for (Booking book : booking) {
+			System.out.println(book);
+		}
 	}
 
 }
