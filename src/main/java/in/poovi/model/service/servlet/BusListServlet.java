@@ -30,7 +30,7 @@ public class BusListServlet extends HttpServlet {
 		try {
 			BusDetails bus = new BusDetails(agency, busno, bustype, amount);
 			BusDetailsService busdetailsservice = new BusDetailsService();
-			busdetailsservice.addBusList(bus);
+			busdetailsservice.addBusDetails(bus);
 
 			String message = "added";
 			response.sendRedirect("BusList.jsp?infomessage=" + message);

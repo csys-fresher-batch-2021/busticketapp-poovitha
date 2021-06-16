@@ -13,10 +13,10 @@ public class AddAdminTest {
 	 */
 	public static void main(String[] args) throws Exception {
 
-		String adminName = "subburaj";
-		int adminId = 1000;
-		String password = "subburaj19";
-		AdminRegister adminregister = new AdminRegister(adminName, adminId, password);
+		String adminName = "raj";
+		int adminId = 1001;
+		String adminpassword = "raj@19";
+		AdminRegister adminregister = new AdminRegister(adminName, adminId, adminpassword);
 		AdminRegisterService adminregisterservice = new AdminRegisterService();
 		adminregisterservice.saveAdmin(adminregister);
 		System.out.println(adminregister);

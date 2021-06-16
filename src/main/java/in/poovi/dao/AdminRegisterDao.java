@@ -33,11 +33,11 @@ public class AdminRegisterDao {
 			while (rs.next()) {
 				String adminName = rs.getString("adminname");
 				int adminId = rs.getInt("adminid");
-				String password = rs.getString("password");
+				String adminPassword = rs.getString("adminpassword");
 				AdminRegister admin = new AdminRegister();
 				admin.setAdminName(adminName);
 				admin.setAdminId(adminId);
-				admin.setPassword(password);
+				admin.setPassword(adminPassword);
 				adminregister.add(admin);
 
 			}
@@ -58,14 +58,14 @@ public class AdminRegisterDao {
 	public void saveAdmin(AdminRegister adminregister) {
 		Connection connection = null;
 		PreparedStatement pst = null;
-		String sql = "insert into adminregister(adminname,adminid,password) values ( ?,?,? )";
+		String sql = "insert into adminregister(adminname,adminid,adminpassword) values ( ?,?,? )";
 		try {
 			connection = ConnectionUtil.getConnection();
 
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, adminregister.getAdminName().trim());
 			pst.setInt(2, adminregister.getAdminId());
-			pst.setString(3, adminregister.getAdminName());
+			pst.setString(3, adminregister.getPassword());
 
 			pst.executeUpdate();
 
