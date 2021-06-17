@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.dao.AdminRegisterDao;
+import in.poovi.exception.ServiceException;
 import in.poovi.model.AdminRegister;
 
 public class AdminRegisterService {
@@ -30,6 +31,12 @@ public class AdminRegisterService {
 	 */
 
 	public void saveAdmin(AdminRegister adminregister) throws Exception {
+		if(adminregister.getAdminName()==null || "".equals(adminregister.getAdminName().trim()) || adminregister.getAdminName().length()<4){
+			throw new ServiceException("INVALID NAME");
+		}
+		else if(adminregister.getPassword()==null ||"".equals(adminregister.getPassword().trim()) || adminregister.getPassword().length()<=8){
+			throw new ServiceException("INVALID PASSWORD");
+		}
 		adminregisterdao.saveAdmin(adminregister);
 	}
 
