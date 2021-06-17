@@ -21,7 +21,7 @@ public class PassengerService {
 	 * @param page
 	 * @param pgender
 	 * @param pmobileno
-	 * @return
+	 * @return isAdded
 	 */
 	public static boolean addpassenger(String pname, int pid, int page, String pgender, long pmobileno) {
 		boolean isAdded = false;
@@ -39,7 +39,7 @@ public class PassengerService {
 	 * This method is used to find the passenger name is already present....
 	 * 
 	 * @param pname
-	 * @return
+	 * @return present
 	 */
 	private static boolean isPresent(String pname) {
 

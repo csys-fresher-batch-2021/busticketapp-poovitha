@@ -40,3 +40,9 @@ create table seatavailable(
 	availableseat int ,
 	totalseat int
 );
+
+create table adminregister(
+   adminname varchar(40),
+	adminid int unique,
+	password varchar(40)
+	);
