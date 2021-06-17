@@ -15,7 +15,7 @@ amount real
 
 create table userregister(
 	username varchar(40) not null,
-	age int ,
+	age int not null,
 	email varchar(40) unique,
 	mobileno bigint not null,
 	userid int unique ,
