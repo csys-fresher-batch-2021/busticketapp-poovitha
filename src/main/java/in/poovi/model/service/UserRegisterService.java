@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.dao.UserRegisterDao;
+import in.poovi.exception.ServiceException;
+import in.poovi.message.MessageConstants;
 import in.poovi.model.UserRegister;
 
 public class UserRegisterService {
@@ -30,6 +32,16 @@ public class UserRegisterService {
 	 * @throws Exception
 	 */
 	public void saveUser(UserRegister userregister) throws Exception {
+		if(userregister.getUserName()==null || "".equals(userregister.getUserName().trim()) || userregister.getUserName().length()<4){
+			throw new ServiceException(MessageConstants.INVALID_NAME);
+		}
+		else if(userregister.getPassword()==null ||"".equals(userregister.getPassword().trim()) || userregister.getPassword().length()<=8){
+			throw new ServiceException(MessageConstants.INVALID_PASSWORD);
+		}
+		else if(userregister.getEmail()==null || "".equals(userregister.getEmail().trim())) {
+			throw new ServiceException(MessageConstants.INVALID_EMAIL);
+		}
+		
 		userregisterdao.saveUser(userregister);
 	}
 

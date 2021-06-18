@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.dao.BookingDao;
+import in.poovi.exception.ServiceException;
 import in.poovi.model.Booking;
 
 public class BookingService {
@@ -29,6 +30,9 @@ public class BookingService {
 	 * @throws Exception
 	 */
 	public void addReservation(Booking book) throws Exception {
+		if(book.getSource().equals(book.getDestination())) {
+			throw new ServiceException("both source and destination same we cannot booking");
+		}
 		bookingdao.addReservation(book);
 	}
 

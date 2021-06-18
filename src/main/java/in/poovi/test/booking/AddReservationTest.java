@@ -21,7 +21,7 @@ public class AddReservationTest {
 		double amount = 300;
 		int nooftickets = 5;
 		double totalamount = amount * nooftickets;
-		String status = "BOOKED";
+		String status ="BOOKED" ;
 		Booking booking = new Booking(bookingno, source, destination, agency, busnumber, bustype, amount, nooftickets,
 				totalamount, status);
 		BookingService bookingservice = new BookingService();
