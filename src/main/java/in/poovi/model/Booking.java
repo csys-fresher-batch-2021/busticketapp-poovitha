@@ -11,7 +11,7 @@ public class Booking {
 	private double amount;
 	private int noOfTickets;
 	private double totalAmount;
-	private String status;
+	private String status="BOOKING";
 
 	public Booking() {
 		super();
