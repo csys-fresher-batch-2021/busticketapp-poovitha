@@ -109,7 +109,7 @@ public class UserRegisterDao {
 			pst.setString(2, username);
 			pst.setLong(1, mobileno);
 			int rows = pst.executeUpdate();
-			System.out.println("update seatavailable " + rows + username + mobileno);
+			System.out.println("update user " + rows + username + mobileno);
 		} catch (SQLException e) {
 			e.printStackTrace();
 

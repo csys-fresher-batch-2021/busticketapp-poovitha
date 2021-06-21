@@ -5,6 +5,11 @@ import in.poovi.model.service.BusRouteService;
 
 public class BusRouteTest {
 
+	/**
+	 * This main method is used to list the route details.....
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		int routeno = 2;
 		String source = "chennai";

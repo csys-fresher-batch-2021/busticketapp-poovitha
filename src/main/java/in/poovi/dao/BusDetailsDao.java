@@ -191,8 +191,8 @@ public class BusDetailsDao {
 		try {
 			connection = ConnectionUtil.getConnection();
 			pst = connection.prepareStatement(sql);
-			pst.setString(1, source);
-			pst.setString(2, destination);
+			pst.setString(2, source);
+			pst.setString(1, destination);
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				BusDetails busdetails = new BusDetails();

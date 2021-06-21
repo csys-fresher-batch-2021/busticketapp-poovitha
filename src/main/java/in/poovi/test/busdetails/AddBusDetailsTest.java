@@ -12,13 +12,13 @@ public class AddBusDetailsTest {
 	 */
 	public static void main(String[] args) {
 
-		String agency = "redbus";
-		int busnumber = 100;
+		String agency = "makemytrip bus";
+		int busnumber = 102;
 		String bustype = "AcSleeper";
+		String destination = "madurai";
 		String source = "chennai";
-		String destination = "theni";
-		double amount = 440;
-		BusDetails busdetails = new BusDetails(agency, busnumber, bustype, destination, source, amount);
+		double amount = 400;
+		BusDetails busdetails = new BusDetails(agency, busnumber, bustype, source,destination, amount);
 		// BusDetailsService busdetailsservice = new BusDetailsService();
 		// busdetailsservice.addBusDetails(busdetails);
 		BusDetailsDao busdetailsdao = new BusDetailsDao();

@@ -17,8 +17,8 @@ public class SearchBusTest {
 	 */
 	public static void main(String[] args) throws DBException {
 		BusDetailsDao busdetaildao = new BusDetailsDao();
-		String source = "theni";
-		String destination = "chennai";
+		String source = "chennai";
+		String destination = "theni";
 		List<BusDetails> bus = new ArrayList<>();
 		bus = busdetaildao.stationList(source, destination);
 		for (BusDetails test : bus) {
