@@ -1,7 +1,7 @@
 package in.poovi.test.busdetails;
 
+import in.poovi.dao.BusDetailsDao;
 import in.poovi.model.BusDetails;
-import in.poovi.model.service.BusDetailsService;
 
 public class AddBusDetailsTest {
 
@@ -13,12 +13,16 @@ public class AddBusDetailsTest {
 	public static void main(String[] args) {
 
 		String agency = "redbus";
-		int busnumber = 103;
-		String bustype = "NONAC SEATER";
+		int busnumber = 100;
+		String bustype = "AcSleeper";
+		String source = "chennai";
+		String destination = "theni";
 		double amount = 440;
-		BusDetails busdetails = new BusDetails(agency, busnumber, bustype, amount);
-		BusDetailsService busdetailsservice = new BusDetailsService();
-		busdetailsservice.addBusDetails(busdetails);
+		BusDetails busdetails = new BusDetails(agency, busnumber, bustype, destination, source, amount);
+		// BusDetailsService busdetailsservice = new BusDetailsService();
+		// busdetailsservice.addBusDetails(busdetails);
+		BusDetailsDao busdetailsdao = new BusDetailsDao();
+		busdetailsdao.save(busdetails);
 		System.out.println(busdetails);
 
 	}

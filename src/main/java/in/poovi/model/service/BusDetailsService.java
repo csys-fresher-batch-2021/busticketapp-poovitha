@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.dao.BusDetailsDao;
+import in.poovi.exception.DBException;
+import in.poovi.exception.ServiceException;
 import in.poovi.model.BusDetails;
+import sun.security.validator.ValidatorException;
 
 public class BusDetailsService {
 
@@ -40,4 +43,53 @@ public class BusDetailsService {
 		busdetailsdao.deleteBus(agency);
 
 	}
+
+	/**
+	 * This method is used to get no of buses....
+	 * 
+	 * @return noofBuses
+	 * @throws Exception
+	 */
+	int noOfBuses() throws Exception {
+		return busdetailsdao.noOfBuses();
+	}
+
+	/**
+	 * This method is used to list the stationdetails....
+	 * 
+	 * @param source
+	 * @param destination
+	 * @return stationlist
+	 * @throws ServiceException
+	 * @throws ValidatorException
+	 */
+	public List<BusDetails> stationList(String source, String destination) throws ServiceException, ValidatorException {
+
+		List<BusDetails> stationlist;
+		try {
+			validateSearch(source, destination);
+			stationlist = busdetailsdao.stationList(source, destination);
+		} catch (DBException e) {
+			e.printStackTrace();
+			throw new ServiceException("unable to display");
+		}
+		return stationlist;
+	}
+
+	/**
+	 * This method is used to validate the source and destination....
+	 * 
+	 * @param busSource
+	 * @param busDestination
+	 * @throws ValidatorException
+	 */
+	public void validateSearch(String busSource, String busDestination) throws ValidatorException {
+		if (busSource == null || busSource.equals("") || busSource.trim().equals("")) {
+			throw new ValidatorException("Invalid Source");
+		}
+		if (busDestination == null) {
+			throw new ValidatorException("Invalid destination");
+		}
+	}
+
 }
