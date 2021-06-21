@@ -6,8 +6,8 @@ import java.util.List;
 import in.poovi.dao.BusDetailsDao;
 import in.poovi.exception.DBException;
 import in.poovi.exception.ServiceException;
+import in.poovi.exception.ValidationException;
 import in.poovi.model.BusDetails;
-import sun.security.validator.ValidatorException;
 
 public class BusDetailsService {
 
@@ -61,9 +61,9 @@ public class BusDetailsService {
 	 * @param destination
 	 * @return stationlist
 	 * @throws ServiceException
-	 * @throws ValidatorException
+	 * @throws ValidationException 
 	 */
-	public List<BusDetails> stationList(String source, String destination) throws ServiceException, ValidatorException {
+	public List<BusDetails> stationList(String source, String destination) throws ServiceException, ValidationException {
 
 		List<BusDetails> stationlist;
 		try {
@@ -83,12 +83,12 @@ public class BusDetailsService {
 	 * @param busDestination
 	 * @throws ValidatorException
 	 */
-	public void validateSearch(String busSource, String busDestination) throws ValidatorException {
+	public void validateSearch(String busSource, String busDestination) throws ValidationException {
 		if (busSource == null || busSource.equals("") || busSource.trim().equals("")) {
-			throw new ValidatorException("Invalid Source");
+			throw new ValidationException("Invalid Source");
 		}
 		if (busDestination == null) {
-			throw new ValidatorException("Invalid destination");
+			throw new ValidationException("Invalid destination");
 		}
 	}
 
