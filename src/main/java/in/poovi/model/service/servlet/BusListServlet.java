@@ -26,9 +26,11 @@ public class BusListServlet extends HttpServlet {
 		System.out.println(agency + agency.length());
 		int busno = Integer.parseInt(request.getParameter("b_no"));
 		String bustype = request.getParameter("bustype");
+		String source = request.getParameter("source");
+		String destination = request.getParameter("destination");
 		double amount = Integer.parseInt(request.getParameter("amount"));
 		try {
-			BusDetails bus = new BusDetails(agency, busno, bustype, amount);
+			BusDetails bus = new BusDetails(agency, busno, bustype, source, destination, amount);
 			BusDetailsService busdetailsservice = new BusDetailsService();
 			busdetailsservice.addBusDetails(bus);
 
