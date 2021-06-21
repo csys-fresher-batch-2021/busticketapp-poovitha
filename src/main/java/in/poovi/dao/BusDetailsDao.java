@@ -211,7 +211,9 @@ public class BusDetailsDao {
 			}
 		} catch (SQLException e) {
 			throw new DBException(e.getMessage());
-		}
+		} finally {
+			ConnectionUtil.close(connection, pst, rs);
+			}
 		return stationlist;
 	}
 }
