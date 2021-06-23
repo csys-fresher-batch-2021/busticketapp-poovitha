@@ -1,7 +1,7 @@
 package in.poovi.test.userregister;
 
 import in.poovi.model.UserRegister;
-import in.poovi.model.service.UserRegisterService;
+import in.poovi.service.UserRegisterService;
 
 public class AddUserTest {
 

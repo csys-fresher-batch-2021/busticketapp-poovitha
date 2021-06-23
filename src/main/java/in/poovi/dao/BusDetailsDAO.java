@@ -14,7 +14,7 @@ import in.poovi.model.BusDetails;
 import in.poovi.model.SeatAvailable;
 import in.poovi.util.ConnectionUtil;
 
-public class BusDetailsDao {
+public class BusDetailsDAO {
 	/**
 	 * This method is used to list the all busdetails
 	 * 
@@ -22,7 +22,7 @@ public class BusDetailsDao {
 	 * @throws DBException 
 	 */
 
-	public List<BusDetails> findAllBusDetails() throws DBException {
+	public List<BusDetails> findAll() throws DBException {
 		List<BusDetails> busDetails = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -157,13 +157,14 @@ public class BusDetailsDao {
 		HashMap<String, Integer> obj = new HashMap<String, Integer>();
 
 		String sql = "select agency,b_no from busdetails";
+		//select agency,count(*) as cnt from  busdetails group by agency;
 		try {
 			connection = ConnectionUtil.getConnection();
 			pst = connection.prepareStatement(sql);
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				String agency = rs.getString("agency");
-				int busNo = rs.getInt("b_no");
+				int busNo = rs.getInt("b_no");//rs.getInt("cnt")
 				obj.put(agency, busNo);
 			}
 

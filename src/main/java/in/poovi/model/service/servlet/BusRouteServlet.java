@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import in.poovi.model.BusRoute;
-import in.poovi.model.service.BusRouteService;
+import in.poovi.service.BusRouteService;
 
 @WebServlet("/BusRouteServlet")
 public class BusRouteServlet extends HttpServlet {

@@ -1,9 +1,9 @@
-package in.poovi.model.service;
+package in.poovi.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import in.poovi.dao.BusRouteDao;
+import in.poovi.dao.BusRouteDAO;
 import in.poovi.exception.DBException;
 import in.poovi.exception.ServiceException;
 import in.poovi.model.BusRoute;
@@ -12,7 +12,7 @@ public class BusRouteService {
 
 	public static final List<BusRoute> busroute = new ArrayList<>();
 
-	static BusRouteDao busroutedao = new BusRouteDao();
+	static BusRouteDAO busrouteDAO = new BusRouteDAO();
 
 	/**
 	 * This method is used to display the all routes....
@@ -21,7 +21,7 @@ public class BusRouteService {
 	 * @throws DBException
 	 */
 	public static List<BusRoute> getBusRoute() throws DBException {
-		return busroutedao.findAllBusRoute();
+		return busrouteDAO.findAll();
 	}
 
 	/**
@@ -35,7 +35,7 @@ public class BusRouteService {
 		if (busRoute.getSource().equals(busRoute.getDestination())) {
 			throw new ServiceException("both source and destination same we cannot booking");
 		}
-		busroutedao.save(busRoute);
+		busrouteDAO.save(busRoute);
 	}
 
 	/**
@@ -45,7 +45,7 @@ public class BusRouteService {
 	 * @throws DBException
 	 */
 	public static void deleteRoute(int routeno) throws DBException {
-		busroutedao.deleteRoute(routeno);
+		busrouteDAO.deleteRoute(routeno);
 	}
 
 }

@@ -12,7 +12,7 @@ import in.poovi.message.MessageConstants;
 import in.poovi.model.AdminRegister;
 import in.poovi.util.ConnectionUtil;
 
-public class AdminRegisterDao {
+public class AdminRegisterDAO {
 	/**
 	 * This method is used to list the all admin details
 	 * 
@@ -20,7 +20,7 @@ public class AdminRegisterDao {
 	 * @throws DBException
 	 */
 
-	public List<AdminRegister> findAllAdminRegister() throws DBException {
+	public List<AdminRegister> findAll() throws DBException {
 		List<AdminRegister> adminregister = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -112,7 +112,7 @@ public class AdminRegisterDao {
 	 * @return adminregister
 	 * @throws Exception
 	 */
-	public List<AdminRegister> findAdminDetailsByAdminid(int adminid) throws Exception {
+	public List<AdminRegister> findByAdminId(int adminid) throws Exception {
 		List<AdminRegister> adminregister = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;

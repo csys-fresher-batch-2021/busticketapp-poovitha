@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@page import="in.poovi.model.BusRoute" %>   
-<%@page import="in.poovi.model.service.BusRouteService" %> 
+<%@page import="in.poovi.service.BusRouteService" %> 
 <%@page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="en">

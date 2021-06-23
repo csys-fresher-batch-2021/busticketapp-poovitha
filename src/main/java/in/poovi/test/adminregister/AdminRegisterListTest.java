@@ -3,7 +3,7 @@ package in.poovi.test.adminregister;
 import java.util.ArrayList;
 import java.util.List;
 
-import in.poovi.dao.AdminRegisterDao;
+import in.poovi.dao.AdminRegisterDAO;
 import in.poovi.exception.DBException;
 import in.poovi.model.AdminRegister;
 
@@ -17,9 +17,9 @@ public class AdminRegisterListTest {
 	 */
 	public static void main(String[] args) throws DBException {
 
-		AdminRegisterDao adminregisterdao=new AdminRegisterDao();
+		AdminRegisterDAO adminregisterDAO=new AdminRegisterDAO();
 		List<AdminRegister> adminregister=new ArrayList<>();
-		adminregister=adminregisterdao.findAllAdminRegister();
+		adminregister=adminregisterDAO.findAll();
 		for(AdminRegister admin:adminregister) {
 			System.out.println(admin);
 		}

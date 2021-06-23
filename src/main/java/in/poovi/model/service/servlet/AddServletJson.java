@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.JsonObject;
 
-import in.poovi.model.service.Display;
+import in.poovi.service.Display;
 
 @WebServlet("/AddServletJson")
 public class AddServletJson extends HttpServlet {

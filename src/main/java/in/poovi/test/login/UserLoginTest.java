@@ -1,7 +1,7 @@
 package in.poovi.test.login;
 
 import in.poovi.exception.ValidationException;
-import in.poovi.model.service.LoginService;
+import in.poovi.service.LoginService;
 
 public class UserLoginTest {
 

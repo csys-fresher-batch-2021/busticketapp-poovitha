@@ -1,4 +1,4 @@
-package in.poovi.model.service;
+package in.poovi.service;
 
 import java.util.List;
 

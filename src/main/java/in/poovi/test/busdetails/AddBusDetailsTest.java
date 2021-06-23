@@ -1,6 +1,6 @@
 package in.poovi.test.busdetails;
 
-import in.poovi.dao.BusDetailsDao;
+import in.poovi.dao.BusDetailsDAO;
 import in.poovi.exception.DBException;
 import in.poovi.model.BusDetails;
 
@@ -21,10 +21,8 @@ public class AddBusDetailsTest {
 		String source = "trichy";
 		double amount = 300;
 		BusDetails busdetails = new BusDetails(agency, busnumber, bustype, source,destination, amount);
-		// BusDetailsService busdetailsservice = new BusDetailsService();
-		// busdetailsservice.addBusDetails(busdetails);
-		BusDetailsDao busdetailsdao = new BusDetailsDao();
-		busdetailsdao.save(busdetails);
+		BusDetailsDAO busdetailsDAO = new BusDetailsDAO();
+		busdetailsDAO.save(busdetails);
 		System.out.println(busdetails);
 
 	}

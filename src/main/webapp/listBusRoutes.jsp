@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="in.poovi.model.MyList" %>
 <%@page import="java.util.List"%>
-<%@page import="in.poovi.model.service.Display" %>    
+<%@page import="in.poovi.service.Display" %>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
