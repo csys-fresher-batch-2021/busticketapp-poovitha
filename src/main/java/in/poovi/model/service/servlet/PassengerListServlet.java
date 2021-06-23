@@ -7,7 +7,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import in.poovi.model.service.PassengerService;
+
+import in.poovi.service.PassengerService;
 
 @WebServlet("/PassengerListServlet")
 public class PassengerListServlet extends HttpServlet {

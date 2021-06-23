@@ -3,7 +3,7 @@ package in.poovi.test.busroute;
 import in.poovi.exception.DBException;
 import in.poovi.exception.ServiceException;
 import in.poovi.model.BusRoute;
-import in.poovi.model.service.BusRouteService;
+import in.poovi.service.BusRouteService;
 
 public class AddBusRouteTest {
 	/**

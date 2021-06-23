@@ -1,6 +1,6 @@
 package in.poovi.test.adminregister;
 
-import in.poovi.dao.AdminRegisterDao;
+import in.poovi.dao.AdminRegisterDAO;
 import in.poovi.exception.DBException;
 
 public class DeleteAdminTest {
@@ -12,9 +12,9 @@ public class DeleteAdminTest {
 	 */
 	public static void main(String[] args) throws DBException {
 
-		AdminRegisterDao adminregisterdao=new AdminRegisterDao();
+		AdminRegisterDAO adminregisterDAO=new AdminRegisterDAO();
 		int adminId=1000;
-		adminregisterdao.deleteAdmin(adminId);
+		adminregisterDAO.deleteAdmin(adminId);
 		System.out.println("deleted " +adminId );
 	}
 

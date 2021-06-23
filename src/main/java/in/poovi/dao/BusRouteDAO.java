@@ -12,7 +12,7 @@ import in.poovi.message.MessageConstants;
 import in.poovi.model.BusRoute;
 import in.poovi.util.ConnectionUtil;
 
-public class BusRouteDao {
+public class BusRouteDAO {
 
 	/**
 	 * This method is used to display the busroute.....
@@ -20,7 +20,7 @@ public class BusRouteDao {
 	 * @return busRoute
 	 * @throws DBException
 	 */
-	public List<BusRoute> findAllBusRoute() throws DBException {
+	public List<BusRoute> findAll() throws DBException {
 		List<BusRoute> busRoute = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;

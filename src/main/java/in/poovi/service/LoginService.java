@@ -1,4 +1,4 @@
-package in.poovi.model.service;
+package in.poovi.service;
 
 import in.poovi.dao.LoginDao;
 import in.poovi.exception.ValidationException;

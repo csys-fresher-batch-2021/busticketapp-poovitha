@@ -12,7 +12,7 @@ import in.poovi.message.MessageConstants;
 import in.poovi.model.Booking;
 import in.poovi.util.ConnectionUtil;
 
-public class BookingDao {
+public class BookingDAO {
 	
 
 	/**
@@ -22,7 +22,7 @@ public class BookingDao {
 	 * @throws Exception
 	 */
 
-	public List<Booking> findallBookingDetails() throws Exception {
+	public List<Booking> findAll() throws Exception {
 		List<Booking> booking = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;

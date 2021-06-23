@@ -1,7 +1,7 @@
 package in.poovi.test.seatavailable;
 
 import in.poovi.model.SeatAvailable;
-import in.poovi.model.service.SeatAvailableService;
+import in.poovi.service.SeatAvailableService;
 
 public class AddSeatTest {
 

@@ -3,7 +3,7 @@ package in.poovi.test.busdetails;
 import java.util.HashMap;
 import java.util.Set;
 
-import in.poovi.dao.BusDetailsDao;
+import in.poovi.dao.BusDetailsDAO;
 
 public class NoOfBuslistTest {
 	/**
@@ -13,8 +13,8 @@ public class NoOfBuslistTest {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
-		BusDetailsDao busdetaildao = new BusDetailsDao();
-		HashMap<String, Integer> buslist = busdetaildao.noOfBuslist();
+		BusDetailsDAO busdetailDAO = new BusDetailsDAO();
+		HashMap<String, Integer> buslist = busdetailDAO.noOfBuslist();
 		Set<String> keyset = buslist.keySet();
 		System.out.println("Bus No | Agency");
 		int number = 0;

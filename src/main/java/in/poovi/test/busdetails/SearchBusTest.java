@@ -3,7 +3,7 @@ package in.poovi.test.busdetails;
 import java.util.ArrayList;
 import java.util.List;
 
-import in.poovi.dao.BusDetailsDao;
+import in.poovi.dao.BusDetailsDAO;
 import in.poovi.exception.DBException;
 import in.poovi.model.BusDetails;
 
@@ -16,11 +16,12 @@ public class SearchBusTest {
 	 * @throws DBException
 	 */
 	public static void main(String[] args) throws DBException {
-		BusDetailsDao busdetaildao = new BusDetailsDao();
+		BusDetailsDAO busdetailDAO = new BusDetailsDAO();
 		String source = "kovai";
-		String destination = "theni";
+		String destination = "thenii";
 		List<BusDetails> bus = new ArrayList<>();
-		bus = busdetaildao.findStationList(source, destination);
+		bus = busdetailDAO.findStationList(source, destination);
+		System.out.println(bus.size());
 		for (BusDetails test : bus) {
 			System.out.println(
 					test.getAgency() + "\t" + test.getBusnumber() + "\t" + test.getBusType() + "\t" + test.getSource()

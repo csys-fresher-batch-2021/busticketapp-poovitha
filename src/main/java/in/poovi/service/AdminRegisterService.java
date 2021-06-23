@@ -1,9 +1,9 @@
-package in.poovi.model.service;
+package in.poovi.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import in.poovi.dao.AdminRegisterDao;
+import in.poovi.dao.AdminRegisterDAO;
 import in.poovi.exception.DBException;
 import in.poovi.exception.ServiceException;
 import in.poovi.message.MessageConstants;
@@ -13,7 +13,7 @@ public class AdminRegisterService {
 
 	public static final List<AdminRegister> adminregister = new ArrayList<>();
 
-	static AdminRegisterDao adminregisterdao = new AdminRegisterDao();
+	static AdminRegisterDAO adminregisterDAO = new AdminRegisterDAO();
 
 	/**
 	 * This method is used to list the all admin details
@@ -22,7 +22,7 @@ public class AdminRegisterService {
 	 * @throws Exception
 	 */
 	public List<AdminRegister> getallAdminDetails() throws Exception {
-		return adminregisterdao.findAllAdminRegister();
+		return adminregisterDAO.findAll();
 	}
 
 	/**
@@ -40,7 +40,7 @@ public class AdminRegisterService {
 				|| adminregister.getPassword().length() <= 8) {
 			throw new ServiceException(MessageConstants.INVALID_PASSWORD);
 		}
-		adminregisterdao.saveAdmin(adminregister);
+		adminregisterDAO.saveAdmin(adminregister);
 	}
 
 	/**
@@ -50,7 +50,7 @@ public class AdminRegisterService {
 	 * @throws DBException 
 	 */
 	public static void deleteAdmin(int adminId) throws DBException {
-		adminregisterdao.deleteAdmin(adminId);
+		adminregisterDAO.deleteAdmin(adminId);
 	}
 
 	/**
@@ -60,8 +60,8 @@ public class AdminRegisterService {
 	 * @return adminDetails
 	 * @throws Exception
 	 */
-	public List<AdminRegister> findAdminDetailsByAdminid(int adminid) throws Exception {
-		return adminregisterdao.findAdminDetailsByAdminid(adminid);
+	public List<AdminRegister> findByAdminId(int adminid) throws Exception {
+		return adminregisterDAO.findByAdminId(adminid);
 	}
 
 }

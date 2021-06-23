@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import in.poovi.model.service.Display;
+import in.poovi.service.Display;
 
 
 @WebServlet("/AddServlet")

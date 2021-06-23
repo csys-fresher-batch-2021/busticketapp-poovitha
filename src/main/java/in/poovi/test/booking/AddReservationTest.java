@@ -1,7 +1,7 @@
 package in.poovi.test.booking;
 
 import in.poovi.model.Booking;
-import in.poovi.model.service.BookingService;
+import in.poovi.service.BookingService;
 
 public class AddReservationTest {
 

@@ -3,7 +3,7 @@ package in.poovi.test.booking;
 import java.util.ArrayList;
 import java.util.List;
 
-import in.poovi.dao.BookingDao;
+import in.poovi.dao.BookingDAO;
 import in.poovi.model.Booking;
 
 public class BookingTest {
@@ -15,9 +15,9 @@ public class BookingTest {
 	 */
 	public static void main(String[] args) throws Exception {
 
-		BookingDao bookingdao = new BookingDao();
+		BookingDAO bookingDAO = new BookingDAO();
 		List<Booking> booking = new ArrayList<>();
-		booking = bookingdao.findallBookingDetails();
+		booking = bookingDAO.findAll();
 		for (Booking book : booking) {
 			System.out.println(book);
 		}

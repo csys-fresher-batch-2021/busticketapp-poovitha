@@ -1,7 +1,7 @@
 package in.poovi.test.adminregister;
 
 import in.poovi.model.AdminRegister;
-import in.poovi.model.service.AdminRegisterService;
+import in.poovi.service.AdminRegisterService;
 
 public class AddAdminTest {
 

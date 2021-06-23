@@ -1,9 +1,9 @@
-package in.poovi.model.service;
+package in.poovi.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import in.poovi.dao.BusDetailsDao;
+import in.poovi.dao.BusDetailsDAO;
 import in.poovi.exception.DBException;
 import in.poovi.exception.ServiceException;
 import in.poovi.exception.ValidationException;
@@ -13,7 +13,7 @@ public class BusDetailsService {
 
 	public static final List<BusDetails> busList = new ArrayList<>();
 
-	static BusDetailsDao busdetailsdao = new BusDetailsDao();
+	static BusDetailsDAO busdetailsDAO = new BusDetailsDAO();
 
 	/**
 	 * This method is used to display the all bus details
@@ -22,7 +22,7 @@ public class BusDetailsService {
 	 * @throws DBException
 	 */
 	public List<BusDetails> getBusDetails() throws DBException {
-		return busdetailsdao.findAllBusDetails();
+		return busdetailsDAO.findAll();
 	}
 
 	/**
@@ -36,7 +36,7 @@ public class BusDetailsService {
 		if (bus.getSource().equals(bus.getDestination())) {
 			throw new ServiceException("both source and destination same we cannot booking");
 		}
-		busdetailsdao.save(bus);
+		busdetailsDAO.save(bus);
 	}
 
 	/**
@@ -46,7 +46,7 @@ public class BusDetailsService {
 	 */
 	public static void deleteBus(String agency) {
 
-		busdetailsdao.deleteBus(agency);
+		busdetailsDAO.deleteBus(agency);
 
 	}
 
@@ -57,7 +57,7 @@ public class BusDetailsService {
 	 * @throws Exception
 	 */
 	int noOfBuses() throws Exception {
-		return busdetailsdao.noOfBuses();
+		return busdetailsDAO.noOfBuses();
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class BusDetailsService {
 		List<BusDetails> stationlist;
 		try {
 			validateSearch(source, destination);
-			stationlist = busdetailsdao.findStationList(source, destination);
+			stationlist = busdetailsDAO.findStationList(source, destination);
 		} catch (DBException e) {
 			e.printStackTrace();
 			throw new ServiceException("unable to display");

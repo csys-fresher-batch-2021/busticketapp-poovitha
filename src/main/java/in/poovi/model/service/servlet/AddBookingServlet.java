@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import in.poovi.model.Booking;
-import in.poovi.model.service.BookingService;
+import in.poovi.service.BookingService;
 
 @WebServlet("/AddBookingServlet")
 public class AddBookingServlet extends HttpServlet {
