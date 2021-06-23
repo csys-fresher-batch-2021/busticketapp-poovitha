@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.exception.DBException;
+import in.poovi.message.MessageConstants;
 import in.poovi.model.Booking;
 import in.poovi.util.ConnectionUtil;
 
@@ -100,7 +101,7 @@ public class BookingDao {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute");
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 
 		} finally {
 			ConnectionUtil.close(pst, connection);
@@ -127,7 +128,7 @@ public class BookingDao {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute query");
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -162,7 +163,7 @@ public class BookingDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute query");
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
@@ -194,7 +195,7 @@ public class BookingDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute query");
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 

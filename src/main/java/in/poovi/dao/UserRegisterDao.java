@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.exception.DBException;
+import in.poovi.message.MessageConstants;
 import in.poovi.model.UserRegister;
 import in.poovi.util.ConnectionUtil;
 
@@ -63,8 +64,9 @@ public class UserRegisterDao {
 	 * used to add the user......
 	 * 
 	 * @param busRoute
+	 * @throws DBException 
 	 */
-	public void saveUser(UserRegister userregister) {
+	public void saveUser(UserRegister userregister) throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		String sql = "insert into userregister(username,age,email,mobileno,userId,password) values ( ?,?,?,?,?,? )";
@@ -82,7 +84,7 @@ public class UserRegisterDao {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-
+		throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -93,8 +95,9 @@ public class UserRegisterDao {
 	 * 
 	 * @param mobileno
 	 * @param username
+	 * @throws DBException 
 	 */
-	public void updateMobileno(long mobileno, String username) {
+	public void updateMobileno(long mobileno, String username) throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		String sql = "update userregister set mobileno=? where username=?";
@@ -107,7 +110,7 @@ public class UserRegisterDao {
 			System.out.println("update user " + rows + username + mobileno);
 		} catch (SQLException e) {
 			e.printStackTrace();
-
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 
@@ -152,7 +155,7 @@ public class UserRegisterDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute query");
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}

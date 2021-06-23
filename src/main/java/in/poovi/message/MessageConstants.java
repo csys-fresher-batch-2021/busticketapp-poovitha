@@ -19,4 +19,9 @@ public class MessageConstants {
 
 	public static final String INVALID_EMAIL = "INVALIDEMAIL";
 
+	/**
+	 * Indicates the DBException during query execution.....
+	 */
+	public static final String UNABLE_TO_EXECUTE_QUERY = " UNABLE TO EXECUTE THE QUERY";
+
 }

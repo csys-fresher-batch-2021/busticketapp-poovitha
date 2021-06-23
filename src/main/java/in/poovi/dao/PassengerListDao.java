@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.exception.DBException;
+import in.poovi.message.MessageConstants;
 import in.poovi.model.PassengerModel;
 import in.poovi.util.ConnectionUtil;
 
@@ -48,7 +49,7 @@ public class PassengerListDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute the query");
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
@@ -78,7 +79,7 @@ public class PassengerListDao {
 			System.out.println(rows);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute the query");
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -102,7 +103,7 @@ public class PassengerListDao {
 			System.out.println("no of rows deleted" + rows + pid);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute the query");
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -129,7 +130,7 @@ public class PassengerListDao {
 			System.out.println("update user " + rows + pname + mobileno);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute the query");
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 

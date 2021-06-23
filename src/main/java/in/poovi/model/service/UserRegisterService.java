@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.dao.UserRegisterDao;
+import in.poovi.exception.DBException;
 import in.poovi.exception.ServiceException;
 import in.poovi.message.MessageConstants;
 import in.poovi.model.UserRegister;
@@ -50,8 +51,9 @@ public class UserRegisterService {
 	 * 
 	 * @param mobileno
 	 * @param username
+	 * @throws DBException 
 	 */
-	public void Updateuser(long mobileno, String username) {
+	public void Updateuser(long mobileno, String username) throws DBException {
 		userregisterdao.updateMobileno(mobileno, username);
 
 	}

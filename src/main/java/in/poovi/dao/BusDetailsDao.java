@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import in.poovi.exception.DBException;
+import in.poovi.message.MessageConstants;
 import in.poovi.model.BusDetails;
 import in.poovi.model.SeatAvailable;
 import in.poovi.util.ConnectionUtil;
@@ -64,8 +65,9 @@ public class BusDetailsDao {
 	 * This method is used to add the busdetails in database
 	 * 
 	 * @param busdetails
+	 * @throws DBException
 	 */
-	public void save(BusDetails busdetails) {
+	public void save(BusDetails busdetails) throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		String sql = "insert into busdetails(agency,b_no,bustype,source,destination,amount) values ( ?,?,?,?,?,? )";
@@ -84,7 +86,7 @@ public class BusDetailsDao {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -166,7 +168,7 @@ public class BusDetailsDao {
 			}
 
 		} catch (SQLException e) {
-			throw new Exception("Unable to execute resultset query");
+			throw new Exception(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
@@ -212,7 +214,7 @@ public class BusDetailsDao {
 
 			}
 		} catch (SQLException e) {
-			throw new DBException(e.getMessage());
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 			}

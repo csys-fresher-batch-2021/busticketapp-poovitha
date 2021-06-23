@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.exception.DBException;
+import in.poovi.message.MessageConstants;
 import in.poovi.model.AdminRegister;
 import in.poovi.util.ConnectionUtil;
 
@@ -16,9 +17,10 @@ public class AdminRegisterDao {
 	 * This method is used to list the all admin details
 	 * 
 	 * @return adminregister
+	 * @throws DBException
 	 */
 
-	public List<AdminRegister> findAllAdminRegister() {
+	public List<AdminRegister> findAllAdminRegister() throws DBException {
 		List<AdminRegister> adminregister = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -43,6 +45,7 @@ public class AdminRegisterDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
@@ -54,7 +57,7 @@ public class AdminRegisterDao {
 	 * This method is used to add the admin
 	 * 
 	 * @param adminregister
-	 * @throws DBException 
+	 * @throws DBException
 	 */
 	public void saveAdmin(AdminRegister adminregister) throws DBException {
 		Connection connection = null;
@@ -70,8 +73,7 @@ public class AdminRegisterDao {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute query");
-
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -81,8 +83,9 @@ public class AdminRegisterDao {
 	 * This method is used to delete the admin registration......
 	 * 
 	 * @param adminName
+	 * @throws DBException 
 	 */
-	public void deleteAdmin(int adminId) {
+	public void deleteAdmin(int adminId) throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 
@@ -96,6 +99,7 @@ public class AdminRegisterDao {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -133,7 +137,7 @@ public class AdminRegisterDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute query");
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 

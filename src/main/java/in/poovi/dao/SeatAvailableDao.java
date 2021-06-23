@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.exception.DBException;
+import in.poovi.message.MessageConstants;
 import in.poovi.model.SeatAvailable;
 import in.poovi.util.ConnectionUtil;
 
@@ -72,7 +73,7 @@ public class SeatAvailableDao {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute query");
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -97,7 +98,7 @@ public class SeatAvailableDao {
 			System.out.println("no of rows deleted " + rows + busnumber);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute query");
+			throw new DBException("no data found");
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -155,7 +156,7 @@ public class SeatAvailableDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute query");
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
@@ -184,7 +185,7 @@ public class SeatAvailableDao {
 			System.out.println("update seatavailable " + rows + busnumber);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute query");
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}

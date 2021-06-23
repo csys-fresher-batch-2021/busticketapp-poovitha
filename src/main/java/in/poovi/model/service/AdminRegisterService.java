@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.dao.AdminRegisterDao;
+import in.poovi.exception.DBException;
 import in.poovi.exception.ServiceException;
 import in.poovi.message.MessageConstants;
 import in.poovi.model.AdminRegister;
@@ -46,8 +47,9 @@ public class AdminRegisterService {
 	 * This method is used to delete the admin.....
 	 * 
 	 * @param adminName
+	 * @throws DBException 
 	 */
-	public static void deleteAdmin(int adminId) {
+	public static void deleteAdmin(int adminId) throws DBException {
 		adminregisterdao.deleteAdmin(adminId);
 	}
 

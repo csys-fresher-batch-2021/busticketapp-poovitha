@@ -1,6 +1,7 @@
 package in.poovi.test.busdetails;
 
 import in.poovi.dao.BusDetailsDao;
+import in.poovi.exception.DBException;
 import in.poovi.model.BusDetails;
 
 public class AddBusDetailsTest {
@@ -9,8 +10,9 @@ public class AddBusDetailsTest {
 	 * This main method is used to add bus details.....
 	 * 
 	 * @param args
+	 * @throws DBException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws DBException {
 
 		String agency = "jai travels";
 		int busnumber = 106;

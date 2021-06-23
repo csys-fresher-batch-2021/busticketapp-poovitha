@@ -19,7 +19,7 @@ public class BusDetailsService {
 	 * This method is used to display the all bus details
 	 * 
 	 * @return allbusdetails
-	 * @throws DBException 
+	 * @throws DBException
 	 */
 	public List<BusDetails> getBusDetails() throws DBException {
 		return busdetailsdao.findAllBusDetails();
@@ -29,13 +29,13 @@ public class BusDetailsService {
 	 * This method is used to add the bus details
 	 * 
 	 * @param bus
-	 * @throws ServiceException 
+	 * @throws ServiceException
+	 * @throws DBException
 	 */
-	public void addBusDetails(BusDetails bus) throws ServiceException {
+	public void addBusDetails(BusDetails bus) throws ServiceException, DBException {
 		if (bus.getSource().equals(bus.getDestination())) {
 			throw new ServiceException("both source and destination same we cannot booking");
 		}
-
 		busdetailsdao.save(bus);
 	}
 
@@ -67,9 +67,10 @@ public class BusDetailsService {
 	 * @param destination
 	 * @return stationlist
 	 * @throws ServiceException
-	 * @throws ValidationException 
+	 * @throws ValidationException
 	 */
-	public List<BusDetails> findStationList(String source, String destination) throws ServiceException, ValidationException {
+	public List<BusDetails> findStationList(String source, String destination)
+			throws ServiceException, ValidationException {
 
 		List<BusDetails> stationlist;
 		try {

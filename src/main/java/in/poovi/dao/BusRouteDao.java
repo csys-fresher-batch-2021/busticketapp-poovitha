@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.exception.DBException;
+import in.poovi.message.MessageConstants;
 import in.poovi.model.BusRoute;
 import in.poovi.util.ConnectionUtil;
 
@@ -44,7 +45,7 @@ public class BusRouteDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute query");
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
@@ -74,7 +75,7 @@ public class BusRouteDao {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute query");
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -98,7 +99,7 @@ public class BusRouteDao {
 			System.out.println("no of rows deleted" + rows + routeno);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute query");
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
