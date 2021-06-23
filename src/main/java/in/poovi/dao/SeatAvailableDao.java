@@ -175,7 +175,6 @@ public class SeatAvailableDao {
 	public void updateSeatAvailable(int busnumber) {
 		Connection connection = null;
 		PreparedStatement pst = null;
-		// ResultSet rs = null;
 		String sql="update seatavailable s set availableseat  = (select availableseat from seatavailable where busnumber=?)-(select sum(nooftickets) from booking where busnumber=?) from busdetails where s.busnumber=busdetails.b_no and s.busnumber=?";
 		try {
 			connection = ConnectionUtil.getConnection();

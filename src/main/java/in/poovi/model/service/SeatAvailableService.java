@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.dao.SeatAvailableDao;
-import in.poovi.model.Booking;
 import in.poovi.model.SeatAvailable;
 
 public class SeatAvailableService {
@@ -77,24 +76,7 @@ public class SeatAvailableService {
 	 * @param availableseat
 	 */
 	public void UpdateSeatAvailable(int busnumber) {
-		busnumber = SeatAvailableService.availableseat(busnumber);
 		seatavailabledao.updateSeatAvailable(busnumber);
 	}
 
-	/**
-	 * This method is used to get the availableseat
-	 * 
-	 * @param busnumber
-	 * @return availableseat
-	 */
-	public static int availableseat(int busnumber) {
-		int availableseat = 0;
-		Booking booking = new Booking();
-		try {
-			availableseat = availableseat - booking.getNoOfTickets();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return availableseat;
-	}
 }

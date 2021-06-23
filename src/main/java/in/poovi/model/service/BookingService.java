@@ -45,10 +45,10 @@ public class BookingService {
 	 * This method is used to cancel the booking
 	 * 
 	 * @param agency
+	 * @throws DBException 
 	 */
-	public static void cancelReserve(int booking) {
-
-		bookingdao.cancelReserve(booking);
+	public static void cancelReserve(int booking) throws DBException {
+          bookingdao.cancelReserve(booking);
 
 	}
 

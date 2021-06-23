@@ -111,8 +111,9 @@ public class BookingDao {
 	 * This method is used to cancel booking from the user....
 	 * 
 	 * @param agency
+	 * @throws DBException 
 	 */
-	public void cancelReserve(int bookingno) {
+	public void cancelReserve(int bookingno) throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 
@@ -126,6 +127,7 @@ public class BookingDao {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DBException("unable to execute query");
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
