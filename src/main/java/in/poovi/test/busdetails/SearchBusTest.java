@@ -17,18 +17,15 @@ public class SearchBusTest {
 	 */
 	public static void main(String[] args) throws DBException {
 		BusDetailsDao busdetaildao = new BusDetailsDao();
-		String source = "chennai";
+		String source = "kovai";
 		String destination = "theni";
 		List<BusDetails> bus = new ArrayList<>();
-		bus = busdetaildao.stationList(source, destination);
+		bus = busdetaildao.findStationList(source, destination);
 		for (BusDetails test : bus) {
-
 			System.out.println(
 					test.getAgency() + "\t" + test.getBusnumber() + "\t" + test.getBusType() + "\t" + test.getSource()
 							+ "\t" + test.getDestination() + "\t" + test.getSeatavailable() + "\t" + test.getAmount());
-			System.out.println();
 		}
-		// System.out.println(bus);
 	}
 
 }

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import in.poovi.message.MessageConstants;
 import in.poovi.util.ConnectionUtil;
 
 public class LoginDao {
@@ -36,7 +37,7 @@ public class LoginDao {
 
 		catch (SQLException e) {
 			e.printStackTrace();
-			throw new Exception("unable to execute the query");
+			throw new Exception(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
@@ -71,7 +72,7 @@ public class LoginDao {
 
 		catch (SQLException e) {
 			e.printStackTrace();
-			throw new Exception("unable to execute the query");
+			throw new Exception(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}

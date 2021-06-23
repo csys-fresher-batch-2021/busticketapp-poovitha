@@ -1,6 +1,7 @@
 package in.poovi.test.passenger;
 
 import in.poovi.dao.PassengerListDao;
+import in.poovi.exception.DBException;
 import in.poovi.model.PassengerModel;
 
 public class AddPassengerList {
@@ -9,8 +10,9 @@ public class AddPassengerList {
 	 * This main method is used to add the passenger details in the list....
 	 * 
 	 * @param args
+	 * @throws DBException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws DBException {
 
 		int pid=104;
 		String pname="pavi";

@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import in.poovi.exception.DBException;
+import in.poovi.message.MessageConstants;
 import in.poovi.model.BusDetails;
 import in.poovi.model.SeatAvailable;
 import in.poovi.util.ConnectionUtil;
@@ -18,16 +19,17 @@ public class BusDetailsDao {
 	 * This method is used to list the all busdetails
 	 * 
 	 * @return busdetails
+	 * @throws DBException 
 	 */
 
-	public List<BusDetails> allBusDetails() {
+	public List<BusDetails> findAllBusDetails() throws DBException {
 		List<BusDetails> busDetails = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql = "Select * from busdetails";
+			String sql = "Select agency,b_no,bustype,source,destination,amount from busdetails";
 			pst = connection.prepareStatement(sql);
 			rs = pst.executeQuery();
 			busDetails = new ArrayList<>();
@@ -51,6 +53,7 @@ public class BusDetailsDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw new DBException("unable to execute query");
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
@@ -62,8 +65,9 @@ public class BusDetailsDao {
 	 * This method is used to add the busdetails in database
 	 * 
 	 * @param busdetails
+	 * @throws DBException
 	 */
-	public void save(BusDetails busdetails) {
+	public void save(BusDetails busdetails) throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		String sql = "insert into busdetails(agency,b_no,bustype,source,destination,amount) values ( ?,?,?,?,?,? )";
@@ -82,7 +86,7 @@ public class BusDetailsDao {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -164,7 +168,7 @@ public class BusDetailsDao {
 			}
 
 		} catch (SQLException e) {
-			throw new Exception("Unable to execute resultset query");
+			throw new Exception(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
@@ -180,19 +184,19 @@ public class BusDetailsDao {
 	 * @return stationlist
 	 * @throws DBException
 	 */
-	public List<BusDetails> stationList(String source, String destination) throws DBException {
+	public List<BusDetails> findStationList(String source, String destination) throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
 
-		String sql = "select * from view_busdetails where source=? and destination=?";
+		String sql = "select agency,b_no,bustype,source,destination,amount,totalseat,availableseat from view_busdetails where source=? and destination=?";
 		List<BusDetails> stationlist = new ArrayList<>();
 
 		try {
 			connection = ConnectionUtil.getConnection();
 			pst = connection.prepareStatement(sql);
-			pst.setString(2, source);
-			pst.setString(1, destination);
+			pst.setString(1, source);
+			pst.setString(2, destination);
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				BusDetails busdetails = new BusDetails();
@@ -210,7 +214,7 @@ public class BusDetailsDao {
 
 			}
 		} catch (SQLException e) {
-			throw new DBException(e.getMessage());
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 			}

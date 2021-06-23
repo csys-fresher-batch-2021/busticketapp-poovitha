@@ -16,7 +16,7 @@ public class AddUserTest {
 		int age =20;
 		String email="yamini@gmail.com";
 		long mobileno=9999999988L;
-		int userid=102;
+		int userid=100;
 		String password="yamini228";
 		UserRegister userregister=new UserRegister(username,age,email,mobileno,userid,password);
 		UserRegisterService userregisterservice=new UserRegisterService();

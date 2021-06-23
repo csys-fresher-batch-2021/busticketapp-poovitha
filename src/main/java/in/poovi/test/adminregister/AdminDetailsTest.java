@@ -18,7 +18,7 @@ public class AdminDetailsTest {
 
 		AdminRegisterDao adminregisterdao = new AdminRegisterDao();
 		List<AdminRegister> adminregister = new ArrayList<>();
-		adminregister = adminregisterdao.adminDetails(1001);
+		adminregister = adminregisterdao.findAdminDetailsByAdminid(1004);
 		for (AdminRegister admindetail : adminregister) {
 			System.out.println(admindetail);
 		}

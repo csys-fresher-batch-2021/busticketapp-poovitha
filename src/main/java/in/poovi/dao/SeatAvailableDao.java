@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.exception.DBException;
+import in.poovi.message.MessageConstants;
 import in.poovi.model.SeatAvailable;
 import in.poovi.util.ConnectionUtil;
 
@@ -19,14 +20,14 @@ public class SeatAvailableDao {
 	 * @throws Exception
 	 */
 
-	public List<SeatAvailable> allAvailableSeat() throws Exception {
+	public List<SeatAvailable> findAllAvailableSeat() throws Exception {
 		List<SeatAvailable> seatavailable = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql = "Select * from seatavailable";
+			String sql = "Select busnumber,availableseat,totalseat from seatavailable";
 			pst = connection.prepareStatement(sql);
 			rs = pst.executeQuery();
 			seatavailable = new ArrayList<>();
@@ -40,13 +41,10 @@ public class SeatAvailableDao {
 				seat.setAvailableSeat(availableseat);
 				seat.setTotalSeat(totalseat);
 				seatavailable.add(seat);
-
 			}
 		} catch (Exception e) {
-
 			e.printStackTrace();
 			throw new DBException("no data found");
-
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
@@ -58,8 +56,9 @@ public class SeatAvailableDao {
 	 * used to add the seatavailable in bus......
 	 * 
 	 * @param busRoute
+	 * @throws DBException
 	 */
-	public void saveSeat(SeatAvailable seatavailable) {
+	public void saveSeat(SeatAvailable seatavailable) throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		String sql = "insert into seatavailable(busnumber,availableseat,totalseat) values ( ?,?,? )";
@@ -70,12 +69,11 @@ public class SeatAvailableDao {
 			pst.setInt(1, seatavailable.getBusnumber());
 			pst.setInt(2, seatavailable.getAvailableSeat());
 			pst.setInt(3, seatavailable.getTotalSeat());
-
 			pst.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -85,8 +83,9 @@ public class SeatAvailableDao {
 	 * delete the seat available......
 	 * 
 	 * @param routeno
+	 * @throws DBException
 	 */
-	public void deleteSeat(int busnumber) {
+	public void deleteSeat(int busnumber) throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 
@@ -95,11 +94,11 @@ public class SeatAvailableDao {
 			connection = ConnectionUtil.getConnection();
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, busnumber);
-
 			int rows = pst.executeUpdate();
 			System.out.println("no of rows deleted " + rows + busnumber);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DBException("no data found");
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -110,12 +109,12 @@ public class SeatAvailableDao {
 	 * 
 	 * @param busnumber
 	 * @param availableseat
+	 * @throws DBException
 	 */
-	public void updateSeat(int busnumber, int availableseat) {
+	public void updateSeat(int busnumber, int availableseat) throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		String sql = "update seatavailable set availableseat=? where busnumber=?";
-
 		try {
 			connection = ConnectionUtil.getConnection();
 			pst = connection.prepareStatement(sql);
@@ -125,7 +124,7 @@ public class SeatAvailableDao {
 			System.out.println("update seatavailable " + rows + busnumber + availableseat);
 		} catch (SQLException e) {
 			e.printStackTrace();
-
+			throw new DBException("unable to execute query");
 		} finally {
 			ConnectionUtil.close(pst, connection);
 
@@ -144,7 +143,7 @@ public class SeatAvailableDao {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		String sql = "select * from seatavailable where busnumber=?";
+		String sql = "select busnumber,availableseat,totalseat from seatavailable where busnumber=?";
 		int availableSeats = 0;
 		try {
 			connection = ConnectionUtil.getConnection();
@@ -157,10 +156,9 @@ public class SeatAvailableDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute query");
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
-
 		}
 		return availableSeats;
 	}
@@ -171,11 +169,12 @@ public class SeatAvailableDao {
 	 * 
 	 * @param busnumber
 	 * @param busnumber1
+	 * @throws DBException
 	 */
-	public void updateSeatAvailable(int busnumber) {
+	public void updateSeatAvailable(int busnumber) throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
-		String sql="update seatavailable s set availableseat  = (select availableseat from seatavailable where busnumber=?)-(select sum(nooftickets) from booking where busnumber=?) from busdetails where s.busnumber=busdetails.b_no and s.busnumber=?";
+		String sql = "update seatavailable s set availableseat  = (select availableseat from seatavailable where busnumber=?)-(select sum(nooftickets) from booking where busnumber=?) from busdetails where s.busnumber=busdetails.b_no and s.busnumber=?";
 		try {
 			connection = ConnectionUtil.getConnection();
 			pst = connection.prepareStatement(sql);
@@ -186,10 +185,9 @@ public class SeatAvailableDao {
 			System.out.println("update seatavailable " + rows + busnumber);
 		} catch (SQLException e) {
 			e.printStackTrace();
-
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
-
 		}
 
 	}

@@ -17,7 +17,7 @@ public class TotalSeatAvailableTest {
 	public static void main(String[] args) throws Exception {
 		SeatAvailableDao seatavailabledao = new SeatAvailableDao();
 		List<SeatAvailable> seat = new ArrayList<>();
-		seat = seatavailabledao.allAvailableSeat();
+		seat = seatavailabledao.findAllAvailableSeat();
 		System.out.println(seat);
 
 	}

@@ -12,13 +12,13 @@ public class AddReservationTest {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
-		int bookingno = 101;
-		int pid=101;
+		int bookingno = 100;
+		int pid=102;
 		String source = "chennai";
-		String destination = "madurai";
+		String destination = "theni";
 		String agency = "bluebirds";
-		int busnumber = 104;
-		String bustype = "SEATER";
+		int busnumber = 103;
+		String bustype = "ACSEATER";
 		double amount = 300;
 		int nooftickets = 5;
 		double totalamount = amount * nooftickets;
@@ -27,6 +27,7 @@ public class AddReservationTest {
 				totalamount, status);
 		BookingService bookingservice = new BookingService();
 		bookingservice.addReservation(booking);
+		System.out.println(booking);
 
 	}
 

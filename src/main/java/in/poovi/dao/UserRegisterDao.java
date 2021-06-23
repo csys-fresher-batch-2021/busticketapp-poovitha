@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.exception.DBException;
+import in.poovi.message.MessageConstants;
 import in.poovi.model.UserRegister;
 import in.poovi.util.ConnectionUtil;
 
@@ -20,14 +21,14 @@ public class UserRegisterDao {
 	 * @throws Exception
 	 */
 
-	public List<UserRegister> allUserRegisterList() throws Exception {
+	public List<UserRegister> findAllUserRegisterList() throws Exception {
 		List<UserRegister> userregister = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql = "Select * from userregister";
+			String sql = "Select username,age,email,mobileno,userId,password from userregister";
 			pst = connection.prepareStatement(sql);
 			rs = pst.executeQuery();
 			userregister = new ArrayList<>();
@@ -50,10 +51,8 @@ public class UserRegisterDao {
 
 			}
 		} catch (Exception e) {
-
 			e.printStackTrace();
 			throw new DBException("no data found");
-
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
@@ -65,14 +64,14 @@ public class UserRegisterDao {
 	 * used to add the user......
 	 * 
 	 * @param busRoute
+	 * @throws DBException 
 	 */
-	public void saveUser(UserRegister userregister) {
+	public void saveUser(UserRegister userregister) throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		String sql = "insert into userregister(username,age,email,mobileno,userId,password) values ( ?,?,?,?,?,? )";
 		try {
 			connection = ConnectionUtil.getConnection();
-
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, userregister.getUserName());
 			pst.setInt(2, userregister.getAge());
@@ -80,13 +79,12 @@ public class UserRegisterDao {
 			pst.setLong(4, userregister.getMobileno());
 			pst.setInt(5, userregister.getUserId());
 			pst.setString(6, userregister.getPassword());
-
 			int row = pst.executeUpdate();
 			System.out.println(row);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-
+		throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -97,12 +95,12 @@ public class UserRegisterDao {
 	 * 
 	 * @param mobileno
 	 * @param username
+	 * @throws DBException 
 	 */
-	public void updateMobileno(long mobileno, String username) {
+	public void updateMobileno(long mobileno, String username) throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		String sql = "update userregister set mobileno=? where username=?";
-
 		try {
 			connection = ConnectionUtil.getConnection();
 			pst = connection.prepareStatement(sql);
@@ -112,7 +110,7 @@ public class UserRegisterDao {
 			System.out.println("update user " + rows + username + mobileno);
 		} catch (SQLException e) {
 			e.printStackTrace();
-
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 
@@ -126,12 +124,12 @@ public class UserRegisterDao {
 	 * @param userid
 	 * @throws Exception
 	 */
-	public List<UserRegister> userDetails(int userid) throws Exception {
+	public List<UserRegister> findUserById(int userid) throws Exception {
 		List<UserRegister> userregister = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		String sql = "select * from userregister where userid=?";
+		String sql = "select username,age,email,mobileno,userId,password from userregister where userid=?";
 		try {
 			connection = ConnectionUtil.getConnection();
 			pst = connection.prepareStatement(sql);
@@ -157,10 +155,9 @@ public class UserRegisterDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute query");
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
-
 		}
 		return userregister;
 	}
@@ -171,7 +168,7 @@ public class UserRegisterDao {
 	 * @return usercount
 	 * @throws Exception
 	 */
-	public int noOfUsers() throws Exception {
+	public int findNoOfUsers() throws Exception {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;

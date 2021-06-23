@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.exception.DBException;
+import in.poovi.message.MessageConstants;
 import in.poovi.model.Booking;
 import in.poovi.util.ConnectionUtil;
 
@@ -28,7 +29,7 @@ public class BookingDao {
 		ResultSet rs = null;
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql = "Select * from booking";
+			String sql = "Select bookingno,pid,source,destination,agency,busnumber,bustype,amount,nooftickets,totalamount,status from booking";
 			pst = connection.prepareStatement(sql);
 			rs = pst.executeQuery();
 			booking = new ArrayList<>();
@@ -84,8 +85,7 @@ public class BookingDao {
 		String sql = "insert into booking(bookingno,pid,source,destination,agency,busnumber,bustype,amount,nooftickets,totalamount,status) values ( ?,?,?,?,?,?,?,?,?,?,? )";
 		try {
 			connection = ConnectionUtil.getConnection();
-
-			pst = connection.prepareStatement(sql);
+            pst = connection.prepareStatement(sql);
 			pst.setInt(1, booking.getBookingNo());
 			pst.setInt(2, booking.getPid());
 			pst.setString(3, booking.getSource());
@@ -97,12 +97,11 @@ public class BookingDao {
 			pst.setInt(9, booking.getNoOfTickets());
 			pst.setDouble(10, booking.getTotalAmount());
 			pst.setString(11, booking.getStatus());
-
-			pst.executeUpdate();
+            pst.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute");
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 
 		} finally {
 			ConnectionUtil.close(pst, connection);
@@ -129,7 +128,7 @@ public class BookingDao {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute query");
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -139,7 +138,7 @@ public class BookingDao {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		String sql = "select * from booking where pid=?";
+		String sql = "select bookingno,pid,source,destination,agency,busnumber,bustype,amount,nooftickets,totalamount,status from booking where pid=?";
 		List<Booking> myTicket = new ArrayList<>();
 
 		try {
@@ -164,7 +163,7 @@ public class BookingDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute query");
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
@@ -189,14 +188,14 @@ public class BookingDao {
 			connection = ConnectionUtil.getConnection();
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, busnumber);
-			rs = pst.executeQuery();
+            rs = pst.executeQuery();
 			System.out.println("amount " + busnumber);
 			while (rs.next()) {
 				amount = rs.getDouble("amount");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute query");
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 

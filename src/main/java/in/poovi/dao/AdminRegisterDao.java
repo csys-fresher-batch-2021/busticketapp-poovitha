@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.exception.DBException;
+import in.poovi.message.MessageConstants;
 import in.poovi.model.AdminRegister;
 import in.poovi.util.ConnectionUtil;
 
@@ -16,16 +17,17 @@ public class AdminRegisterDao {
 	 * This method is used to list the all admin details
 	 * 
 	 * @return adminregister
+	 * @throws DBException
 	 */
 
-	public List<AdminRegister> allAdminRegister() {
+	public List<AdminRegister> findAllAdminRegister() throws DBException {
 		List<AdminRegister> adminregister = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql = "Select * from adminregister";
+			String sql = "Select adminname,adminid,adminpassword from adminregister";
 			pst = connection.prepareStatement(sql);
 			rs = pst.executeQuery();
 			adminregister = new ArrayList<>();
@@ -43,6 +45,7 @@ public class AdminRegisterDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
@@ -54,24 +57,23 @@ public class AdminRegisterDao {
 	 * This method is used to add the admin
 	 * 
 	 * @param adminregister
+	 * @throws DBException
 	 */
-	public void saveAdmin(AdminRegister adminregister) {
+	public void saveAdmin(AdminRegister adminregister) throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		String sql = "insert into adminregister(adminname,adminid,adminpassword) values ( ?,?,? )";
 		try {
 			connection = ConnectionUtil.getConnection();
-
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, adminregister.getAdminName().trim());
 			pst.setInt(2, adminregister.getAdminId());
 			pst.setString(3, adminregister.getPassword());
-
 			pst.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -81,21 +83,23 @@ public class AdminRegisterDao {
 	 * This method is used to delete the admin registration......
 	 * 
 	 * @param adminName
+	 * @throws DBException 
 	 */
-	public void deleteAdmin(String adminName) {
+	public void deleteAdmin(int adminId) throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 
-		String sql = "DELETE FROM adminregister where adminname = ? ";
+		String sql = "DELETE FROM adminregister where adminid = ? ";
 		try {
 			connection = ConnectionUtil.getConnection();
 			pst = connection.prepareStatement(sql);
-			pst.setString(1, adminName);
+			pst.setInt(1, adminId);
 			int rows = pst.executeUpdate();
-			System.out.println("no of rows deleted" + rows + adminName);
+			System.out.println("no of rows deleted" + rows + adminId);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -108,12 +112,12 @@ public class AdminRegisterDao {
 	 * @return adminregister
 	 * @throws Exception
 	 */
-	public List<AdminRegister> adminDetails(int adminid) throws Exception {
+	public List<AdminRegister> findAdminDetailsByAdminid(int adminid) throws Exception {
 		List<AdminRegister> adminregister = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		String sql = "select * from adminregister where adminid=?";
+		String sql = "select adminname,adminid,adminpassword from adminregister where adminid=?";
 		try {
 			connection = ConnectionUtil.getConnection();
 			pst = connection.prepareStatement(sql);
@@ -123,7 +127,7 @@ public class AdminRegisterDao {
 			while (rs.next()) {
 				String adminName = rs.getString("adminname");
 				int adminId = rs.getInt("adminid");
-				String password = rs.getString("password");
+				String password = rs.getString("adminpassword");
 				AdminRegister admin = new AdminRegister();
 				admin.setAdminName(adminName);
 				admin.setAdminId(adminId);
@@ -133,7 +137,7 @@ public class AdminRegisterDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DBException("unable to execute query");
+			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 

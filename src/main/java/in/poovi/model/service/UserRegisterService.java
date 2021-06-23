@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.dao.UserRegisterDao;
+import in.poovi.exception.DBException;
 import in.poovi.exception.ServiceException;
 import in.poovi.message.MessageConstants;
 import in.poovi.model.UserRegister;
@@ -22,7 +23,7 @@ public class UserRegisterService {
 	 */
 
 	public List<UserRegister> getallUserDetails() throws Exception {
-		return userregisterdao.allUserRegisterList();
+		return userregisterdao.findAllUserRegisterList();
 	}
 
 	/**
@@ -32,16 +33,16 @@ public class UserRegisterService {
 	 * @throws Exception
 	 */
 	public void saveUser(UserRegister userregister) throws Exception {
-		if(userregister.getUserName()==null || "".equals(userregister.getUserName().trim()) || userregister.getUserName().length()<4){
+		if (userregister.getUserName() == null || "".equals(userregister.getUserName().trim())
+				|| userregister.getUserName().length() < 4) {
 			throw new ServiceException(MessageConstants.INVALID_NAME);
-		}
-		else if(userregister.getPassword()==null ||"".equals(userregister.getPassword().trim()) || userregister.getPassword().length()<=8){
+		} else if (userregister.getPassword() == null || "".equals(userregister.getPassword().trim())
+				|| userregister.getPassword().length() <= 8) {
 			throw new ServiceException(MessageConstants.INVALID_PASSWORD);
-		}
-		else if(userregister.getEmail()==null || "".equals(userregister.getEmail().trim())) {
+		} else if (userregister.getEmail() == null || "".equals(userregister.getEmail().trim())) {
 			throw new ServiceException(MessageConstants.INVALID_EMAIL);
 		}
-		
+
 		userregisterdao.saveUser(userregister);
 	}
 
@@ -50,10 +51,11 @@ public class UserRegisterService {
 	 * 
 	 * @param mobileno
 	 * @param username
+	 * @throws DBException 
 	 */
-	public void Updateuser(long mobileno, String username) {
+	public void Updateuser(long mobileno, String username) throws DBException {
 		userregisterdao.updateMobileno(mobileno, username);
-		
+
 	}
 
 	/**
@@ -62,8 +64,8 @@ public class UserRegisterService {
 	 * @return noOfUsers
 	 * @throws Exception
 	 */
-	int noOfUsers() throws Exception {
-		return userregisterdao.noOfUsers();
+	int findNoOfUsers() throws Exception {
+		return userregisterdao.findNoOfUsers();
 	}
 
 	/**
@@ -73,7 +75,7 @@ public class UserRegisterService {
 	 * @return userDetails
 	 * @throws Exception
 	 */
-	public List<UserRegister> userDetails(int userid) throws Exception {
-		return userregisterdao.userDetails(userid);
+	public List<UserRegister> findUserById(int userid) throws Exception {
+		return userregisterdao.findUserById(userid);
 	}
 }
