@@ -3,7 +3,7 @@ package in.poovi.test.userregister;
 import java.util.ArrayList;
 import java.util.List;
 
-import in.poovi.dao.UserRegisterDao;
+import in.poovi.dao.UserRegisterDAO;
 import in.poovi.model.UserRegister;
 
 public class UserRegisterListTest {
@@ -16,9 +16,9 @@ public class UserRegisterListTest {
 	 */
 	public static void main(String[] args) throws Exception {
 
-		UserRegisterDao userregisterdao = new UserRegisterDao();
+		UserRegisterDAO userregisterDAO = new UserRegisterDAO();
 		List<UserRegister> userregister = new ArrayList<>();
-		userregister = userregisterdao.findAllUserRegisterList();
+		userregister = userregisterDAO.findAll();
 		System.out.println(userregister);
 	}
 

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import=" java.util.List"%>
-<%@page import="in.poovi.dao.PassengerDao"%>
+<%@page import="in.poovi.dao.PassengerDAO"%>
 <%@page import="in.poovi.model.PassengerModel"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,11 +26,11 @@
 						<th scope="col">P_gender</th>
 						<th scope="col">p_mobilenumber</th>
 						<%
-						PassengerDao passengerdao=new PassengerDao();
-										List<PassengerModel> passengers = passengerdao.allpassengerList();
-										int i = 0;
-										for (PassengerModel passenger : passengers) {
-											i++;
+						PassengerDAO passengerdao=new PassengerDAO();
+														List<PassengerModel> passengers = passengerdao.allpassengerList();
+														int i = 0;
+														for (PassengerModel passenger : passengers) {
+															i++;
 						%>
 					
 					<tr>

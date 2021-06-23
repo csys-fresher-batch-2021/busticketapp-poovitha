@@ -3,7 +3,7 @@ package in.poovi.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import in.poovi.dao.UserRegisterDao;
+import in.poovi.dao.UserRegisterDAO;
 import in.poovi.exception.DBException;
 import in.poovi.exception.ServiceException;
 import in.poovi.message.MessageConstants;
@@ -13,7 +13,7 @@ public class UserRegisterService {
 
 	public static final List<UserRegister> userregister = new ArrayList<>();
 
-	static UserRegisterDao userregisterdao = new UserRegisterDao();
+	static UserRegisterDAO userregisterdao = new UserRegisterDAO();
 
 	/**
 	 * This method is used to display the all users.....
@@ -23,7 +23,7 @@ public class UserRegisterService {
 	 */
 
 	public List<UserRegister> getallUserDetails() throws Exception {
-		return userregisterdao.findAllUserRegisterList();
+		return userregisterdao.findAll();
 	}
 
 	/**
