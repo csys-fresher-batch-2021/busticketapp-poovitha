@@ -58,7 +58,7 @@ public class SeatAvailableService {
 	 * @return availableseat
 	 */
 
-	public int  seatDetails(int busnumber) {
+	public int seatDetails(int busnumber) {
 		int availableSeats = 0;
 		try {
 			availableSeats = seatavailabledao.seatDetails(busnumber);
@@ -67,4 +67,16 @@ public class SeatAvailableService {
 		}
 		return availableSeats;
 	}
+
+	/**
+	 * This method is used to update the available seat after the ticket
+	 * booked......
+	 * 
+	 * @param busnumber
+	 * @param availableseat
+	 */
+	public void updateSeatAvailable(int busnumber) {
+		seatavailabledao.updateSeatAvailable(busnumber);
+	}
+
 }

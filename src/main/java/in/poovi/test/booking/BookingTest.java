@@ -17,7 +17,7 @@ public class BookingTest {
 
 		BookingDao bookingdao = new BookingDao();
 		List<Booking> booking = new ArrayList<>();
-		booking = bookingdao.allBookingDetails();
+		booking = bookingdao.findallBookingDetails();
 		for (Booking book : booking) {
 			System.out.println(book);
 		}

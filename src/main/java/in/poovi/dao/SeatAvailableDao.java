@@ -165,4 +165,33 @@ public class SeatAvailableDao {
 		return availableSeats;
 	}
 
+	/**
+	 * This method is used to update the seatavailable when the pasenger is booked
+	 * the tickets
+	 * 
+	 * @param busnumber
+	 * @param busnumber1
+	 */
+	public void updateSeatAvailable(int busnumber) {
+		Connection connection = null;
+		PreparedStatement pst = null;
+		String sql="update seatavailable s set availableseat  = (select availableseat from seatavailable where busnumber=?)-(select sum(nooftickets) from booking where busnumber=?) from busdetails where s.busnumber=busdetails.b_no and s.busnumber=?";
+		try {
+			connection = ConnectionUtil.getConnection();
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, busnumber);
+			pst.setInt(2, busnumber);
+			pst.setInt(3, busnumber);
+			int rows = pst.executeUpdate();
+			System.out.println("update seatavailable " + rows + busnumber);
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			ConnectionUtil.close(pst, connection);
+
+		}
+
+	}
+
 }

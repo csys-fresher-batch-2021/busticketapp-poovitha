@@ -3,6 +3,7 @@ package in.poovi.model;
 public class Booking {
 
 	private int bookingNo;
+	private int pid;
 	private String source;
 	private String destination;
 	private String agency;
@@ -11,16 +12,17 @@ public class Booking {
 	private double amount;
 	private int noOfTickets;
 	private double totalAmount;
-	private String status="BOOKING";
+	private String status = "BOOKING";
 
 	public Booking() {
 		super();
 	}
 
-	public Booking(int bookingNo, String source, String destination, String agency, int busnumber, String busType,
-			double amount, int noOfTickets, double totalAmount, String status) {
+	public Booking(int bookingNo, int pid, String source, String destination, String agency, int busnumber,
+			String busType, double amount, int noOfTickets, double totalAmount, String status) {
 		super();
 		this.bookingNo = bookingNo;
+		this.pid = pid;
 		this.source = source;
 		this.destination = destination;
 		this.agency = agency;
@@ -112,11 +114,19 @@ public class Booking {
 		this.status = status;
 	}
 
+	public int getPid() {
+		return pid;
+	}
+
+	public void setPid(int pid) {
+		this.pid = pid;
+	}
+
 	@Override
 	public String toString() {
-		return "Booking [bookingNo=" + bookingNo + ", source=" + source + ", destination=" + destination + ", agency="
-				+ agency + ", busnumber=" + busnumber + ", busType=" + busType + ", amount=" + amount + ", noOfTickets="
-				+ noOfTickets + ", totalAmount=" + totalAmount + ", status=" + status + "]";
+		return "Booking [bookingNo=" + bookingNo + ", pid=" + pid + ", source=" + source + ", destination="
+				+ destination + ", agency=" + agency + ", busnumber=" + busnumber + ", busType=" + busType + ", amount="
+				+ amount + ", noOfTickets=" + noOfTickets + ", totalAmount=" + totalAmount + ", status=" + status + "]";
 	}
 
 }
