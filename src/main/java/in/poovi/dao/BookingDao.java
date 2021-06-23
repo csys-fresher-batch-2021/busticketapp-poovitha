@@ -12,6 +12,8 @@ import in.poovi.model.Booking;
 import in.poovi.util.ConnectionUtil;
 
 public class BookingDao {
+	
+
 	/**
 	 * This method is used to list the all booking details
 	 * 
@@ -111,7 +113,7 @@ public class BookingDao {
 	 * This method is used to cancel booking from the user....
 	 * 
 	 * @param agency
-	 * @throws DBException 
+	 * @throws DBException
 	 */
 	public void cancelReserve(int bookingno) throws DBException {
 		Connection connection = null;
@@ -133,7 +135,7 @@ public class BookingDao {
 		}
 	}
 
-	public List<Booking> findMyTicket(int pid) {
+	public List<Booking> findMyTicket(int pid) throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
@@ -162,6 +164,7 @@ public class BookingDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DBException("unable to execute query");
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}

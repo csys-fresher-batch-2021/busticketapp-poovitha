@@ -57,8 +57,9 @@ public class BookingService {
 	 * 
 	 * @param pid
 	 * @return listMyTicket
+	 * @throws DBException 
 	 */
-	public List<Booking> findMyTickets(int pid) {
+	public List<Booking> findMyTickets(int pid) throws DBException {
 		return bookingdao.findMyTicket(pid);
 
 	}

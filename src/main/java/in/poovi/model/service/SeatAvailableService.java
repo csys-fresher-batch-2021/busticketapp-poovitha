@@ -75,7 +75,7 @@ public class SeatAvailableService {
 	 * @param busnumber
 	 * @param availableseat
 	 */
-	public void UpdateSeatAvailable(int busnumber) {
+	public void updateSeatAvailable(int busnumber) {
 		seatavailabledao.updateSeatAvailable(busnumber);
 	}
 
