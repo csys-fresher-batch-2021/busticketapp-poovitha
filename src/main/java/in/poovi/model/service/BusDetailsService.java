@@ -28,8 +28,13 @@ public class BusDetailsService {
 	 * This method is used to add the bus details
 	 * 
 	 * @param bus
+	 * @throws ServiceException 
 	 */
-	public void addBusDetails(BusDetails bus) {
+	public void addBusDetails(BusDetails bus) throws ServiceException {
+		if (bus.getSource().equals(bus.getDestination())) {
+			throw new ServiceException("both source and destination same we cannot booking");
+		}
+
 		busdetailsdao.save(bus);
 	}
 

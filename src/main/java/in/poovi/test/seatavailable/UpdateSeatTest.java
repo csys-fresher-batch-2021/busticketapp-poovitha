@@ -12,7 +12,7 @@ public class UpdateSeatTest {
 
 	public static void main(String[] args) {
 		SeatAvailable seatavailable = new SeatAvailable();
-		seatavailable.setBusnumber(102);
+		seatavailable.setBusnumber(103);
 		seatavailable.setAvailableSeat(30);
 		SeatAvailableDao seatAvailabledao = new SeatAvailableDao();
 		seatAvailabledao.updateSeat(seatavailable.getBusnumber(), seatavailable.getAvailableSeat());

@@ -13,7 +13,7 @@ public class AddSeatTest {
 	 */
 	public static void main(String[] args) throws Exception {
 
-		int busnumber = 100;
+		int busnumber = 103;
 		int availableseat = 40;
 		int totalseat = 40;
 		SeatAvailable seatavailable = new SeatAvailable(busnumber, availableseat, totalseat);

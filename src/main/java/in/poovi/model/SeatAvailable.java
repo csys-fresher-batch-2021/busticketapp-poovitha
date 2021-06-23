@@ -5,6 +5,7 @@ public class SeatAvailable {
 	private int busnumber;
 	private int availableSeat; 
 	private int totalSeat;
+	private Booking booking;
 	
 	public SeatAvailable() {
 		super();
@@ -41,10 +42,19 @@ public class SeatAvailable {
 		this.totalSeat = totalSeat;
 	}
 
+	
+	public Booking getBooking() {
+		return booking;
+	}
+
+	public void setBooking(Booking booking) {
+		this.booking = booking;
+	}
+
 	@Override
 	public String toString() {
 		return "SeatAvailable [busnumber=" + busnumber + ", availableSeat=" + availableSeat + ", totalSeat=" + totalSeat
-				+ "]";
+				+ ", booking=" + booking + "]";
 	}
 	 
 	

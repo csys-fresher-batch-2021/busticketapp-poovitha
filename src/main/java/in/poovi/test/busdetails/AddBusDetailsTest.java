@@ -12,12 +12,12 @@ public class AddBusDetailsTest {
 	 */
 	public static void main(String[] args) {
 
-		String agency = "makemytrip bus";
-		int busnumber = 102;
-		String bustype = "AcSleeper";
-		String destination = "madurai";
-		String source = "chennai";
-		double amount = 400;
+		String agency = "sri travels";
+		int busnumber = 103;
+		String bustype = "Sleeper";
+		String destination = "thenii";
+		String source = "kovai";
+		double amount = 300;
 		BusDetails busdetails = new BusDetails(agency, busnumber, bustype, source,destination, amount);
 		// BusDetailsService busdetailsservice = new BusDetailsService();
 		// busdetailsservice.addBusDetails(busdetails);
