@@ -16,7 +16,7 @@ public class UserDetailsTest {
 	public static void main(String[] args) throws Exception {
 		UserRegisterDao userregisterdao=new UserRegisterDao();
         List<UserRegister> userregister=new ArrayList<>();
-        userregister=userregisterdao.userDetails(102);
+        userregister=userregisterdao.findUserById(100);
         for(UserRegister userdetail :userregister) {
         	System.out.println(userdetail);
         }

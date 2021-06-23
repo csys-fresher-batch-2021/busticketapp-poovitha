@@ -19,9 +19,10 @@ public class BusDetailsService {
 	 * This method is used to display the all bus details
 	 * 
 	 * @return allbusdetails
+	 * @throws DBException 
 	 */
-	public List<BusDetails> getBusDetails() {
-		return busdetailsdao.allBusDetails();
+	public List<BusDetails> getBusDetails() throws DBException {
+		return busdetailsdao.findAllBusDetails();
 	}
 
 	/**
@@ -68,12 +69,12 @@ public class BusDetailsService {
 	 * @throws ServiceException
 	 * @throws ValidationException 
 	 */
-	public List<BusDetails> stationList(String source, String destination) throws ServiceException, ValidationException {
+	public List<BusDetails> findStationList(String source, String destination) throws ServiceException, ValidationException {
 
 		List<BusDetails> stationlist;
 		try {
 			validateSearch(source, destination);
-			stationlist = busdetailsdao.stationList(source, destination);
+			stationlist = busdetailsdao.findStationList(source, destination);
 		} catch (DBException e) {
 			e.printStackTrace();
 			throw new ServiceException("unable to display");

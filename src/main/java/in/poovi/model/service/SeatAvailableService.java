@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.dao.SeatAvailableDao;
+import in.poovi.exception.DBException;
 import in.poovi.model.SeatAvailable;
 
 public class SeatAvailableService {
@@ -19,7 +20,7 @@ public class SeatAvailableService {
 	 */
 
 	public List<SeatAvailable> getallavailableSeat() throws Exception {
-		return seatavailabledao.allAvailableSeat();
+		return seatavailabledao.findAllAvailableSeat();
 	}
 
 	/**
@@ -36,8 +37,9 @@ public class SeatAvailableService {
 	 * This method is used to delete the seat if the bus is not available.....
 	 * 
 	 * @param busnumber
+	 * @throws DBException 
 	 */
-	public void deleteSeat(int busnumber) {
+	public void deleteSeat(int busnumber) throws DBException {
 		seatavailabledao.deleteSeat(busnumber);
 	}
 
@@ -46,8 +48,9 @@ public class SeatAvailableService {
 	 * 
 	 * @param busnumber
 	 * @param availableseat
+	 * @throws DBException 
 	 */
-	public void UpdateSeat(int busnumber, int availableseat) {
+	public void UpdateSeat(int busnumber, int availableseat) throws DBException {
 		seatavailabledao.updateSeat(busnumber, availableseat);
 	}
 
@@ -74,8 +77,9 @@ public class SeatAvailableService {
 	 * 
 	 * @param busnumber
 	 * @param availableseat
+	 * @throws DBException 
 	 */
-	public void updateSeatAvailable(int busnumber) {
+	public void updateSeatAvailable(int busnumber) throws DBException {
 		seatavailabledao.updateSeatAvailable(busnumber);
 	}
 

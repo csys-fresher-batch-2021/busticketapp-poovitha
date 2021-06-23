@@ -13,7 +13,7 @@ public class UserCountTest {
 	public static void main(String[] args) throws Exception {
 
 		UserRegisterDao userregisterdao=new UserRegisterDao();
-		int count=userregisterdao.noOfUsers();
+		int count=userregisterdao.findNoOfUsers();
 		System.out.println(count);
 	}
 

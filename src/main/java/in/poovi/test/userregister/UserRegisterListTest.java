@@ -18,7 +18,7 @@ public class UserRegisterListTest {
 
 		UserRegisterDao userregisterdao = new UserRegisterDao();
 		List<UserRegister> userregister = new ArrayList<>();
-		userregister = userregisterdao.allUserRegisterList();
+		userregister = userregisterdao.findAllUserRegisterList();
 		System.out.println(userregister);
 	}
 

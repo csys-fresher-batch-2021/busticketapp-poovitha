@@ -21,7 +21,7 @@ public class AdminRegisterService {
 	 * @throws Exception
 	 */
 	public List<AdminRegister> getallAdminDetails() throws Exception {
-		return adminregisterdao.allAdminRegister();
+		return adminregisterdao.findAllAdminRegister();
 	}
 
 	/**
@@ -32,10 +32,11 @@ public class AdminRegisterService {
 	 */
 
 	public void saveAdmin(AdminRegister adminregister) throws Exception {
-		if(adminregister.getAdminName()==null || "".equals(adminregister.getAdminName().trim()) || adminregister.getAdminName().length()<4){
+		if (adminregister.getAdminName() == null || "".equals(adminregister.getAdminName().trim())
+				|| adminregister.getAdminName().length() < 4) {
 			throw new ServiceException(MessageConstants.INVALID_NAME);
-		}
-		else if(adminregister.getPassword()==null ||"".equals(adminregister.getPassword().trim()) || adminregister.getPassword().length()<=8){
+		} else if (adminregister.getPassword() == null || "".equals(adminregister.getPassword().trim())
+				|| adminregister.getPassword().length() <= 8) {
 			throw new ServiceException(MessageConstants.INVALID_PASSWORD);
 		}
 		adminregisterdao.saveAdmin(adminregister);
@@ -46,8 +47,8 @@ public class AdminRegisterService {
 	 * 
 	 * @param adminName
 	 */
-	public static void deleteAdmin(String adminName) {
-		adminregisterdao.deleteAdmin(adminName);
+	public static void deleteAdmin(int adminId) {
+		adminregisterdao.deleteAdmin(adminId);
 	}
 
 	/**
@@ -57,8 +58,8 @@ public class AdminRegisterService {
 	 * @return adminDetails
 	 * @throws Exception
 	 */
-	public List<AdminRegister> adminDetails(int adminid) throws Exception {
-		return adminregisterdao.adminDetails(adminid);
+	public List<AdminRegister> findAdminDetailsByAdminid(int adminid) throws Exception {
+		return adminregisterdao.findAdminDetailsByAdminid(adminid);
 	}
 
 }

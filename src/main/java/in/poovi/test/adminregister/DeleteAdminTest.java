@@ -11,9 +11,9 @@ public class DeleteAdminTest {
 	public static void main(String[] args) {
 
 		AdminRegisterDao adminregisterdao=new AdminRegisterDao();
-		String adminName="subburaj";
-		adminregisterdao.deleteAdmin(adminName);
-		System.out.println("deleted " +adminName );
+		int adminId=1000;
+		adminregisterdao.deleteAdmin(adminId);
+		System.out.println("deleted " +adminId );
 	}
 
 }
