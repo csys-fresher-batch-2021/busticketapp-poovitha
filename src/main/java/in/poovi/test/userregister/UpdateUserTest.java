@@ -1,6 +1,6 @@
 package in.poovi.test.userregister;
 
-import in.poovi.dao.UserRegisterDao;
+import in.poovi.dao.UserRegisterDAO;
 import in.poovi.exception.DBException;
 import in.poovi.model.UserRegister;
 
@@ -17,8 +17,8 @@ public class UpdateUserTest {
 		UserRegister userregister = new UserRegister();
 		userregister.setMobileno(8888888888L);
 		userregister.setUserName("yamini");
-		UserRegisterDao userregisterdao = new UserRegisterDao();
-		userregisterdao.updateMobileno(userregister.getMobileno(), userregister.getUserName());
+		UserRegisterDAO userregisterDAO = new UserRegisterDAO();
+		userregisterDAO.updateMobileno(userregister.getMobileno(), userregister.getUserName());
 	}
 
 }

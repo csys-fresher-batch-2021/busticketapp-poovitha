@@ -12,7 +12,7 @@ import in.poovi.message.MessageConstants;
 import in.poovi.model.SeatAvailable;
 import in.poovi.util.ConnectionUtil;
 
-public class SeatAvailableDao {
+public class SeatAvailableDAO {
 	/**
 	 * This method is used to list the total available seat.....
 	 * 
@@ -20,7 +20,7 @@ public class SeatAvailableDao {
 	 * @throws Exception
 	 */
 
-	public List<SeatAvailable> findAllAvailableSeat() throws Exception {
+	public List<SeatAvailable> findAll() throws Exception {
 		List<SeatAvailable> seatavailable = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -139,7 +139,7 @@ public class SeatAvailableDao {
 	 * @return availableSeats
 	 * @throws Exception
 	 */
-	public int seatDetails(int busnumber) throws Exception {
+	public int findSeatDetailByBusnumber(int busnumber) throws Exception {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;

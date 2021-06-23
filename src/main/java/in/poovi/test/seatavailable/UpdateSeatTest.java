@@ -1,6 +1,6 @@
 package in.poovi.test.seatavailable;
 
-import in.poovi.dao.SeatAvailableDao;
+import in.poovi.dao.SeatAvailableDAO;
 import in.poovi.exception.DBException;
 import in.poovi.model.SeatAvailable;
 
@@ -16,8 +16,8 @@ public class UpdateSeatTest {
 		SeatAvailable seatavailable = new SeatAvailable();
 		seatavailable.setBusnumber(103);
 		seatavailable.setAvailableSeat(30);
-		SeatAvailableDao seatAvailabledao = new SeatAvailableDao();
-		seatAvailabledao.updateSeat(seatavailable.getBusnumber(), seatavailable.getAvailableSeat());
+		SeatAvailableDAO seatavailableDAO = new SeatAvailableDAO();
+		seatavailableDAO.updateSeat(seatavailable.getBusnumber(), seatavailable.getAvailableSeat());
 
 	}
 

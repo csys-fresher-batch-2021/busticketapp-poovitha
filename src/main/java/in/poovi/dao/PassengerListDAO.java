@@ -12,7 +12,7 @@ import in.poovi.message.MessageConstants;
 import in.poovi.model.PassengerModel;
 import in.poovi.util.ConnectionUtil;
 
-public class PassengerListDao {
+public class PassengerListDAO {
 
 	/**
 	 * This method is used to display the passenger list.....
@@ -20,7 +20,7 @@ public class PassengerListDao {
 	 * @return busRoute
 	 * @throws DBException
 	 */
-	public List<PassengerModel> findAllPassengerList() throws DBException {
+	public List<PassengerModel> findAll() throws DBException {
 		List<PassengerModel> passengers = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;

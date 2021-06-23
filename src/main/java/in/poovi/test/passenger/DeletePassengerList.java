@@ -1,6 +1,6 @@
 package in.poovi.test.passenger;
 
-import in.poovi.dao.PassengerListDao;
+import in.poovi.dao.PassengerListDAO;
 import in.poovi.exception.DBException;
 
 public class DeletePassengerList {
@@ -12,9 +12,9 @@ public class DeletePassengerList {
 	 */
 	public static void main(String[] args) throws DBException {
 
-		PassengerListDao passengerlistdao = new PassengerListDao();
+		PassengerListDAO passengerlistDAO = new PassengerListDAO();
         int pid=100;
-        passengerlistdao.deletePassenger(pid);
+        passengerlistDAO.deletePassenger(pid);
         System.out.println("passenger number :" +pid+" deleted");
 	}
 

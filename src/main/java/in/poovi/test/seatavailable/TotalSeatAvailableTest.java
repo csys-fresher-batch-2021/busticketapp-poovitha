@@ -3,7 +3,7 @@ package in.poovi.test.seatavailable;
 import java.util.ArrayList;
 import java.util.List;
 
-import in.poovi.dao.SeatAvailableDao;
+import in.poovi.dao.SeatAvailableDAO;
 import in.poovi.model.SeatAvailable;
 
 public class TotalSeatAvailableTest {
@@ -15,9 +15,9 @@ public class TotalSeatAvailableTest {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
-		SeatAvailableDao seatavailabledao = new SeatAvailableDao();
+		SeatAvailableDAO seatavailableDAO = new SeatAvailableDAO();
 		List<SeatAvailable> seat = new ArrayList<>();
-		seat = seatavailabledao.findAllAvailableSeat();
+		seat = seatavailableDAO.findAll();
 		System.out.println(seat);
 
 	}

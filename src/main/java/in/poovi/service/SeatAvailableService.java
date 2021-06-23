@@ -3,14 +3,14 @@ package in.poovi.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import in.poovi.dao.SeatAvailableDao;
+import in.poovi.dao.SeatAvailableDAO;
 import in.poovi.exception.DBException;
 import in.poovi.model.SeatAvailable;
 
 public class SeatAvailableService {
 	public static final List<SeatAvailable> seatavailable = new ArrayList<>();
 
-	static SeatAvailableDao seatavailabledao = new SeatAvailableDao();
+	static SeatAvailableDAO seatavailableDAO = new SeatAvailableDAO();
 
 	/**
 	 * This method is used to display the all available seat.....
@@ -19,8 +19,8 @@ public class SeatAvailableService {
 	 * @throws Exception
 	 */
 
-	public List<SeatAvailable> getallavailableSeat() throws Exception {
-		return seatavailabledao.findAllAvailableSeat();
+	public List<SeatAvailable> getAllAvailableSeat() throws Exception {
+		return seatavailableDAO.findAll();
 	}
 
 	/**
@@ -30,7 +30,7 @@ public class SeatAvailableService {
 	 * @throws Exception
 	 */
 	public void saveSeat(SeatAvailable seatavailable) throws Exception {
-		seatavailabledao.saveSeat(seatavailable);
+		seatavailableDAO.saveSeat(seatavailable);
 	}
 
 	/**
@@ -40,7 +40,7 @@ public class SeatAvailableService {
 	 * @throws DBException 
 	 */
 	public void deleteSeat(int busnumber) throws DBException {
-		seatavailabledao.deleteSeat(busnumber);
+		seatavailableDAO.deleteSeat(busnumber);
 	}
 
 	/**
@@ -51,7 +51,7 @@ public class SeatAvailableService {
 	 * @throws DBException 
 	 */
 	public void UpdateSeat(int busnumber, int availableseat) throws DBException {
-		seatavailabledao.updateSeat(busnumber, availableseat);
+		seatavailableDAO.updateSeat(busnumber, availableseat);
 	}
 
 	/**
@@ -61,10 +61,10 @@ public class SeatAvailableService {
 	 * @return availableseat
 	 */
 
-	public int seatDetails(int busnumber) {
+	public int findSeatDetail(int busnumber) {
 		int availableSeats = 0;
 		try {
-			availableSeats = seatavailabledao.seatDetails(busnumber);
+			availableSeats = seatavailableDAO.findSeatDetailByBusnumber(busnumber);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -80,7 +80,7 @@ public class SeatAvailableService {
 	 * @throws DBException 
 	 */
 	public void updateSeatAvailable(int busnumber) throws DBException {
-		seatavailabledao.updateSeatAvailable(busnumber);
+		seatavailableDAO.updateSeatAvailable(busnumber);
 	}
 
 }

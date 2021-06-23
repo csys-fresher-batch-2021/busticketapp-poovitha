@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import in.poovi.message.MessageConstants;
 import in.poovi.util.ConnectionUtil;
 
-public class LoginDao {
+public class LoginDAO {
 	/**
 	 * This method is used to admin login
 	 * 

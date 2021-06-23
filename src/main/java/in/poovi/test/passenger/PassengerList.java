@@ -3,7 +3,7 @@ package in.poovi.test.passenger;
 import java.util.ArrayList;
 import java.util.List;
 
-import in.poovi.dao.PassengerListDao;
+import in.poovi.dao.PassengerListDAO;
 import in.poovi.exception.DBException;
 import in.poovi.model.PassengerModel;
 
@@ -17,9 +17,9 @@ public class PassengerList {
 	 */
 	public static void main(String[] args) throws DBException {
 
-		PassengerListDao passengerlistdao = new PassengerListDao();
+		PassengerListDAO passengerlistDAO = new PassengerListDAO();
 		List<PassengerModel> passenger = new ArrayList<>();
-		passenger=passengerlistdao.findAllPassengerList();
+		passenger=passengerlistDAO.findAll();
 		System.out.println(passenger);
 
 	}

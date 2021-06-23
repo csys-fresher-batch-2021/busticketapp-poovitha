@@ -12,7 +12,7 @@ import in.poovi.message.MessageConstants;
 import in.poovi.model.UserRegister;
 import in.poovi.util.ConnectionUtil;
 
-public class UserRegisterDao {
+public class UserRegisterDAO {
 
 	/**
 	 * This method is used to list the user.....
@@ -21,7 +21,7 @@ public class UserRegisterDao {
 	 * @throws Exception
 	 */
 
-	public List<UserRegister> findAllUserRegisterList() throws Exception {
+	public List<UserRegister> findAll() throws Exception {
 		List<UserRegister> userregister = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;

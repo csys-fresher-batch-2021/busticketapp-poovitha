@@ -1,4 +1,4 @@
-package in.poovi.model.service.servlet;
+package in.poovi.model.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
