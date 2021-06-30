@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.dao.AdminRegisterDAO;
+import in.poovi.dao.impl.AdminRegisterDAOImpl;
 import in.poovi.exception.DBException;
 import in.poovi.exception.ServiceException;
 import in.poovi.message.MessageConstants;
@@ -13,7 +14,7 @@ public class AdminRegisterService {
 
 	public static final List<AdminRegister> adminregister = new ArrayList<>();
 
-	static AdminRegisterDAO adminregisterDAO = new AdminRegisterDAO();
+	static AdminRegisterDAO adminregisterDAO = new AdminRegisterDAOImpl();
 
 	/**
 	 * This method is used to list the all admin details

@@ -1,6 +1,7 @@
 package in.poovi.test.seatavailable;
 
 import in.poovi.dao.SeatAvailableDAO;
+import in.poovi.dao.impl.SeatAvailableDAOImpl;
 import in.poovi.exception.DBException;
 
 public class DeleteSeatTest {
@@ -13,8 +14,8 @@ public class DeleteSeatTest {
 	 */
 	public static void main(String[] args) throws DBException {
 
-		SeatAvailableDAO seatavailableDAO = new SeatAvailableDAO();
-		int busnumber = 102;
+		SeatAvailableDAO seatavailableDAO = new SeatAvailableDAOImpl();
+		int busnumber = 1006;
 		seatavailableDAO.deleteSeat(busnumber);
 		System.out.println("seat deleted" + busnumber);
 	}

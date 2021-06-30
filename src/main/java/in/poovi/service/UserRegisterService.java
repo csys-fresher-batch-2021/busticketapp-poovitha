@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.dao.UserRegisterDAO;
+import in.poovi.dao.impl.UserRegisterDAOImpl;
 import in.poovi.exception.DBException;
 import in.poovi.exception.ServiceException;
 import in.poovi.message.MessageConstants;
@@ -13,7 +14,7 @@ public class UserRegisterService {
 
 	public static final List<UserRegister> userregister = new ArrayList<>();
 
-	static UserRegisterDAO userregisterdao = new UserRegisterDAO();
+	static UserRegisterDAO userregisterdao = new UserRegisterDAOImpl();
 
 	/**
 	 * This method is used to display the all users.....

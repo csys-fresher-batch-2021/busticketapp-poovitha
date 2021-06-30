@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.dao.BusDetailsDAO;
+import in.poovi.dao.impl.BusDetailsDAOImpl;
 import in.poovi.exception.DBException;
 import in.poovi.model.BusDetails;
 
@@ -17,7 +18,7 @@ public class BusDetailsTest {
 	 */
 	public static void main(String[] args) throws DBException {
 
-		BusDetailsDAO busdetailsDAO=new BusDetailsDAO();
+		BusDetailsDAO busdetailsDAO=new BusDetailsDAOImpl();
 		List<BusDetails> busdetails =new ArrayList<>();
 		busdetails=busdetailsDAO.findAll();
 		System.out.println(busdetails);

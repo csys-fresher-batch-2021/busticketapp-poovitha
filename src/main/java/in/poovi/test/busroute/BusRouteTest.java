@@ -3,7 +3,7 @@ package in.poovi.test.busroute;
 import java.util.ArrayList;
 import java.util.List;
 
-import in.poovi.dao.BusRouteDAO;
+import in.poovi.dao.impl.BusRouteDAOImpl;
 import in.poovi.exception.DBException;
 import in.poovi.model.BusRoute;
 
@@ -16,7 +16,7 @@ public class BusRouteTest {
 	 * @throws DBException 
 	 */
 	public static void main(String[] args) throws DBException {
-		BusRouteDAO busrouteDAO=new BusRouteDAO();
+		BusRouteDAOImpl busrouteDAO=new BusRouteDAOImpl();
 		List<BusRoute> busroute =new ArrayList<>();
 		busroute=busrouteDAO.findAll();
 		System.out.println(busroute);

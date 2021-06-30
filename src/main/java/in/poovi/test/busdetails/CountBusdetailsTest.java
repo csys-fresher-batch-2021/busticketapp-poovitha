@@ -1,6 +1,7 @@
 package in.poovi.test.busdetails;
 
 import in.poovi.dao.BusDetailsDAO;
+import in.poovi.dao.impl.BusDetailsDAOImpl;
 
 public class CountBusdetailsTest {
 
@@ -11,7 +12,7 @@ public class CountBusdetailsTest {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
-		BusDetailsDAO busdetailsDAO=new BusDetailsDAO();
+		BusDetailsDAO busdetailsDAO=new BusDetailsDAOImpl();
 		int buscount=busdetailsDAO.noOfBuses();
         System.out.println(buscount);
 	}

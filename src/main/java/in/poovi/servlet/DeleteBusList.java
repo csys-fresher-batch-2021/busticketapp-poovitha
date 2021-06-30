@@ -1,4 +1,4 @@
-package in.poovi.model.servlet;
+package in.poovi.servlet;
 
 import java.io.IOException;
 
@@ -21,9 +21,10 @@ public class DeleteBusList extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			String agency = request.getParameter("agency");
-			System.out.println("Agency=" + agency);
-			BusDetailsService.deleteBus(agency);
+			String busNumber = request.getParameter("busnumber");
+			int busnumber=Integer.parseInt(busNumber);
+			System.out.println("Agency=" + busnumber);
+			BusDetailsService.deleteBus(busnumber);
 			response.sendRedirect("BusList.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();

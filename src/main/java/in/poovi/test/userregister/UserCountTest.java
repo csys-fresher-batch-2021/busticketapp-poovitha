@@ -1,6 +1,7 @@
 package in.poovi.test.userregister;
 
 import in.poovi.dao.UserRegisterDAO;
+import in.poovi.dao.impl.UserRegisterDAOImpl;
 
 public class UserCountTest {
 
@@ -12,7 +13,7 @@ public class UserCountTest {
 	 */
 	public static void main(String[] args) throws Exception {
 
-		UserRegisterDAO userregisterDAO=new UserRegisterDAO();
+		UserRegisterDAO userregisterDAO=new UserRegisterDAOImpl();
 		int count=userregisterDAO.findNoOfUsers();
 		System.out.println(count);
 	}

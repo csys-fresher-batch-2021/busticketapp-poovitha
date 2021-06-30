@@ -1,6 +1,8 @@
-package in.poovi.model.servlet;
+package in.poovi.servlet;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,21 +22,30 @@ public class AddBookingServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int bookingno = Integer.parseInt(request.getParameter("bookingno"));
-		int pid = Integer.parseInt(request.getParameter("pid"));
-        String source = request.getParameter("source");
+		String bookingNo=request.getParameter("bookingno");
+		int bookingno = Integer.parseInt(bookingNo);
+		String pId=request.getParameter("pid");
+		int pid = Integer.parseInt(pId);
+		String source = request.getParameter("source");
 		String destination = request.getParameter("destination");
 		String agency = request.getParameter("agency");
-		System.out.println(agency + agency.length());
-		int busno = Integer.parseInt(request.getParameter("b_no"));
+		String busNo=request.getParameter("b_no");
+		int busno = Integer.parseInt(busNo);
 		String bustype = request.getParameter("bustype");
-		double amount = Integer.parseInt(request.getParameter("amount"));
-		int nooftickets = Integer.parseInt(request.getParameter("nooftickets"));
-		double totalamount = Integer.parseInt(request.getParameter("totalamount"));
-		String status = request.getParameter("status");
+		String amt=request.getParameter("amount");
+		double amount = Integer.parseInt(amt);
+		String noOfTickets=request.getParameter("nooftickets");
+		int nooftickets = Integer.parseInt(noOfTickets);
+		String totalAmount=request.getParameter("totalamount");
+		double totalamount = Integer.parseInt(totalAmount);
+		String journeyDate = request.getParameter("journeyDate");
+		LocalDateTime journeydate = LocalDateTime.parse(journeyDate);
+		String bookingDate = request.getParameter("bookingDate");
+		LocalDateTime bookingdate = LocalDateTime.parse(bookingDate);
+        String status = request.getParameter("status");
 		try {
 			Booking booking = new Booking(bookingno, pid, source, destination, agency, busno, bustype, amount,
-					nooftickets, totalamount, status);
+					nooftickets, totalamount,bookingdate,journeydate,status);
 			BookingService bookingservice = new BookingService();
 			bookingservice.addReservation(booking);
 		} catch (Exception e) {

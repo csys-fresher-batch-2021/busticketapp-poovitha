@@ -1,8 +1,7 @@
 package in.poovi.test.busdetails;
 
-import java.util.Scanner;
-
 import in.poovi.dao.BusDetailsDAO;
+import in.poovi.dao.impl.BusDetailsDAOImpl;
 
 public class DeleteBusDetailsTest {
 	/**
@@ -11,12 +10,10 @@ public class DeleteBusDetailsTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the delete busname:");
-		String agency = sc.next();
-		BusDetailsDAO busdetailsDAO = new BusDetailsDAO();
-		busdetailsDAO.deleteBus(agency);
-		sc.close();
+		System.out.println("Delete Bus:");
+		int busnumber =1006;
+		BusDetailsDAO busdetailsDAO = new BusDetailsDAOImpl();
+		busdetailsDAO.deleteBus(busnumber);
 
 	}
 

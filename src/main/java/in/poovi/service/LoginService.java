@@ -1,11 +1,12 @@
 package in.poovi.service;
 
 import in.poovi.dao.LoginDAO;
+import in.poovi.dao.impl.LoginDAOImpl;
 import in.poovi.exception.ValidationException;
 
 public class LoginService {
 
-	private static LoginDAO logindao = new LoginDAO();
+	private static LoginDAO logindao = new LoginDAOImpl();
 
 	/**
 	 * This method is used for admin login...

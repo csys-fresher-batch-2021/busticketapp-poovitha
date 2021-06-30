@@ -1,5 +1,7 @@
 package in.poovi.model;
 
+import java.time.LocalDateTime;
+
 public class Booking {
 
 	private int bookingNo;
@@ -12,6 +14,8 @@ public class Booking {
 	private double amount;
 	private int noOfTickets;
 	private double totalAmount;
+	private LocalDateTime bookingDate;
+	private LocalDateTime journeyDate;
 	private String status = "BOOKING";
 
 	public Booking() {
@@ -19,7 +23,8 @@ public class Booking {
 	}
 
 	public Booking(int bookingNo, int pid, String source, String destination, String agency, int busnumber,
-			String busType, double amount, int noOfTickets, double totalAmount, String status) {
+			String busType, double amount, int noOfTickets, double totalAmount, LocalDateTime bookingDate,
+			LocalDateTime journeyDate, String status) {
 		super();
 		this.bookingNo = bookingNo;
 		this.pid = pid;
@@ -31,6 +36,8 @@ public class Booking {
 		this.amount = amount;
 		this.noOfTickets = noOfTickets;
 		this.totalAmount = totalAmount;
+		this.bookingDate = bookingDate;
+		this.journeyDate = journeyDate;
 		this.status = status;
 	}
 
@@ -122,11 +129,28 @@ public class Booking {
 		this.pid = pid;
 	}
 
+	public LocalDateTime getJourneyDate() {
+		return journeyDate;
+	}
+
+	public void setJourneyDate(LocalDateTime journeyDate) {
+		this.journeyDate = journeyDate;
+	}
+
+	public LocalDateTime getBookingDate() {
+		return bookingDate;
+	}
+
+	public void setBookingDate(LocalDateTime bookingDate) {
+		this.bookingDate = bookingDate;
+	}
+
 	@Override
 	public String toString() {
 		return "Booking [bookingNo=" + bookingNo + ", pid=" + pid + ", source=" + source + ", destination="
 				+ destination + ", agency=" + agency + ", busnumber=" + busnumber + ", busType=" + busType + ", amount="
-				+ amount + ", noOfTickets=" + noOfTickets + ", totalAmount=" + totalAmount + ", status=" + status + "]";
+				+ amount + ", noOfTickets=" + noOfTickets + ", totalAmount=" + totalAmount + ", bookingDate="
+				+ bookingDate + ", journeyDate=" + journeyDate + ", status=" + status + "]";
 	}
 
 }

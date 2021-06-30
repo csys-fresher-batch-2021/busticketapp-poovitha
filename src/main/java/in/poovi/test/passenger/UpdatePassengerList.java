@@ -1,6 +1,7 @@
 package in.poovi.test.passenger;
 
 import in.poovi.dao.PassengerListDAO;
+import in.poovi.dao.impl.PassengerListDAOImpl;
 import in.poovi.exception.DBException;
 
 public class UpdatePassengerList {
@@ -14,7 +15,7 @@ public class UpdatePassengerList {
 
 		String pname="puvi";
 		long pmobileno=9898989898L;
-		PassengerListDAO passengerlistDAO=new PassengerListDAO();
+		PassengerListDAO passengerlistDAO=new PassengerListDAOImpl();
 		passengerlistDAO.updateMobileno(pmobileno, pname);
 		
 	}

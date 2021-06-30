@@ -1,9 +1,11 @@
 package in.poovi.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import in.poovi.dao.BusDetailsDAO;
+import in.poovi.dao.impl.BusDetailsDAOImpl;
 import in.poovi.exception.DBException;
 import in.poovi.exception.ServiceException;
 import in.poovi.exception.ValidationException;
@@ -13,7 +15,7 @@ public class BusDetailsService {
 
 	public static final List<BusDetails> busList = new ArrayList<>();
 
-	static BusDetailsDAO busdetailsDAO = new BusDetailsDAO();
+	static BusDetailsDAO busdetailsDAO = new BusDetailsDAOImpl();
 
 	/**
 	 * This method is used to display the all bus details
@@ -42,11 +44,11 @@ public class BusDetailsService {
 	/**
 	 * This method is used to delete the bus details
 	 * 
-	 * @param agency
+	 * @param busnumber
 	 */
-	public static void deleteBus(String agency) {
+	public static void deleteBus(int busnumber) {
 
-		busdetailsDAO.deleteBus(agency);
+		busdetailsDAO.deleteBus(busnumber);
 
 	}
 
@@ -97,6 +99,16 @@ public class BusDetailsService {
 		if (busDestination == null) {
 			throw new ValidationException("Invalid destination");
 		}
+	}
+
+	/**
+	 * This method is used to display the number of buses available
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	public HashMap<String, Integer> noOfBuslist() throws Exception {
+		return busdetailsDAO.noOfBuslist();
 	}
 
 }

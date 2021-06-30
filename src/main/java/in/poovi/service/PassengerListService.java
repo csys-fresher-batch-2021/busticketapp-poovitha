@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.dao.PassengerListDAO;
+import in.poovi.dao.impl.PassengerListDAOImpl;
 import in.poovi.exception.DBException;
 import in.poovi.exception.ServiceException;
 import in.poovi.message.MessageConstants;
@@ -13,7 +14,7 @@ public class PassengerListService {
 
 	public static final List<PassengerModel> passengerlist = new ArrayList<>();
 
-	static PassengerListDAO passengerlistdao = new PassengerListDAO();
+	static PassengerListDAO passengerlistdao = new PassengerListDAOImpl();
 
 	/**
 	 * This method is used to list the all passenger details....

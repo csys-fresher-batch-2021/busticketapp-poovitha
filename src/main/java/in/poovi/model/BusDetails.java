@@ -7,7 +7,6 @@ public class BusDetails {
 	private String source;
 	private String destination;
 	private double amount;
-
 	private SeatAvailable seatavailable;
 
 	public BusDetails() {
