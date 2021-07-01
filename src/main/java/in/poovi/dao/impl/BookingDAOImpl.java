@@ -145,8 +145,14 @@ public class BookingDAOImpl implements BookingDAO {
 			ConnectionUtil.close(pst, connection);
 		}
 	}
+	/**
+	 * This method is used update date .....
+	 * 
+	 * @param busnumber
+	 * @param availableDate
+	 * @throws DBException
+	 */
 
-	@Override
 	public List<Booking> findMyTicket(int pid) throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -194,7 +200,7 @@ public class BookingDAOImpl implements BookingDAO {
 	 * @throws DBException
 	 */
 	@Override
-	public double findTicketCost(int b_no) throws DBException {
+	public double findTicketCost(int bno) throws DBException {
 		double amount = 0;
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -203,9 +209,9 @@ public class BookingDAOImpl implements BookingDAO {
 		try {
 			connection = ConnectionUtil.getConnection();
 			pst = connection.prepareStatement(sql);
-			pst.setInt(1, b_no);
+			pst.setInt(1, bno);
 			rs = pst.executeQuery();
-			Logger.log("busnumber " + b_no);
+			Logger.log("busnumber " + bno);
 			if (rs.next()) {
 				amount = rs.getDouble(AMOUNT);
 				System.out.println(amount);
@@ -257,8 +263,13 @@ public class BookingDAOImpl implements BookingDAO {
 		return total;
 
 	}
-
-	@Override
+	/**
+	 * Used to update the date..
+	 * 
+	 * @param busnumber
+	 * @return availabledate
+	 * @throws DBException
+	 */
 	public LocalDateTime findAvailableDate(int busnumber) throws DBException {
 		LocalDateTime availableDate = null;
 		Connection connection = null;

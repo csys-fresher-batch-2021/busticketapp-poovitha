@@ -24,7 +24,7 @@ public interface BookingDAO {
 	 * @param booking
 	 * @throws Exception
 	 */
-	void addReservation(Booking booking) throws Exception;
+	void addReservation(Booking booking) throws DBException;
 
 	/**
 	 * This method is used to cancel booking from the user....
@@ -34,6 +34,13 @@ public interface BookingDAO {
 	 */
 	void cancelReserve(int bookingno) throws DBException;
 
+	/**
+	 * This method is used update date .....
+	 * 
+	 * @param busnumber
+	 * @param availableDate
+	 * @throws DBException
+	 */
 	List<Booking> findMyTicket(int pid) throws DBException;
 
 	/**
@@ -53,6 +60,13 @@ public interface BookingDAO {
 	 */
 	HashMap<Integer, Integer> findFilledSeats() throws DBException;
 
+	/**
+	 * Used to update the date..
+	 * 
+	 * @param busnumber
+	 * @return availabledate
+	 * @throws DBException
+	 */
 	LocalDateTime findAvailableDate(int busnumber) throws DBException;
 
 }

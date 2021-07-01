@@ -15,7 +15,7 @@ public interface SeatAvailableDAO {
 	 * @throws Exception
 	 */
 
-	List<SeatAvailable> findAll() throws Exception;
+	List<SeatAvailable> findAll() throws DBException;
 
 	/**
 	 * used to add the seatavailable in bus......
@@ -49,7 +49,7 @@ public interface SeatAvailableDAO {
 	 * @return availableSeats
 	 * @throws Exception
 	 */
-	int findSeatDetailByBusnumber(int busnumber) throws Exception;
+	int findSeatDetailByBusnumber(int busnumber) throws DBException;
 
 	/**
 	 * This method is used to update the seatavailable when the pasenger is booked
@@ -60,8 +60,21 @@ public interface SeatAvailableDAO {
 	 */
 	void updateSeatAvailable(int busnumber, LocalDateTime availableDate, LocalDateTime bookingDate) throws DBException;
 
+	/**
+	 * This method is used to get a seat availability...
+	 * 
+	 * @param busnumber
+	 * @throws DBException
+	 */
 	void updateSeatAvailable1(int busnumber) throws DBException;
 
+	/**
+	 * This method is used update date .....
+	 * 
+	 * @param busnumber
+	 * @param availableDate
+	 * @throws DBException
+	 */
 	void updateDate(int busnumber, LocalDateTime availableDate) throws DBException;
 
 }

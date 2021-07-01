@@ -100,7 +100,7 @@ public class AdminRegisterDAOImpl implements AdminRegisterDAO {
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, adminId);
 			int rows = pst.executeUpdate();
-			System.out.println("no of rows deleted" + rows + adminId);
+			Logger.log("no of rows deleted" + rows + adminId);
 
 		} catch (SQLException e) {
 			Logger.error(e);

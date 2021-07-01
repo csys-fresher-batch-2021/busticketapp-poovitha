@@ -23,7 +23,7 @@ public class BookingService {
 	 * @return allBookingDetails
 	 * @throws Exception
 	 */
-	public List<Booking> getBookings() throws Exception {
+	public List<Booking> getBookings() throws DBException {
 		return bookingDAO.findAll();
 	}
 
@@ -31,9 +31,10 @@ public class BookingService {
 	 * This method is used to add the booking
 	 * 
 	 * @param bus
+	 * @throws ServiceException 
 	 * @throws Exception
 	 */
-	public void addReservation(Booking book) throws Exception {
+	public void addReservation(Booking book) throws DBException, ServiceException {
 		if (book.getSource().equals(book.getDestination())) {
 			throw new ServiceException("both source and destination same we cannot booking");
 		}
@@ -92,8 +93,8 @@ public class BookingService {
 	 * @return findTicketCost
 	 * @throws DBException
 	 */
-	public double findTicketCost(int b_no) throws DBException {
-		return bookingDAO.findTicketCost(b_no);
+	public double findTicketCost(int bno) throws DBException {
+		return bookingDAO.findTicketCost(bno);
 
 	}
 

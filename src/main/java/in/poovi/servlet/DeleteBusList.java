@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import in.poovi.logger.Logger;
 import in.poovi.service.BusDetailsService;
 
 @WebServlet("/DeleteBusList")
@@ -23,7 +24,7 @@ public class DeleteBusList extends HttpServlet {
 		try {
 			String busNumber = request.getParameter("busnumber");
 			int busnumber=Integer.parseInt(busNumber);
-			System.out.println("Agency=" + busnumber);
+			Logger.log("Agency=" + busnumber);
 			BusDetailsService.deleteBus(busnumber);
 			response.sendRedirect("BusList.jsp");
 		} catch (Exception e) {

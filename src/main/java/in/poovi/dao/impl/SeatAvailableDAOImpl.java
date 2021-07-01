@@ -25,7 +25,7 @@ public class SeatAvailableDAOImpl implements SeatAvailableDAO {
 	 */
 
 	@Override
-	public List<SeatAvailable> findAll() throws Exception {
+	public List<SeatAvailable> findAll() throws DBException {
 		List<SeatAvailable> seatavailable = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -50,7 +50,7 @@ public class SeatAvailableDAOImpl implements SeatAvailableDAO {
 			}
 		} catch (Exception e) {
 			Logger.error(e);
-			throw new DBException(e,"no data found");
+			throw new DBException(e, "no data found");
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
@@ -80,7 +80,7 @@ public class SeatAvailableDAOImpl implements SeatAvailableDAO {
 
 		} catch (SQLException e) {
 			Logger.error(e);
-			throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY);
+			throw new DBException(e, MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -103,10 +103,10 @@ public class SeatAvailableDAOImpl implements SeatAvailableDAO {
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, busnumber);
 			int rows = pst.executeUpdate();
-			System.out.println("no of rows deleted " + rows + busnumber);
+			Logger.log("no of rows deleted " + rows + busnumber);
 		} catch (SQLException e) {
 			Logger.error(e);
-			throw new DBException(e,"no data found");
+			throw new DBException(e, "no data found");
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -130,10 +130,10 @@ public class SeatAvailableDAOImpl implements SeatAvailableDAO {
 			pst.setInt(2, busnumber);
 			pst.setInt(1, availableseat);
 			int rows = pst.executeUpdate();
-			System.out.println("update seatavailable " + rows + busnumber + availableseat);
+			Logger.log("update seatavailable " + rows + busnumber + availableseat);
 		} catch (SQLException e) {
 			Logger.error(e);
-			throw new DBException(e,"unable to execute query");
+			throw new DBException(e, "unable to execute query");
 		} finally {
 			ConnectionUtil.close(pst, connection);
 
@@ -149,7 +149,7 @@ public class SeatAvailableDAOImpl implements SeatAvailableDAO {
 	 * @throws Exception
 	 */
 	@Override
-	public int findSeatDetailByBusnumber(int busnumber) throws Exception {
+	public int findSeatDetailByBusnumber(int busnumber) throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
@@ -160,13 +160,13 @@ public class SeatAvailableDAOImpl implements SeatAvailableDAO {
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, busnumber);
 			rs = pst.executeQuery();
-			System.out.println("seat available " + busnumber);
+			Logger.log("seat available " + busnumber);
 			while (rs.next()) {
 				availableSeats = rs.getInt("availableseat");
 			}
 		} catch (Exception e) {
 			Logger.error(e);
-			throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY);
+			throw new DBException(e, MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
@@ -181,7 +181,8 @@ public class SeatAvailableDAOImpl implements SeatAvailableDAO {
 	 * @throws DBException
 	 */
 	@Override
-	public void updateSeatAvailable(int busnumber,LocalDateTime availableDate,LocalDateTime bookingDate) throws DBException {
+	public void updateSeatAvailable(int busnumber, LocalDateTime availableDate, LocalDateTime bookingDate)
+			throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		String sql = "update seatavailable s set availableseat  = (select availableseat from seatavailable where busnumber=? and availableDate=?)-(select sum(nooftickets) from booking where busnumber=? and bookingDate=?) from busdetails,booking  where s.busnumber=busdetails.b_no and s.availableDate=booking.journeyDate and s.busnumber=?";
@@ -194,15 +195,23 @@ public class SeatAvailableDAOImpl implements SeatAvailableDAO {
 			pst.setTimestamp(4, Timestamp.valueOf(availableDate));
 			pst.setTimestamp(5, Timestamp.valueOf(bookingDate));
 			int rows = pst.executeUpdate();
-			System.out.println("update seatavailable " + rows + busnumber);
+			Logger.log("update seatavailable " + rows + busnumber);
 		} catch (SQLException e) {
 			Logger.error(e);
-			throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY); 
+			throw new DBException(e, MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
 
 	}
+
+	/**
+	 * This method is used to get a seat availability...
+	 * 
+	 * @param busnumber
+	 * @throws DBException
+	 */
+
 	@Override
 	public void updateSeatAvailable1(int busnumber) throws DBException {
 		Connection connection = null;
@@ -215,18 +224,26 @@ public class SeatAvailableDAOImpl implements SeatAvailableDAO {
 			pst.setInt(2, busnumber);
 			pst.setInt(3, busnumber);
 			int rows = pst.executeUpdate();
-			System.out.println("update seatavailable " + rows + busnumber);
+			Logger.log("update seatavailable " + rows + busnumber);
 		} catch (SQLException e) {
 			Logger.error(e);
-			throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY); 
+			throw new DBException(e, MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
 
 	}
 
+	/**
+	 * This method is used update date .....
+	 * 
+	 * @param busnumber
+	 * @param availableDate
+	 * @throws DBException
+	 */
+
 	@Override
-	public void updateDate(int busnumber,LocalDateTime availableDate) throws DBException {
+	public void updateDate(int busnumber, LocalDateTime availableDate) throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		String sql = "update seatavailable set availableDate=? where busnumber=?";
@@ -236,10 +253,10 @@ public class SeatAvailableDAOImpl implements SeatAvailableDAO {
 			pst.setInt(2, busnumber);
 			pst.setTimestamp(1, Timestamp.valueOf(availableDate));
 			int rows = pst.executeUpdate();
-			System.out.println("update Date " + rows + busnumber);
+			Logger.log("update Date " + rows + busnumber);
 		} catch (SQLException e) {
 			Logger.error(e);
-			throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY); 
+			throw new DBException(e, MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
