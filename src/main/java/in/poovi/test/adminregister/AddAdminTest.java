@@ -14,8 +14,8 @@ public class AddAdminTest {
 	public static void main(String[] args) throws Exception {
 
 		String adminName = "bala";
-		int adminId = 1006;
-		String adminpassword = "balaji@165";
+		int adminId = 1005;
+		String adminpassword = "balaji@1";
 		AdminRegister adminregister = new AdminRegister(adminName, adminId, adminpassword);
 		AdminRegisterService adminregisterservice = new AdminRegisterService();
 		adminregisterservice.saveAdmin(adminregister);
