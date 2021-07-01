@@ -1,4 +1,4 @@
-package in.poovi.model.servlet;
+package in.poovi.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -17,7 +17,7 @@ public class AddServlet extends HttpServlet {
 	public AddServlet() {
 		super();
 	}
-
+@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		try {

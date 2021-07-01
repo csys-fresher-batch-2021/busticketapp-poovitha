@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.dao.UserRegisterDAO;
+import in.poovi.dao.impl.UserRegisterDAOImpl;
 import in.poovi.exception.DBException;
 import in.poovi.exception.ServiceException;
 import in.poovi.message.MessageConstants;
@@ -13,7 +14,7 @@ public class UserRegisterService {
 
 	public static final List<UserRegister> userregister = new ArrayList<>();
 
-	static UserRegisterDAO userregisterdao = new UserRegisterDAO();
+	static UserRegisterDAO userregisterdao = new UserRegisterDAOImpl();
 
 	/**
 	 * This method is used to display the all users.....
@@ -22,7 +23,7 @@ public class UserRegisterService {
 	 * @throws Exception
 	 */
 
-	public List<UserRegister> getallUserDetails() throws Exception {
+	public List<UserRegister> getallUserDetails() throws DBException {
 		return userregisterdao.findAll();
 	}
 
@@ -30,9 +31,10 @@ public class UserRegisterService {
 	 * This method is used to add the user .......
 	 * 
 	 * @param userregister
+	 * @throws ServiceException 
 	 * @throws Exception
 	 */
-	public void saveUser(UserRegister userregister) throws Exception {
+	public void saveUser(UserRegister userregister) throws DBException, ServiceException {
 		if (userregister.getUserName() == null || "".equals(userregister.getUserName().trim())
 				|| userregister.getUserName().length() < 4) {
 			throw new ServiceException(MessageConstants.INVALID_NAME);
@@ -64,7 +66,7 @@ public class UserRegisterService {
 	 * @return noOfUsers
 	 * @throws Exception
 	 */
-	int findNoOfUsers() throws Exception {
+	int findNoOfUsers() throws DBException {
 		return userregisterdao.findNoOfUsers();
 	}
 
@@ -75,7 +77,7 @@ public class UserRegisterService {
 	 * @return userDetails
 	 * @throws Exception
 	 */
-	public List<UserRegister> findUserById(int userid) throws Exception {
+	public List<UserRegister> findUserById(int userid) throws DBException {
 		return userregisterdao.findUserById(userid);
 	}
 }

@@ -1,4 +1,4 @@
-package in.poovi.model.servlet;
+package in.poovi.servlet;
 
 import java.io.IOException;
 
@@ -18,19 +18,18 @@ public class BusRouteServlet extends HttpServlet {
 	public BusRouteServlet() {
 		super();
 	}
-
+@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int routeno = Integer.parseInt(request.getParameter("routeno"));
-		System.out.println(routeno);
-		String source = request.getParameter("source");
-		String destination = request.getParameter("destination");
-
 		try {
-			BusRoute route = new BusRoute(routeno, source,destination);
+			String routeNo = request.getParameter("routeno");
+			int routeno = Integer.parseInt(routeNo);
+			System.out.println(routeno);
+			String source = request.getParameter("source");
+			String destination = request.getParameter("destination");
+			BusRoute route = new BusRoute(routeno, source, destination);
 			BusRouteService busrouteservice = new BusRouteService();
 			busrouteservice.addRouteList(route);
-
 			String message = "added";
 			response.sendRedirect("BusRoute.jsp?infomessage=" + message);
 

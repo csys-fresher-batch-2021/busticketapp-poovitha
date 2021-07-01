@@ -1,4 +1,4 @@
-package in.poovi.model.servlet;
+package in.poovi.servlet;
 
 import java.io.IOException;
 
@@ -18,16 +18,18 @@ public class PassengerListServlet extends HttpServlet {
 		super();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-
 			throws ServletException, IOException {
 		try {
 			String pname = request.getParameter("pname");
-			int pid = Integer.parseInt(request.getParameter("pid"));
-
-			int page = Integer.parseInt(request.getParameter("page"));
+			String pId = request.getParameter("pid");
+			int pid = Integer.parseInt(pId);
+			String pAge = request.getParameter("page");
+			int page = Integer.parseInt(pAge);
 			String pgender = request.getParameter("pgender");
-			long pmobileno = Long.parseLong(request.getParameter("pmobileno"));
+			String pMobileno = request.getParameter("pmobileno");
+			long pmobileno = Long.parseLong(pMobileno);
 			boolean isadded = false;
 			isadded = PassengerService.addpassenger(pname, pid, page, pgender, pmobileno);
 			if (isadded) {

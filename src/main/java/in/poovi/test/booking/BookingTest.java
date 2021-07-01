@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.dao.BookingDAO;
+import in.poovi.dao.impl.BookingDAOImpl;
 import in.poovi.model.Booking;
 
 public class BookingTest {
@@ -15,7 +16,7 @@ public class BookingTest {
 	 */
 	public static void main(String[] args) throws Exception {
 
-		BookingDAO bookingDAO = new BookingDAO();
+		BookingDAO bookingDAO = new BookingDAOImpl();
 		List<Booking> booking = new ArrayList<>();
 		booking = bookingDAO.findAll();
 		for (Booking book : booking) {

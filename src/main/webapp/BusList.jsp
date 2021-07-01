@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="in.poovi.model.BusDetails" %>
 <%@page import="java.util.List"%>
-<%@page import="in.poovi.dao.BusDetailsDAO" %>    
+<%@page import="in.poovi.dao.impl.BusDetailsDAOImpl" %>    
     
 <!DOCTYPE html>
 <html lang="en">
@@ -26,11 +26,11 @@
 					<th scope="col">AMOUNT</th>
 					
 					<%
-										BusDetailsDAO busdetailsdao=new BusDetailsDAO();
-													List<BusDetails> bus = busdetailsdao.findAll();
-													int i = 0;
-													for (BusDetails busdetails : bus) {
-														i++;
+										BusDetailsDAOImpl busdetailsdao=new BusDetailsDAOImpl();
+																					List<BusDetails> bus = busdetailsdao.findAll();
+																					int i = 0;
+																					for (BusDetails busdetails : bus) {
+																						i++;
 										%>
 				</tr>
 				<tr>

@@ -1,16 +1,18 @@
 package in.poovi.service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.dao.SeatAvailableDAO;
+import in.poovi.dao.impl.SeatAvailableDAOImpl;
 import in.poovi.exception.DBException;
 import in.poovi.model.SeatAvailable;
 
 public class SeatAvailableService {
 	public static final List<SeatAvailable> seatavailable = new ArrayList<>();
 
-	static SeatAvailableDAO seatavailableDAO = new SeatAvailableDAO();
+	static SeatAvailableDAO seatavailableDAO = new SeatAvailableDAOImpl();
 
 	/**
 	 * This method is used to display the all available seat.....
@@ -19,7 +21,7 @@ public class SeatAvailableService {
 	 * @throws Exception
 	 */
 
-	public List<SeatAvailable> getAllAvailableSeat() throws Exception {
+	public List<SeatAvailable> getAllAvailableSeat() throws DBException {
 		return seatavailableDAO.findAll();
 	}
 
@@ -74,13 +76,13 @@ public class SeatAvailableService {
 	/**
 	 * This method is used to update the available seat after the ticket
 	 * booked......
-	 * 
 	 * @param busnumber
-	 * @param availableseat
-	 * @throws DBException 
+	 * @param availableDate
+	 * @param bookingDate
+	 * @throws DBException
 	 */
-	public void updateSeatAvailable(int busnumber) throws DBException {
-		seatavailableDAO.updateSeatAvailable(busnumber);
+	public void updateSeatAvailable(int busnumber,LocalDateTime availableDate,LocalDateTime bookingDate) throws DBException {
+		seatavailableDAO.updateSeatAvailable(busnumber, availableDate, bookingDate);
 	}
 
 }
