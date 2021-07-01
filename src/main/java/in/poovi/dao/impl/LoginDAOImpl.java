@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import in.poovi.dao.LoginDAO;
+import in.poovi.exception.DBException;
+import in.poovi.logger.Logger;
 import in.poovi.message.MessageConstants;
 import in.poovi.util.ConnectionUtil;
 
@@ -19,7 +21,7 @@ public class LoginDAOImpl implements LoginDAO {
 	 * @throws Exception
 	 */
 	@Override
-	public boolean adminLogin(String adminName, String adminPassword) throws Exception {
+	public boolean adminLogin(String adminName, String adminPassword) throws DBException {
 		boolean valid = false;
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -38,8 +40,8 @@ public class LoginDAOImpl implements LoginDAO {
 		}
 
 		catch (SQLException e) {
-			e.printStackTrace();
-			throw new Exception(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
+			Logger.error(e);
+			throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
@@ -55,7 +57,7 @@ public class LoginDAOImpl implements LoginDAO {
 	 * @throws Exception
 	 */
 	@Override
-	public boolean userLogin(String username, String password) throws Exception {
+	public boolean userLogin(String username, String password) throws DBException {
 		boolean valid = false;
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -74,8 +76,8 @@ public class LoginDAOImpl implements LoginDAO {
 		}
 
 		catch (SQLException e) {
-			e.printStackTrace();
-			throw new Exception(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
+			Logger.error(e);
+			throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}

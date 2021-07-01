@@ -113,7 +113,7 @@ public class BusDetailsDAOImpl implements BusDetailsDAO {
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, bno);
 			int rows = pst.executeUpdate();
-			System.out.println("no of rows deleted" + rows + bno);
+			Logger.log("no of rows deleted" + rows + bno);
 
 		} catch (SQLException e) {
 			Logger.error(e);
@@ -162,7 +162,7 @@ public class BusDetailsDAOImpl implements BusDetailsDAO {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		HashMap<String, Integer> obj = new HashMap<String, Integer>();
+		HashMap<String, Integer> obj = new HashMap<>();
 
 		String sql = "select agency,count(*) as cnt from  busdetails group by agency";
 		try {

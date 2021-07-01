@@ -105,7 +105,7 @@ public class PassengerListDAOImpl implements PassengerListDAO {
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, pid);
 			int rows = pst.executeUpdate();
-			System.out.println("no of rows deleted" + rows + pid);
+			Logger.log("no of rows deleted" + rows + pid);
 		} catch (SQLException e) {
 			Logger.error(e);
 			throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY);
@@ -133,7 +133,7 @@ public class PassengerListDAOImpl implements PassengerListDAO {
 			pst.setString(2, pname);
 			pst.setLong(1, mobileno);
 			int rows = pst.executeUpdate();
-			System.out.println("update user " + rows + pname + mobileno);
+			Logger.log("update user " + rows + pname + mobileno);
 		} catch (SQLException e) {
 			Logger.error(e);
 			throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY);

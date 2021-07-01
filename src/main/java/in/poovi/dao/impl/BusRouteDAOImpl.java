@@ -98,7 +98,7 @@ public class BusRouteDAOImpl implements BusRouteDAO {
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, routeno);
 			int rows = pst.executeUpdate();
-			System.out.println("no of rows deleted" + rows + routeno);
+			Logger.log("no of rows deleted" + rows + routeno);
 		} catch (SQLException e) {
 			Logger.error(e);
 			throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY);

@@ -14,7 +14,7 @@ public interface UserRegisterDAO {
 	 * @throws Exception
 	 */
 
-	List<UserRegister> findAll() throws Exception;
+	List<UserRegister> findAll() throws DBException;
 
 	/**
 	 * used to add the user......
@@ -39,7 +39,7 @@ public interface UserRegisterDAO {
 	 * @param userid
 	 * @throws Exception
 	 */
-	List<UserRegister> findUserById(int userid) throws Exception;
+	List<UserRegister> findUserById(int userid) throws DBException;
 
 	/**
 	 * This method is used to count the Number of users.....
@@ -47,6 +47,6 @@ public interface UserRegisterDAO {
 	 * @return usercount
 	 * @throws Exception
 	 */
-	int findNoOfUsers() throws Exception;
+	int findNoOfUsers() throws DBException;
 
 }

@@ -16,7 +16,7 @@ public interface BookingDAO {
 	 * @throws Exception
 	 */
 
-	List<Booking> findAll() throws Exception;
+	List<Booking> findAll() throws DBException;
 
 	/**
 	 * This method is used to add the booking details in database

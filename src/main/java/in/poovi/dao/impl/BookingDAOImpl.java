@@ -136,7 +136,7 @@ public class BookingDAOImpl implements BookingDAO {
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, bookingno);
 			int rows = pst.executeUpdate();
-			System.out.println("no of rows deleted" + rows + bookingno);
+			Logger.log("no of rows deleted" + rows + bookingno);
 
 		} catch (SQLException e) {
 			Logger.error(e);
@@ -205,7 +205,7 @@ public class BookingDAOImpl implements BookingDAO {
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, b_no);
 			rs = pst.executeQuery();
-			System.out.println("busnumber " + b_no);
+			Logger.log("busnumber " + b_no);
 			if (rs.next()) {
 				amount = rs.getDouble(AMOUNT);
 				System.out.println(amount);
@@ -270,7 +270,7 @@ public class BookingDAOImpl implements BookingDAO {
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, busnumber);
 			rs = pst.executeQuery();
-			System.out.println("busnumber " + busnumber);
+			Logger.log("busnumber " + busnumber);
 			if (rs.next()) {
 				availableDate = rs.getTimestamp("availableDate").toLocalDateTime();
 			} else {

@@ -24,7 +24,7 @@ public class UserRegisterDAOImpl implements UserRegisterDAO {
 	 */
 
 	@Override
-	public List<UserRegister> findAll() throws Exception {
+	public List<UserRegister> findAll() throws DBException {
 		List<UserRegister> userregister = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -130,7 +130,7 @@ public class UserRegisterDAOImpl implements UserRegisterDAO {
 	 * @throws Exception
 	 */
 	@Override
-	public List<UserRegister> findUserById(int userid) throws Exception {
+	public List<UserRegister> findUserById(int userid) throws DBException {
 		List<UserRegister> userregister = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -175,7 +175,7 @@ public class UserRegisterDAOImpl implements UserRegisterDAO {
 	 * @throws Exception
 	 */
 	@Override
-	public int findNoOfUsers() throws Exception {
+	public int findNoOfUsers() throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
