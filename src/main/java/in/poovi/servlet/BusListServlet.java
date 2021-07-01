@@ -19,6 +19,7 @@ public class BusListServlet extends HttpServlet {
 		super();
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
@@ -34,7 +35,6 @@ public class BusListServlet extends HttpServlet {
 			BusDetails bus = new BusDetails(agency, busno, bustype, source, destination, amount);
 			BusDetailsService busdetailsservice = new BusDetailsService();
 			busdetailsservice.addBusDetails(bus);
-
 			String message = "added";
 			response.sendRedirect("BusList.jsp?infomessage=" + message);
 

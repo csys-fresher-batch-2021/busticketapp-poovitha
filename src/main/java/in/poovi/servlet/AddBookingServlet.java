@@ -19,7 +19,7 @@ public class AddBookingServlet extends HttpServlet {
 	public AddBookingServlet() {
 		super();
 	}
-
+@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {

@@ -21,7 +21,7 @@ public class SeatAvailableService {
 	 * @throws Exception
 	 */
 
-	public List<SeatAvailable> getAllAvailableSeat() throws Exception {
+	public List<SeatAvailable> getAllAvailableSeat() throws DBException {
 		return seatavailableDAO.findAll();
 	}
 
