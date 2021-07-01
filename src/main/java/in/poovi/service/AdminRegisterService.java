@@ -22,7 +22,7 @@ public class AdminRegisterService {
 	 * @return allAdminRegister
 	 * @throws Exception
 	 */
-	public List<AdminRegister> getallAdminDetails() throws Exception {
+	public List<AdminRegister> getallAdminDetails() throws DBException {
 		return adminregisterDAO.findAll();
 	}
 
@@ -30,10 +30,11 @@ public class AdminRegisterService {
 	 * This method is used to add the admin .......
 	 * 
 	 * @param adminregister
+	 * @throws ServiceException 
 	 * @throws Exception
 	 */
 
-	public void saveAdmin(AdminRegister adminregister) throws Exception {
+	public void saveAdmin(AdminRegister adminregister) throws DBException, ServiceException {
 		if (adminregister.getAdminName() == null || "".equals(adminregister.getAdminName().trim())
 				|| adminregister.getAdminName().length() < 4) {
 			throw new ServiceException(MessageConstants.INVALID_NAME);
@@ -61,7 +62,7 @@ public class AdminRegisterService {
 	 * @return adminDetails
 	 * @throws Exception
 	 */
-	public List<AdminRegister> findByAdminId(int adminid) throws Exception {
+	public List<AdminRegister> findByAdminId(int adminid) throws DBException {
 		return adminregisterDAO.findByAdminId(adminid);
 	}
 

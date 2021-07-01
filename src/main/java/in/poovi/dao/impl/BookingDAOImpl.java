@@ -12,11 +12,15 @@ import java.util.List;
 
 import in.poovi.dao.BookingDAO;
 import in.poovi.exception.DBException;
+import in.poovi.logger.Logger;
 import in.poovi.message.MessageConstants;
 import in.poovi.model.Booking;
 import in.poovi.util.ConnectionUtil;
 
 public class BookingDAOImpl implements BookingDAO {
+
+	private static final String BUSNUMBER = "busnumber";
+	private static final String AMOUNT = "amount";
 
 	/**
 	 * This method is used to list the all booking details
@@ -26,7 +30,7 @@ public class BookingDAOImpl implements BookingDAO {
 	 */
 
 	@Override
-	public List<Booking> findAll() throws Exception {
+	public List<Booking> findAll() throws DBException {
 		List<Booking> booking = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -44,9 +48,9 @@ public class BookingDAOImpl implements BookingDAO {
 				String source = rs.getString("source");
 				String destination = rs.getString("destination");
 				String agency = rs.getString("agency");
-				int busnumber = rs.getInt("busnumber");
+				int busnumber = rs.getInt(BUSNUMBER);
 				String bustype = rs.getString("bustype");
-				double amount = rs.getDouble("amount");
+				double amount = rs.getDouble(AMOUNT);
 				int noofTickets = rs.getInt("nooftickets");
 				double totalAmount = rs.getDouble("totalamount");
 				String status = rs.getString("status");
@@ -68,10 +72,8 @@ public class BookingDAOImpl implements BookingDAO {
 
 			}
 		} catch (Exception e) {
-
-			e.printStackTrace();
-			throw new DBException("no data found");
-
+			Logger.error(e);
+			throw new DBException(e, "no data found");
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
@@ -86,7 +88,7 @@ public class BookingDAOImpl implements BookingDAO {
 	 * @throws Exception
 	 */
 	@Override
-	public void addReservation(Booking booking) throws Exception {
+	public void addReservation(Booking booking) throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		String sql = "insert into booking(bookingno,pid,source,destination,agency,busnumber,bustype,amount,nooftickets,totalamount,bookingDate,journeyDate,status) values ( ?,?,?,?,?,?,?,?,?,?,?,?,? )";
@@ -109,8 +111,8 @@ public class BookingDAOImpl implements BookingDAO {
 			pst.executeUpdate();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
+			Logger.error(e);
+			throw new DBException(e, MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 
 		} finally {
 			ConnectionUtil.close(pst, connection);
@@ -137,8 +139,8 @@ public class BookingDAOImpl implements BookingDAO {
 			System.out.println("no of rows deleted" + rows + bookingno);
 
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
+			Logger.error(e);
+			throw new DBException(e, MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -164,9 +166,9 @@ public class BookingDAOImpl implements BookingDAO {
 				booking.setSource(rs.getString("source"));
 				booking.setDestination(rs.getString("destination"));
 				booking.setAgency(rs.getString("agency"));
-				booking.setBusnumber(rs.getInt("busnumber"));
+				booking.setBusnumber(rs.getInt(BUSNUMBER));
 				booking.setBusType(rs.getString("bustype"));
-				booking.setAmount(rs.getDouble("amount"));
+				booking.setAmount(rs.getDouble(AMOUNT));
 				booking.setNoOfTickets(rs.getInt("nooftickets"));
 				booking.setTotalAmount(rs.getDouble("totalamount"));
 				booking.setBookingDate(rs.getTimestamp("bookingDate").toLocalDateTime());
@@ -175,8 +177,8 @@ public class BookingDAOImpl implements BookingDAO {
 				myTicket.add(booking);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
+			Logger.error(e);
+			throw new DBException(e, MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
@@ -204,16 +206,15 @@ public class BookingDAOImpl implements BookingDAO {
 			pst.setInt(1, b_no);
 			rs = pst.executeQuery();
 			System.out.println("busnumber " + b_no);
-			if(rs.next()) {
-				amount = rs.getDouble("amount");
+			if (rs.next()) {
+				amount = rs.getDouble(AMOUNT);
 				System.out.println(amount);
-			}
-			else {
-				throw new DBException("not found");
+			} else {
+				throw new Exception("not found");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
+			Logger.error(e);
+			throw new DBException(e, MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 
@@ -233,7 +234,7 @@ public class BookingDAOImpl implements BookingDAO {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		HashMap<Integer, Integer> total = new HashMap<Integer, Integer>();
+		HashMap<Integer, Integer> total = new HashMap<>();
 
 		String sql = "select busnumber,sum(nooftickets) as filledSeat from booking group by busnumber";
 		try {
@@ -242,13 +243,13 @@ public class BookingDAOImpl implements BookingDAO {
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				filledSeat = rs.getInt("filledSeat");
-				int bookingno = rs.getInt("busnumber");
+				int bookingno = rs.getInt(BUSNUMBER);
 				total.put(bookingno, filledSeat);
 
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
+			Logger.error(e);
+			throw new DBException(e, MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 
@@ -256,6 +257,7 @@ public class BookingDAOImpl implements BookingDAO {
 		return total;
 
 	}
+
 	@Override
 	public LocalDateTime findAvailableDate(int busnumber) throws DBException {
 		LocalDateTime availableDate = null;
@@ -269,15 +271,14 @@ public class BookingDAOImpl implements BookingDAO {
 			pst.setInt(1, busnumber);
 			rs = pst.executeQuery();
 			System.out.println("busnumber " + busnumber);
-			if(rs.next()) {
+			if (rs.next()) {
 				availableDate = rs.getTimestamp("availableDate").toLocalDateTime();
-			}
-			else {
-				throw new DBException("Date Expired");
+			} else {
+				throw new Exception("Date Expired");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
+			Logger.error(e);
+			throw new DBException(e, MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 
@@ -285,5 +286,4 @@ public class BookingDAOImpl implements BookingDAO {
 		return availableDate;
 	}
 
-	
 }

@@ -30,7 +30,7 @@ public interface BusDetailsDAO {
 	 * 
 	 * @param agency
 	 */
-	void deleteBus(int b_no);
+	void deleteBus(int bno);
 
 	/**
 	 * This method is used to count the Number of buses.....
@@ -38,7 +38,7 @@ public interface BusDetailsDAO {
 	 * @return usercount
 	 * @throws Exception
 	 */
-	int noOfBuses() throws Exception;
+	int noOfBuses() throws DBException;
 
 	/**
 	 * This method is used to list the number of buslist......
@@ -46,7 +46,7 @@ public interface BusDetailsDAO {
 	 * @return obj
 	 * @throws Exception
 	 */
-	HashMap<String, Integer> noOfBuslist() throws Exception;
+	HashMap<String, Integer> noOfBuslist() throws DBException;
 
 	/**
 	 * This method is used to display the stationlist.....

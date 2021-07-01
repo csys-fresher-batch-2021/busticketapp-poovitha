@@ -21,17 +21,16 @@ public class BusListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String agency = request.getParameter("agency");
-		System.out.println(agency + agency.length());
-		String busNo=request.getParameter("b_no");
-		int busno = Integer.parseInt(busNo);
-		String bustype = request.getParameter("bustype");
-		String source = request.getParameter("source");
-		String destination = request.getParameter("destination");
-		String amt=request.getParameter("amount");
-		double amount = Integer.parseInt(amt);
 		try {
+			String agency = request.getParameter("agency");
+			System.out.println(agency + agency.length());
+			String busNo = request.getParameter("b_no");
+			int busno = Integer.parseInt(busNo);
+			String bustype = request.getParameter("bustype");
+			String source = request.getParameter("source");
+			String destination = request.getParameter("destination");
+			String amt = request.getParameter("amount");
+			double amount = Integer.parseInt(amt);
 			BusDetails bus = new BusDetails(agency, busno, bustype, source, destination, amount);
 			BusDetailsService busdetailsservice = new BusDetailsService();
 			busdetailsservice.addBusDetails(bus);

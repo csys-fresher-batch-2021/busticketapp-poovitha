@@ -5,6 +5,7 @@ import java.util.Set;
 
 import in.poovi.dao.BusDetailsDAO;
 import in.poovi.dao.impl.BusDetailsDAOImpl;
+import in.poovi.logger.Logger;
 
 public class NoOfBuslistTest {
 	/**
@@ -17,11 +18,11 @@ public class NoOfBuslistTest {
 		BusDetailsDAO busdetailDAO = new BusDetailsDAOImpl();
 		HashMap<String, Integer> buslist = busdetailDAO.noOfBuslist();
 		Set<String> keyset = buslist.keySet();
-		System.out.println("Agency | Count");
+		Logger.log("Agency | Count");
 		int count = 0;
 		for (String agency : keyset) {
 			count = buslist.get(agency);
-			System.out.println( agency + "\t\t" + count);
+			Logger.log( agency + "\t\t" + count);
 
 		}
 	}

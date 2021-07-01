@@ -10,17 +10,20 @@ import java.util.List;
 
 import in.poovi.dao.BusDetailsDAO;
 import in.poovi.exception.DBException;
+import in.poovi.logger.Logger;
 import in.poovi.message.MessageConstants;
 import in.poovi.model.BusDetails;
 import in.poovi.model.SeatAvailable;
 import in.poovi.util.ConnectionUtil;
 
 public class BusDetailsDAOImpl implements BusDetailsDAO {
+	private static final String AGENCY = "agency";
+
 	/**
 	 * This method is used to list the all busdetails
 	 * 
 	 * @return busdetails
-	 * @throws DBException 
+	 * @throws DBException
 	 */
 
 	@Override
@@ -37,7 +40,7 @@ public class BusDetailsDAOImpl implements BusDetailsDAO {
 			busDetails = new ArrayList<>();
 
 			while (rs.next()) {
-				String agency = rs.getString("agency");
+				String agency = rs.getString(AGENCY);
 				int busnumber = rs.getInt("b_no");
 				String bustype = rs.getString("bustype");
 				String source = rs.getString("source");
@@ -54,8 +57,8 @@ public class BusDetailsDAOImpl implements BusDetailsDAO {
 
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			throw new DBException("unable to execute query");
+			Logger.error(e);
+			throw new DBException(e, "unable to execute query");
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
@@ -84,11 +87,11 @@ public class BusDetailsDAOImpl implements BusDetailsDAO {
 			pst.setString(4, busdetails.getSource());
 			pst.setString(5, busdetails.getDestination());
 			pst.setDouble(6, busdetails.getAmount());
-            pst.executeUpdate();
+			pst.executeUpdate();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
+			Logger.error(e);
+			throw new DBException(e, MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -100,7 +103,7 @@ public class BusDetailsDAOImpl implements BusDetailsDAO {
 	 * @param agency
 	 */
 	@Override
-	public void deleteBus(int b_no) {
+	public void deleteBus(int bno) {
 		Connection connection = null;
 		PreparedStatement pst = null;
 
@@ -108,12 +111,12 @@ public class BusDetailsDAOImpl implements BusDetailsDAO {
 		try {
 			connection = ConnectionUtil.getConnection();
 			pst = connection.prepareStatement(sql);
-			pst.setInt(1, b_no);
+			pst.setInt(1, bno);
 			int rows = pst.executeUpdate();
-			System.out.println("no of rows deleted" + rows + b_no );
+			System.out.println("no of rows deleted" + rows + bno);
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Logger.error(e);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -126,7 +129,7 @@ public class BusDetailsDAOImpl implements BusDetailsDAO {
 	 * @throws Exception
 	 */
 	@Override
-	public int noOfBuses() throws Exception {
+	public int noOfBuses() throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
@@ -140,8 +143,8 @@ public class BusDetailsDAOImpl implements BusDetailsDAO {
 				buscount = rs.getInt("buscount");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			throw new DBException("no data found");
+			Logger.error(e);
+			throw new DBException(e, "no data found");
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
@@ -155,7 +158,7 @@ public class BusDetailsDAOImpl implements BusDetailsDAO {
 	 * @throws Exception
 	 */
 	@Override
-	public HashMap<String, Integer> noOfBuslist() throws Exception {
+	public HashMap<String, Integer> noOfBuslist() throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
@@ -167,13 +170,14 @@ public class BusDetailsDAOImpl implements BusDetailsDAO {
 			pst = connection.prepareStatement(sql);
 			rs = pst.executeQuery();
 			while (rs.next()) {
-				String agency = rs.getString("agency");
+				String agency = rs.getString(AGENCY);
 				int count = rs.getInt("cnt");
 				obj.put(agency, count);
 			}
 
 		} catch (SQLException e) {
-			throw new Exception(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
+			Logger.error(e);
+			throw new DBException(e, MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
@@ -206,7 +210,7 @@ public class BusDetailsDAOImpl implements BusDetailsDAO {
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				BusDetails busdetails = new BusDetails();
-				busdetails.setAgency(rs.getString("agency"));
+				busdetails.setAgency(rs.getString(AGENCY));
 				busdetails.setBusnumber(rs.getInt("b_no"));
 				busdetails.setBusType(rs.getString("bustype"));
 				busdetails.setSource(rs.getString("source"));
@@ -216,15 +220,16 @@ public class BusDetailsDAOImpl implements BusDetailsDAO {
 				s.setTotalSeat(rs.getInt("totalseat"));
 				s.setAvailableSeat(rs.getInt("availableseat"));
 				s.setAvailableDate(rs.getTimestamp("availableDate").toLocalDateTime());
-                busdetails.setSeatavailable(s);
+				busdetails.setSeatavailable(s);
 				stationlist.add(busdetails);
 
 			}
 		} catch (SQLException e) {
-			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
+			Logger.error(e);
+			throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
-			}
+		}
 		return stationlist;
 	}
 }

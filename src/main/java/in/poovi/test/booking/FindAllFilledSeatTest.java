@@ -6,6 +6,7 @@ import java.util.Set;
 import in.poovi.dao.BookingDAO;
 import in.poovi.dao.impl.BookingDAOImpl;
 import in.poovi.exception.DBException;
+import in.poovi.logger.Logger;
 
 public class FindAllFilledSeatTest {
 
@@ -13,11 +14,11 @@ public class FindAllFilledSeatTest {
 		BookingDAO bookingDAO = new BookingDAOImpl();
 		HashMap<Integer, Integer> total = bookingDAO.findFilledSeats();
 		Set<Integer> keyset = total.keySet();
-		System.out.println("busnumber | filledSeat");
+		Logger.log("busnumber | filledSeat");
 		Integer filledSeat;
 		for (Integer busnumber : keyset) {
 			filledSeat = total.get(busnumber);
-			System.out.println(busnumber + "\t\t" + filledSeat);
+			Logger.log(busnumber + "\t\t" + filledSeat);
 
 		}
 	}

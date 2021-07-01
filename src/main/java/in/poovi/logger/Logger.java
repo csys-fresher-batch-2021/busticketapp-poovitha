@@ -14,12 +14,15 @@ public class Logger {
 		System.out.println(message);
 	}
 
-	public void error(Object message) {
-		System.out.println(message);
+	public static void error(Exception e) {
+		e.printStackTrace();
 	}
 
 	public void input(Object message) {
 		System.out.println(message);
 	}
 
+	public static void log(String message) {
+		System.out.println(message);
+	}
 }

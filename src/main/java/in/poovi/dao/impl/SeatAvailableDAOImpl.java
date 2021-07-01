@@ -11,6 +11,7 @@ import java.util.List;
 
 import in.poovi.dao.SeatAvailableDAO;
 import in.poovi.exception.DBException;
+import in.poovi.logger.Logger;
 import in.poovi.message.MessageConstants;
 import in.poovi.model.SeatAvailable;
 import in.poovi.util.ConnectionUtil;
@@ -48,8 +49,8 @@ public class SeatAvailableDAOImpl implements SeatAvailableDAO {
 				seatavailable.add(seat);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			throw new DBException("no data found");
+			Logger.error(e);
+			throw new DBException(e,"no data found");
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
@@ -78,8 +79,8 @@ public class SeatAvailableDAOImpl implements SeatAvailableDAO {
 			pst.executeUpdate();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
+			Logger.error(e);
+			throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -104,8 +105,8 @@ public class SeatAvailableDAOImpl implements SeatAvailableDAO {
 			int rows = pst.executeUpdate();
 			System.out.println("no of rows deleted " + rows + busnumber);
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DBException("no data found");
+			Logger.error(e);
+			throw new DBException(e,"no data found");
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -131,8 +132,8 @@ public class SeatAvailableDAOImpl implements SeatAvailableDAO {
 			int rows = pst.executeUpdate();
 			System.out.println("update seatavailable " + rows + busnumber + availableseat);
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DBException("unable to execute query");
+			Logger.error(e);
+			throw new DBException(e,"unable to execute query");
 		} finally {
 			ConnectionUtil.close(pst, connection);
 
@@ -164,8 +165,8 @@ public class SeatAvailableDAOImpl implements SeatAvailableDAO {
 				availableSeats = rs.getInt("availableseat");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
+			Logger.error(e);
+			throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
@@ -195,8 +196,8 @@ public class SeatAvailableDAOImpl implements SeatAvailableDAO {
 			int rows = pst.executeUpdate();
 			System.out.println("update seatavailable " + rows + busnumber);
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY); 
+			Logger.error(e);
+			throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY); 
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -216,8 +217,8 @@ public class SeatAvailableDAOImpl implements SeatAvailableDAO {
 			int rows = pst.executeUpdate();
 			System.out.println("update seatavailable " + rows + busnumber);
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY); 
+			Logger.error(e);
+			throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY); 
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -237,8 +238,8 @@ public class SeatAvailableDAOImpl implements SeatAvailableDAO {
 			int rows = pst.executeUpdate();
 			System.out.println("update Date " + rows + busnumber);
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY); 
+			Logger.error(e);
+			throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY); 
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}

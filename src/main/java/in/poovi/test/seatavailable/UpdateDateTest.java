@@ -9,7 +9,7 @@ import in.poovi.exception.DBException;
 import in.poovi.model.SeatAvailable;
 
 public class UpdateDateTest {
-	final static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+	static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
 	public static void main(String[] args) throws DBException {
 		SeatAvailable seatavailable = new SeatAvailable();

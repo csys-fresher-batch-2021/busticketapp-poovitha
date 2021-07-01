@@ -39,6 +39,6 @@ public interface AdminRegisterDAO {
 	 * @return adminregister
 	 * @throws Exception
 	 */
-	List<AdminRegister> findByAdminId(int adminid) throws Exception;
+	List<AdminRegister> findByAdminId(int adminid) throws DBException;
 
 }

@@ -2,6 +2,7 @@ package in.poovi.test.busdetails;
 
 import in.poovi.dao.BusDetailsDAO;
 import in.poovi.dao.impl.BusDetailsDAOImpl;
+import in.poovi.logger.Logger;
 
 public class DeleteBusDetailsTest {
 	/**
@@ -10,7 +11,7 @@ public class DeleteBusDetailsTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println("Delete Bus:");
+		Logger.log("Delete Bus:");
 		int busnumber =1006;
 		BusDetailsDAO busdetailsDAO = new BusDetailsDAOImpl();
 		busdetailsDAO.deleteBus(busnumber);

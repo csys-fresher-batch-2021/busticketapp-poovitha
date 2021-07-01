@@ -7,7 +7,7 @@ import in.poovi.model.Booking;
 import in.poovi.service.BookingService;
 
 public class AddReservationTest {
-	final static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+	 static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
 	/**
 	 * This main method for add the reservartion from the users....
@@ -16,7 +16,7 @@ public class AddReservationTest {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
-		int bookingno = 10008;
+		int bookingno = 10009;
 		int pid = 105;
 		String source = "madurai";
 		String destination = "chennai";

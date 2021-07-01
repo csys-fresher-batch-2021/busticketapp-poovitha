@@ -9,6 +9,7 @@ import java.util.List;
 
 import in.poovi.dao.AdminRegisterDAO;
 import in.poovi.exception.DBException;
+import in.poovi.logger.Logger;
 import in.poovi.message.MessageConstants;
 import in.poovi.model.AdminRegister;
 import in.poovi.util.ConnectionUtil;
@@ -46,8 +47,8 @@ public class AdminRegisterDAOImpl implements AdminRegisterDAO {
 
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
+			Logger.error(e);
+			throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
@@ -75,8 +76,8 @@ public class AdminRegisterDAOImpl implements AdminRegisterDAO {
 			pst.executeUpdate();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
+			Logger.error(e);
+			throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -102,8 +103,8 @@ public class AdminRegisterDAOImpl implements AdminRegisterDAO {
 			System.out.println("no of rows deleted" + rows + adminId);
 
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
+			Logger.error(e);
+			throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -117,7 +118,7 @@ public class AdminRegisterDAOImpl implements AdminRegisterDAO {
 	 * @throws Exception
 	 */
 	@Override
-	public List<AdminRegister> findByAdminId(int adminid) throws Exception {
+	public List<AdminRegister> findByAdminId(int adminid) throws DBException {
 		List<AdminRegister> adminregister = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -140,9 +141,9 @@ public class AdminRegisterDAOImpl implements AdminRegisterDAO {
 				adminregister.add(admin);
 
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
+		} catch (SQLException e) {
+			Logger.error(e);
+			throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 

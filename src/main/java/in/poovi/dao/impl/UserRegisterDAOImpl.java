@@ -9,6 +9,7 @@ import java.util.List;
 
 import in.poovi.dao.UserRegisterDAO;
 import in.poovi.exception.DBException;
+import in.poovi.logger.Logger;
 import in.poovi.message.MessageConstants;
 import in.poovi.model.UserRegister;
 import in.poovi.util.ConnectionUtil;
@@ -53,8 +54,8 @@ public class UserRegisterDAOImpl implements UserRegisterDAO {
 
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			throw new DBException("no data found");
+			Logger.error(e);
+			throw new DBException(e,"no data found");
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
@@ -86,8 +87,8 @@ public class UserRegisterDAOImpl implements UserRegisterDAO {
 			System.out.println(row);
 
 		} catch (SQLException e) {
-			e.printStackTrace();
-		throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
+			Logger.error(e);
+		throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -113,8 +114,8 @@ public class UserRegisterDAOImpl implements UserRegisterDAO {
 			int rows = pst.executeUpdate();
 			System.out.println("update user " + rows + username + mobileno);
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
+			Logger.error(e);
+			throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 
@@ -159,8 +160,8 @@ public class UserRegisterDAOImpl implements UserRegisterDAO {
 
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			throw new DBException(MessageConstants.UNABLE_TO_EXECUTE_QUERY);
+			Logger.error(e);
+			throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
@@ -188,8 +189,8 @@ public class UserRegisterDAOImpl implements UserRegisterDAO {
 				usercount = rs.getInt("usercount");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			throw new DBException("no data found");
+			Logger.error(e);
+			throw new DBException(e,"no data found");
 		} finally {
 			ConnectionUtil.close(connection, pst, rs);
 		}
