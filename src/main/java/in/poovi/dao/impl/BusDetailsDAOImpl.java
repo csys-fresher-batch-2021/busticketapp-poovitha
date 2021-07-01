@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import in.poovi.dao.BusDetailsDAO;
 import in.poovi.exception.DBException;
@@ -158,11 +159,11 @@ public class BusDetailsDAOImpl implements BusDetailsDAO {
 	 * @throws Exception
 	 */
 	@Override
-	public HashMap<String, Integer> noOfBuslist() throws DBException {
+	public Map<String, Integer> noOfBuslist() throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		HashMap<String, Integer> obj = new HashMap<>();
+		Map<String, Integer> obj = new HashMap<>();
 
 		String sql = "select agency,count(*) as cnt from  busdetails group by agency";
 		try {

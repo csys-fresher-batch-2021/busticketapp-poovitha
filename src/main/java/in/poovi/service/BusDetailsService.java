@@ -1,8 +1,8 @@
 package in.poovi.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import in.poovi.dao.BusDetailsDAO;
 import in.poovi.dao.impl.BusDetailsDAOImpl;
@@ -10,6 +10,7 @@ import in.poovi.exception.DBException;
 import in.poovi.exception.ServiceException;
 import in.poovi.exception.ValidationException;
 import in.poovi.model.BusDetails;
+import sun.security.validator.ValidatorException;
 
 public class BusDetailsService {
 
@@ -58,7 +59,7 @@ public class BusDetailsService {
 	 * @return noofBuses
 	 * @throws Exception
 	 */
-	int noOfBuses() throws Exception {
+	int noOfBuses() throws DBException {
 		return busdetailsDAO.noOfBuses();
 	}
 
@@ -107,7 +108,7 @@ public class BusDetailsService {
 	 * @return
 	 * @throws Exception
 	 */
-	public HashMap<String, Integer> noOfBuslist() throws Exception {
+	public Map<String, Integer> noOfBuslist() throws DBException {
 		return busdetailsDAO.noOfBuslist();
 	}
 

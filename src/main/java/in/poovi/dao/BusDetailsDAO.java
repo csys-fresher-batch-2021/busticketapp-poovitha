@@ -1,7 +1,7 @@
 package in.poovi.dao;
 
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import in.poovi.exception.DBException;
 import in.poovi.model.BusDetails;
@@ -46,7 +46,7 @@ public interface BusDetailsDAO {
 	 * @return obj
 	 * @throws Exception
 	 */
-	HashMap<String, Integer> noOfBuslist() throws DBException;
+	Map<String, Integer> noOfBuslist() throws DBException;
 
 	/**
 	 * This method is used to display the stationlist.....

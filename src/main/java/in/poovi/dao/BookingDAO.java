@@ -50,7 +50,7 @@ public interface BookingDAO {
 	 * @return amount
 	 * @throws DBException
 	 */
-	double findTicketCost(int b_no) throws DBException;
+	double findTicketCost(int bno) throws DBException;
 
 	/**
 	 * This method is used to display the filled seats

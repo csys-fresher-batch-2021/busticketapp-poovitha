@@ -112,7 +112,7 @@ public class UserRegisterDAOImpl implements UserRegisterDAO {
 			pst.setString(2, username);
 			pst.setLong(1, mobileno);
 			int rows = pst.executeUpdate();
-			System.out.println("update user " + rows + username + mobileno);
+			Logger.log("update user " + rows + username + mobileno);
 		} catch (SQLException e) {
 			Logger.error(e);
 			throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY);

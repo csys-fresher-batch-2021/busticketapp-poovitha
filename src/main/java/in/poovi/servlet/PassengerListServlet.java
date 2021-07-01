@@ -19,16 +19,15 @@ public class PassengerListServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-
 			throws ServletException, IOException {
 		try {
 			String pname = request.getParameter("pname");
-			String pId=request.getParameter("pid");
+			String pId = request.getParameter("pid");
 			int pid = Integer.parseInt(pId);
-            String pAge=request.getParameter("page");
+			String pAge = request.getParameter("page");
 			int page = Integer.parseInt(pAge);
 			String pgender = request.getParameter("pgender");
-			String pMobileno=request.getParameter("pmobileno");
+			String pMobileno = request.getParameter("pmobileno");
 			long pmobileno = Long.parseLong(pMobileno);
 			boolean isadded = false;
 			isadded = PassengerService.addpassenger(pname, pid, page, pgender, pmobileno);
