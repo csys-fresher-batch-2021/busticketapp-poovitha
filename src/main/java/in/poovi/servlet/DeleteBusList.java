@@ -30,7 +30,7 @@ public class DeleteBusList extends HttpServlet {
 			BusDetailsService.deleteBus(busnumber);
 			String infomessage="sucessfully added";
 			response.sendRedirect("BusList.jsp?infomessage=" +infomessage);
-		} catch (ServiceException | DBException e) {
+		} catch (ServiceException | DBException e) { 
 			e.printStackTrace();
 			response.sendRedirect("AddBusList.jsp?");
 		}

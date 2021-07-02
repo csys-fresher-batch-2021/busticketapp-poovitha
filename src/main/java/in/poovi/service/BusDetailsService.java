@@ -9,7 +9,6 @@ import in.poovi.exception.DBException;
 import in.poovi.exception.ServiceException;
 import in.poovi.exception.ValidationException;
 import in.poovi.model.BusDetails;
-import sun.security.validator.ValidatorException;
 
 public class BusDetailsService {
 
@@ -43,8 +42,9 @@ public class BusDetailsService {
 	 * This method is used to delete the bus details
 	 * 
 	 * @param busnumber
+	 * @throws DBException 
 	 */
-	public static void deleteBus(int busnumber) throws DBException{
+	public static void deleteBus(int busnumber) throws ServiceException, DBException{
 
 		busdetailsDAO.deleteBus(busnumber);
 
