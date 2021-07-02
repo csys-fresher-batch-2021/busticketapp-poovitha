@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import in.poovi.exception.DBException;
+import in.poovi.exception.ServiceException;
 import in.poovi.model.Booking;
 import in.poovi.service.BookingService;
 
@@ -48,7 +50,7 @@ public class AddBookingServlet extends HttpServlet {
 					nooftickets, totalamount, bookingdate, journeydate, status);
 			BookingService bookingservice = new BookingService();
 			bookingservice.addReservation(booking);
-		} catch (Exception e) {
+		} catch (ServiceException | DBException e) {
 			e.printStackTrace();
 		}
 

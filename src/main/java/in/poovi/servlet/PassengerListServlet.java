@@ -39,7 +39,7 @@ public class PassengerListServlet extends HttpServlet {
 			}
 		} catch (ServiceException e) {
 			String message=e.getMessage();
-			response.sendRedirect("AddPassengerList.jsp" +message);
+			response.sendRedirect("AddPassengerList.jsp?errormessage=" +message);
 		}
 	}
 
