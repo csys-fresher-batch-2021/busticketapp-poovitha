@@ -3,6 +3,7 @@ package in.poovi.test.adminregister;
 import in.poovi.dao.AdminRegisterDAO;
 import in.poovi.dao.impl.AdminRegisterDAOImpl;
 import in.poovi.exception.DBException;
+import in.poovi.logger.Logger;
 
 public class DeleteAdminTest {
 	/**
@@ -16,7 +17,7 @@ public class DeleteAdminTest {
 		AdminRegisterDAO adminregisterDAO=new AdminRegisterDAOImpl();
 		int adminId=1000;
 		adminregisterDAO.deleteAdmin(adminId);
-		System.out.println("deleted " +adminId );
+		Logger.log("deleted " +adminId );
 	}
 
 }

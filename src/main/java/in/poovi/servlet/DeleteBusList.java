@@ -24,7 +24,7 @@ public class DeleteBusList extends HttpServlet {
 		try {
 			String busNumber = request.getParameter("busnumber");
 			int busnumber=Integer.parseInt(busNumber);
-			Logger.log("Agency=" + busnumber);
+			Logger.log("busnumber=" + busnumber);
 			BusDetailsService.deleteBus(busnumber);
 			response.sendRedirect("BusList.jsp");
 		} catch (Exception e) {

@@ -1,10 +1,10 @@
 package in.poovi.test.busroute;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.dao.impl.BusRouteDAOImpl;
 import in.poovi.exception.DBException;
+import in.poovi.logger.Logger;
 import in.poovi.model.BusRoute;
 
 public class BusRouteTest {
@@ -17,9 +17,8 @@ public class BusRouteTest {
 	 */
 	public static void main(String[] args) throws DBException {
 		BusRouteDAOImpl busrouteDAO=new BusRouteDAOImpl();
-		List<BusRoute> busroute =new ArrayList<>();
-		busroute=busrouteDAO.findAll();
-		System.out.println(busroute);
+		List<BusRoute> busroute =busrouteDAO.findAll();
+		Logger.info(busroute);
 
 		
 	}

@@ -1,6 +1,10 @@
 package in.poovi.message;
 
 public class MessageConstants {
+	
+	private MessageConstants(){
+		
+	}
 
 	/**
 	 * Indicates a invalid name during data entered.....

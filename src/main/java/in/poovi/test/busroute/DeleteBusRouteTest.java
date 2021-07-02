@@ -2,6 +2,7 @@ package in.poovi.test.busroute;
 
 import in.poovi.dao.impl.BusRouteDAOImpl;
 import in.poovi.exception.DBException;
+import in.poovi.logger.Logger;
 
 public class DeleteBusRouteTest {
 
@@ -15,7 +16,7 @@ public class DeleteBusRouteTest {
      BusRouteDAOImpl busrouteDAO=new BusRouteDAOImpl();
      int routeno=1;
      busrouteDAO.deleteRoute(routeno);
-     System.out.println("deleted" + routeno);
+     Logger.log("deleted" + routeno);
 		
 	}
 

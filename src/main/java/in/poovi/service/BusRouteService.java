@@ -1,6 +1,5 @@
 package in.poovi.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.dao.impl.BusRouteDAOImpl;
@@ -10,9 +9,7 @@ import in.poovi.model.BusRoute;
 
 public class BusRouteService {
 
-	public static final List<BusRoute> busroute = new ArrayList<>();
-
-	static BusRouteDAOImpl busrouteDAO = new BusRouteDAOImpl();
+	private static BusRouteDAOImpl busrouteDAO = new BusRouteDAOImpl();
 
 	/**
 	 * This method is used to display the all routes....

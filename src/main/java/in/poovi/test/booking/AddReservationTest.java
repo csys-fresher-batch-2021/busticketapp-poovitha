@@ -3,6 +3,7 @@ package in.poovi.test.booking;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import in.poovi.logger.Logger;
 import in.poovi.model.Booking;
 import in.poovi.service.BookingService;
 
@@ -33,7 +34,7 @@ public class AddReservationTest {
 				nooftickets, totalamount, bookingDate, journeyDate, status);
 		BookingService bookingservice = new BookingService();
 		bookingservice.addReservation(booking);
-		System.out.println(booking);
+		Logger.info(booking);
 	}
 
 }

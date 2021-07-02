@@ -1,7 +1,6 @@
 package in.poovi.service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -13,9 +12,7 @@ import in.poovi.model.Booking;
 
 public class BookingService {
 
-	public static final List<Booking> booking = new ArrayList<>();
-
-	static BookingDAO bookingDAO = new BookingDAOImpl();
+	private static BookingDAO bookingDAO = new BookingDAOImpl();
 
 	/**
 	 * This method is used to display the all booking details
@@ -31,7 +28,7 @@ public class BookingService {
 	 * This method is used to add the booking
 	 * 
 	 * @param bus
-	 * @throws ServiceException 
+	 * @throws ServiceException
 	 * @throws Exception
 	 */
 	public void addReservation(Booking book) throws DBException, ServiceException {
@@ -49,10 +46,9 @@ public class BookingService {
 		try {
 			LocalDateTime availableDate = bookingDAO.findAvailableDate(book.getBusnumber());
 			LocalDateTime journeyDate = availableDate;
-			if(journeyDate.isAfter(LocalDateTime.now())) {
-			book.setJourneyDate(journeyDate);
-			}
-			else {
+			if (journeyDate.isAfter(LocalDateTime.now())) {
+				book.setJourneyDate(journeyDate);
+			} else {
 				throw new ServiceException("Date expired");
 			}
 		} catch (Exception e) {

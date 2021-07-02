@@ -11,7 +11,7 @@ public class PassengerService {
 
 	}
 
-	public static final PassengerDAO passengerdao = new PassengerDAO();
+	private static final PassengerDAO passengerdao = new PassengerDAO();
 
 	/**
 	 * This method is used to add the passenger......
@@ -67,8 +67,6 @@ public class PassengerService {
 
 		if (searchpassenger != null) {
 			passengers.remove(searchpassenger);
-
-			System.out.println("delete");
 		}
 		return;
 	}

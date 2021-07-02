@@ -1,6 +1,7 @@
 package in.poovi.test.login;
 
 import in.poovi.exception.ValidationException;
+import in.poovi.logger.Logger;
 import in.poovi.service.LoginService;
 
 public class UserLoginTest {
@@ -16,11 +17,11 @@ public class UserLoginTest {
 		String password="ravi12345";
 		boolean valid=LoginService.userLogin(username,password);
 		if(valid) {
-			System.out.println("login success");
+			Logger.log("login success");
 		}
 
 		else {
-			System.out.println("invalid login");
+			Logger.log("invalid login");
 		}
 	}
 

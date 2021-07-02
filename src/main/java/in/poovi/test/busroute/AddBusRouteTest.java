@@ -2,6 +2,7 @@ package in.poovi.test.busroute;
 
 import in.poovi.exception.DBException;
 import in.poovi.exception.ServiceException;
+import in.poovi.logger.Logger;
 import in.poovi.model.BusRoute;
 import in.poovi.service.BusRouteService;
 
@@ -21,7 +22,7 @@ public class AddBusRouteTest {
 		BusRoute busroute=new BusRoute(routeno,source,destination);
 		BusRouteService busrouteservice=new BusRouteService();
 		busrouteservice.addRouteList(busroute);
-		System.out.println(busroute);
+		Logger.info(busroute);
 		
 	}
 

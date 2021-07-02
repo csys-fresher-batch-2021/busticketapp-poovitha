@@ -27,7 +27,6 @@ public class Display {
 	public static boolean addList(String from, String to) {
 		boolean isAdded = false;
 		list.add(new MyList(from, to));
-		// list.add(to);
 		isAdded = true;
 		return isAdded;
 	}
