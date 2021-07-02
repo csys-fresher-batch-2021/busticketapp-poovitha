@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import in.poovi.exception.ServiceException;
 import in.poovi.service.Display;
 
 
@@ -34,8 +35,8 @@ public class AddServlet extends HttpServlet {
 			}
 		
 
-		} catch (Exception e) {
-			String errorMessage = "add";
+		} catch (ServiceException e) {
+			String errorMessage = "added";
 			response.sendRedirect("addList.jsp?errorMessage=" + errorMessage);
 		}
 

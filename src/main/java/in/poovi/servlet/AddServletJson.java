@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.JsonObject;
 
+import in.poovi.exception.ServiceException;
 import in.poovi.service.Display;
 
 @WebServlet("/AddServletJson")
@@ -32,7 +33,7 @@ public class AddServletJson extends HttpServlet {
 			JsonObject object = new JsonObject();
 			object.addProperty("infoMessage", "Successfully Added");
 			out.println(object);
-		} catch (Exception e) {
+		} catch (ServiceException e) {
 			e.printStackTrace();
 			JsonObject object = new JsonObject();
 			object.addProperty("errorMessage", e.getMessage());

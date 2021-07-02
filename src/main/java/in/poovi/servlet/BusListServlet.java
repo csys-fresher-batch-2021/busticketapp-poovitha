@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import in.poovi.exception.DBException;
+import in.poovi.exception.ServiceException;
 import in.poovi.model.BusDetails;
 import in.poovi.service.BusDetailsService;
 
@@ -38,7 +40,7 @@ public class BusListServlet extends HttpServlet {
 			String message = "added";
 			response.sendRedirect("BusList.jsp?infomessage=" + message);
 
-		} catch (Exception e) {
+		} catch (ServiceException | DBException e) {
 			e.printStackTrace();
 			String message = "unable to add";
 			response.sendRedirect("addBusList.jsp" + message);

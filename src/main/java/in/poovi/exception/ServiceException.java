@@ -2,7 +2,7 @@ package in.poovi.exception;
 
 import in.poovi.logger.Logger;
 
-public class ServiceException extends Exception {
+public class ServiceException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 

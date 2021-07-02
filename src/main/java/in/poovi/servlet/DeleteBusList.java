@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import in.poovi.exception.ServiceException;
 import in.poovi.logger.Logger;
 import in.poovi.service.BusDetailsService;
 
@@ -27,7 +28,7 @@ public class DeleteBusList extends HttpServlet {
 			Logger.log("busnumber=" + busnumber);
 			BusDetailsService.deleteBus(busnumber);
 			response.sendRedirect("BusList.jsp");
-		} catch (Exception e) {
+		} catch (ServiceException e) {
 			e.printStackTrace();
 			response.sendRedirect("AddBusList.jsp?");
 		}
