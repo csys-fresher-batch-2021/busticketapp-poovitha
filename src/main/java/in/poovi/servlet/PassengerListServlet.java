@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import in.poovi.exception.DBException;
 import in.poovi.exception.ServiceException;
 import in.poovi.service.PassengerService;
 
@@ -37,7 +38,7 @@ public class PassengerListServlet extends HttpServlet {
 				String message = "added";
 				response.sendRedirect("PassengerList.jsp?infomessage=" + message);
 			}
-		} catch (ServiceException e) {
+		} catch (ServiceException | DBException e) {
 			String message=e.getMessage();
 			response.sendRedirect("AddPassengerList.jsp?errormessage=" +message);
 		}

@@ -3,6 +3,7 @@ package in.poovi.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import in.poovi.exception.ServiceException;
 import in.poovi.model.MyList;
 
 public class Display {
@@ -24,7 +25,7 @@ public class Display {
 		return list;
 	}
 
-	public static boolean addList(String from, String to) {
+	public static boolean addList(String from, String to) throws ServiceException{
 		boolean isAdded = false;
 		list.add(new MyList(from, to));
 		isAdded = true;

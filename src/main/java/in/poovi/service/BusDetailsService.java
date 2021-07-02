@@ -44,7 +44,7 @@ public class BusDetailsService {
 	 * 
 	 * @param busnumber
 	 */
-	public static void deleteBus(int busnumber) {
+	public static void deleteBus(int busnumber) throws DBException{
 
 		busdetailsDAO.deleteBus(busnumber);
 

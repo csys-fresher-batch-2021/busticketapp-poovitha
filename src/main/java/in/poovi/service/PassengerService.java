@@ -3,6 +3,7 @@ package in.poovi.service;
 import java.util.List;
 
 import in.poovi.dao.PassengerDAO;
+import in.poovi.exception.DBException;
 import in.poovi.model.PassengerModel;
 
 public class PassengerService {
@@ -23,7 +24,7 @@ public class PassengerService {
 	 * @param pmobileno
 	 * @return isAdded
 	 */
-	public static boolean addpassenger(String pname, int pid, int page, String pgender, long pmobileno) {
+	public static boolean addpassenger(String pname, int pid, int page, String pgender, long pmobileno) throws DBException{
 		boolean isAdded = false;
 		boolean present = PassengerService.isPresent(pname);
 
