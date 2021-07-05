@@ -3,6 +3,7 @@ package in.poovi.test.passenger;
 import in.poovi.dao.PassengerListDAO;
 import in.poovi.dao.impl.PassengerListDAOImpl;
 import in.poovi.exception.DBException;
+import in.poovi.logger.Logger;
 import in.poovi.model.PassengerModel;
 
 public class AddPassengerList {
@@ -18,12 +19,12 @@ public class AddPassengerList {
 		int pid=105;
 		String pname="keerthi";
 		int page=20;
-		String pgender="Female";
+		String pgender="Female";//Male,Female
 		long pmobileno=6666666666L;
 		PassengerModel passenger=new PassengerModel(pname,pid,page,pgender,pmobileno);
 		PassengerListDAO passengerlistDAO=new PassengerListDAOImpl();
 		passengerlistDAO.savePassenger(passenger);
-		System.out.println(passenger);
+		Logger.info(passenger);
 	}
 
 }

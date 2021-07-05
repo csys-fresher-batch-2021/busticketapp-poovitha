@@ -1,5 +1,7 @@
 package in.poovi.test.userregister;
 
+
+import in.poovi.logger.Logger;
 import in.poovi.model.UserRegister;
 import in.poovi.service.UserRegisterService;
 
@@ -21,7 +23,7 @@ public class AddUserTest {
 		UserRegister userregister=new UserRegister(username,age,email,mobileno,userid,password);
 		UserRegisterService userregisterservice=new UserRegisterService();
 		userregisterservice.saveUser(userregister);
-		System.out.println(userregister);
+		Logger.info(userregister);
 		
 		
 	}

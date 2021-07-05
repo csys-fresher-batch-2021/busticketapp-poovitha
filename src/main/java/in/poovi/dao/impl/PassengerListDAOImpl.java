@@ -80,7 +80,7 @@ public class PassengerListDAOImpl implements PassengerListDAO {
 			pst.setString(4, passengermodel.getPgender());
 			pst.setLong(5, passengermodel.getPmobileno());
 			int rows = pst.executeUpdate();
-			System.out.println(rows);
+			Logger.info(rows);
 		} catch (SQLException e) {
 			Logger.error(e);
 			throw new DBException(e,MessageConstants.UNABLE_TO_EXECUTE_QUERY);

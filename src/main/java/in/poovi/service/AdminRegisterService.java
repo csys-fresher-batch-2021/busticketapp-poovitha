@@ -1,6 +1,5 @@
 package in.poovi.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.dao.AdminRegisterDAO;
@@ -12,9 +11,7 @@ import in.poovi.model.AdminRegister;
 
 public class AdminRegisterService {
 
-	public static final List<AdminRegister> adminregister = new ArrayList<>();
-
-	static AdminRegisterDAO adminregisterDAO = new AdminRegisterDAOImpl();
+	private static AdminRegisterDAO adminregisterDAO = new AdminRegisterDAOImpl();
 
 	/**
 	 * This method is used to list the all admin details
@@ -30,7 +27,7 @@ public class AdminRegisterService {
 	 * This method is used to add the admin .......
 	 * 
 	 * @param adminregister
-	 * @throws ServiceException 
+	 * @throws ServiceException
 	 * @throws Exception
 	 */
 
@@ -49,7 +46,7 @@ public class AdminRegisterService {
 	 * This method is used to delete the admin.....
 	 * 
 	 * @param adminName
-	 * @throws DBException 
+	 * @throws DBException
 	 */
 	public static void deleteAdmin(int adminId) throws DBException {
 		adminregisterDAO.deleteAdmin(adminId);

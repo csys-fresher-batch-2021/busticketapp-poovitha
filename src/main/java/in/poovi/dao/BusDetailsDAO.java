@@ -29,8 +29,9 @@ public interface BusDetailsDAO {
 	 * This method is used to delete the busdetails in database
 	 * 
 	 * @param agency
+	 * @throws DBException 
 	 */
-	void deleteBus(int bno);
+	void deleteBus(int bno) throws DBException;
 
 	/**
 	 * This method is used to count the Number of buses.....

@@ -1,6 +1,5 @@
 package in.poovi.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -14,9 +13,7 @@ import sun.security.validator.ValidatorException;
 
 public class BusDetailsService {
 
-	public static final List<BusDetails> busList = new ArrayList<>();
-
-	static BusDetailsDAO busdetailsDAO = new BusDetailsDAOImpl();
+	private static BusDetailsDAO busdetailsDAO = new BusDetailsDAOImpl();
 
 	/**
 	 * This method is used to display the all bus details
@@ -46,8 +43,9 @@ public class BusDetailsService {
 	 * This method is used to delete the bus details
 	 * 
 	 * @param busnumber
+	 * @throws DBException 
 	 */
-	public static void deleteBus(int busnumber) {
+	public static void deleteBus(int busnumber) throws DBException{
 
 		busdetailsDAO.deleteBus(busnumber);
 

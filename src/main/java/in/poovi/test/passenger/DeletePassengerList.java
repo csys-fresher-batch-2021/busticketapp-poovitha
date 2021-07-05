@@ -3,6 +3,7 @@ package in.poovi.test.passenger;
 import in.poovi.dao.PassengerListDAO;
 import in.poovi.dao.impl.PassengerListDAOImpl;
 import in.poovi.exception.DBException;
+import in.poovi.logger.Logger;
 
 public class DeletePassengerList {
 	/**
@@ -16,7 +17,7 @@ public class DeletePassengerList {
 		PassengerListDAO passengerlistDAO = new PassengerListDAOImpl();
         int pid=100;
         passengerlistDAO.deletePassenger(pid);
-        System.out.println("passenger number :" +pid+" deleted");
+        Logger.log("passenger number :" +pid+" deleted");
 	}
 
 }

@@ -13,8 +13,8 @@ public class UpdatePassengerList {
 	 */
 	public static void main(String[] args) throws DBException {
 
-		String pname="puvi";
-		long pmobileno=9898989898L;
+		String pname="pavi";
+		long pmobileno=9898989008L;
 		PassengerListDAO passengerlistDAO=new PassengerListDAOImpl();
 		passengerlistDAO.updateMobileno(pmobileno, pname);
 		

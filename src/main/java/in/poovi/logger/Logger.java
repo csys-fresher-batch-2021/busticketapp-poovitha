@@ -10,7 +10,7 @@ public class Logger {
 		System.out.println(message);
 	}
 
-	public void info(Object message) {
+	public static void info(Object message) {
 		System.out.println(message);
 	}
 

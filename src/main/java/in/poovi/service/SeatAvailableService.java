@@ -1,7 +1,6 @@
 package in.poovi.service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.dao.SeatAvailableDAO;
@@ -10,9 +9,8 @@ import in.poovi.exception.DBException;
 import in.poovi.model.SeatAvailable;
 
 public class SeatAvailableService {
-	public static final List<SeatAvailable> seatavailable = new ArrayList<>();
 
-	static SeatAvailableDAO seatavailableDAO = new SeatAvailableDAOImpl();
+	private static SeatAvailableDAO seatavailableDAO = new SeatAvailableDAOImpl();
 
 	/**
 	 * This method is used to display the all available seat.....

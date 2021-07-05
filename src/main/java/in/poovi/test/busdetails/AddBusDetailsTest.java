@@ -3,6 +3,7 @@ package in.poovi.test.busdetails;
 import in.poovi.dao.BusDetailsDAO;
 import in.poovi.dao.impl.BusDetailsDAOImpl;
 import in.poovi.exception.DBException;
+import in.poovi.logger.Logger;
 import in.poovi.model.BusDetails;
 
 public class AddBusDetailsTest {
@@ -15,16 +16,16 @@ public class AddBusDetailsTest {
 	 */
 	public static void main(String[] args) throws DBException {
 
-		String agency = "pvs travels";
-		int busnumber = 1006;
-		String bustype = "AcSeater";
-		String destination = "vilupuram";
+		String agency = "avs travels";
+		int busnumber = 1007;
+		String bustype = "NonAcSeater";
+		String destination = "madurai";
 		String source = "chennai";
-		double amount = 400;
+		double amount = 900;
 		BusDetails busdetails = new BusDetails(agency, busnumber, bustype, source, destination, amount);
 		BusDetailsDAO busdetailsDAO = new BusDetailsDAOImpl();
 		busdetailsDAO.save(busdetails);
-		System.out.println(busdetails);
+		Logger.info(busdetails);
 
 	}
 

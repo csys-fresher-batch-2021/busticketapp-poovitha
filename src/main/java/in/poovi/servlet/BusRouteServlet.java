@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import in.poovi.exception.DBException;
+import in.poovi.exception.ServiceException;
 import in.poovi.model.BusRoute;
 import in.poovi.service.BusRouteService;
 
@@ -33,7 +35,7 @@ public class BusRouteServlet extends HttpServlet {
 			String message = "added";
 			response.sendRedirect("BusRoute.jsp?infomessage=" + message);
 
-		} catch (Exception e) {
+		} catch (ServiceException | DBException e) {
 			e.printStackTrace();
 			String message = "unable to add";
 			response.sendRedirect("addBusRoute.jsp" + message);

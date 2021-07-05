@@ -11,7 +11,7 @@ public class PassengerService {
 
 	}
 
-	public static final PassengerDAO passengerdao = new PassengerDAO();
+	private static final PassengerDAO passengerdao = new PassengerDAO();
 
 	/**
 	 * This method is used to add the passenger......
@@ -23,7 +23,7 @@ public class PassengerService {
 	 * @param pmobileno
 	 * @return isAdded
 	 */
-	public static boolean addpassenger(String pname, int pid, int page, String pgender, long pmobileno) {
+	public static boolean addpassenger(String pname, int pid, int page, String pgender, long pmobileno){
 		boolean isAdded = false;
 		boolean present = PassengerService.isPresent(pname);
 
@@ -67,8 +67,6 @@ public class PassengerService {
 
 		if (searchpassenger != null) {
 			passengers.remove(searchpassenger);
-
-			System.out.println("delete");
 		}
 		return;
 	}

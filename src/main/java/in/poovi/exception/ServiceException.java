@@ -1,11 +1,13 @@
 package in.poovi.exception;
 
-public class ServiceException extends Exception {
+import in.poovi.logger.Logger;
+
+public class ServiceException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
 	public ServiceException(String message) {
-		System.out.println(message);
+		Logger.log(message);
 	}
 
 }

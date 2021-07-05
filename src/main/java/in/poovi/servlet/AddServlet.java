@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import in.poovi.exception.ServiceException;
 import in.poovi.service.Display;
-
 
 @WebServlet("/AddServlet")
 public class AddServlet extends HttpServlet {
@@ -17,25 +17,25 @@ public class AddServlet extends HttpServlet {
 	public AddServlet() {
 		super();
 	}
-@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		try {
 			String from = request.getParameter("from");
 			String to = request.getParameter("to");
 			boolean isAdded = false;
-
 			isAdded = Display.addList(from, to);
 			if (isAdded) {
-				response.sendRedirect("listBusRoutes.jsp");
+				String infomessage="sucessfully added";
+				response.sendRedirect("listBusRoutes.jsp?infomessage=" +infomessage);
 			} else {
 				String errorMessage = "Unable to add Books ";
 				response.sendRedirect("addList.jsp?errorMessage=" + errorMessage);
 			}
-		
-
-		} catch (Exception e) {
-			String errorMessage = "add";
+		} catch (ServiceException e) {
+			String errorMessage = "added";
 			response.sendRedirect("addList.jsp?errorMessage=" + errorMessage);
 		}
 

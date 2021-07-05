@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import in.poovi.exception.DBException;
+import in.poovi.exception.ServiceException;
 import in.poovi.logger.Logger;
 import in.poovi.service.BusDetailsService;
 
@@ -24,10 +26,11 @@ public class DeleteBusList extends HttpServlet {
 		try {
 			String busNumber = request.getParameter("busnumber");
 			int busnumber=Integer.parseInt(busNumber);
-			Logger.log("Agency=" + busnumber);
+			Logger.log("busnumber=" + busnumber);
 			BusDetailsService.deleteBus(busnumber);
-			response.sendRedirect("BusList.jsp");
-		} catch (Exception e) {
+			String infomessage="sucessfully added";
+			response.sendRedirect("BusList.jsp?infomessage=" +infomessage);
+		} catch (ServiceException | DBException e) { 
 			e.printStackTrace();
 			response.sendRedirect("AddBusList.jsp?");
 		}

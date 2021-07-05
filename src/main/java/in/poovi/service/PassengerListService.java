@@ -1,6 +1,5 @@
 package in.poovi.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.dao.PassengerListDAO;
@@ -12,9 +11,7 @@ import in.poovi.model.PassengerModel;
 
 public class PassengerListService {
 
-	public static final List<PassengerModel> passengerlist = new ArrayList<>();
-
-	static PassengerListDAO passengerlistdao = new PassengerListDAOImpl();
+	private static PassengerListDAO passengerlistdao = new PassengerListDAOImpl();
 
 	/**
 	 * This method is used to list the all passenger details....

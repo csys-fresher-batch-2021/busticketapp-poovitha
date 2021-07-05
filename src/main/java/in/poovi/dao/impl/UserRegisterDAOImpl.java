@@ -84,7 +84,7 @@ public class UserRegisterDAOImpl implements UserRegisterDAO {
 			pst.setInt(5, userregister.getUserId());
 			pst.setString(6, userregister.getPassword());
 			int row = pst.executeUpdate();
-			System.out.println(row);
+			Logger.info(row);
 
 		} catch (SQLException e) {
 			Logger.error(e);

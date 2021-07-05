@@ -17,6 +17,8 @@ import in.poovi.model.SeatAvailable;
 import in.poovi.util.ConnectionUtil;
 
 public class SeatAvailableDAOImpl implements SeatAvailableDAO {
+	
+	private static final String UPDATE_SEATAVAILABLE="update seatavailabilty ";
 	/**
 	 * This method is used to list the total available seat.....
 	 * 
@@ -130,7 +132,7 @@ public class SeatAvailableDAOImpl implements SeatAvailableDAO {
 			pst.setInt(2, busnumber);
 			pst.setInt(1, availableseat);
 			int rows = pst.executeUpdate();
-			Logger.log("update seatavailable " + rows + busnumber + availableseat);
+			Logger.log(UPDATE_SEATAVAILABLE+ rows + busnumber + availableseat);
 		} catch (SQLException e) {
 			Logger.error(e);
 			throw new DBException(e, "unable to execute query");
@@ -195,7 +197,7 @@ public class SeatAvailableDAOImpl implements SeatAvailableDAO {
 			pst.setTimestamp(4, Timestamp.valueOf(availableDate));
 			pst.setTimestamp(5, Timestamp.valueOf(bookingDate));
 			int rows = pst.executeUpdate();
-			Logger.log("update seatavailable " + rows + busnumber);
+			Logger.log(UPDATE_SEATAVAILABLE + rows + busnumber);
 		} catch (SQLException e) {
 			Logger.error(e);
 			throw new DBException(e, MessageConstants.UNABLE_TO_EXECUTE_QUERY);
@@ -224,7 +226,7 @@ public class SeatAvailableDAOImpl implements SeatAvailableDAO {
 			pst.setInt(2, busnumber);
 			pst.setInt(3, busnumber);
 			int rows = pst.executeUpdate();
-			Logger.log("update seatavailable " + rows + busnumber);
+			Logger.log(UPDATE_SEATAVAILABLE + rows + busnumber);
 		} catch (SQLException e) {
 			Logger.error(e);
 			throw new DBException(e, MessageConstants.UNABLE_TO_EXECUTE_QUERY);

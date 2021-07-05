@@ -3,6 +3,7 @@ package in.poovi.test.seatavailable;
 import in.poovi.dao.SeatAvailableDAO;
 import in.poovi.dao.impl.SeatAvailableDAOImpl;
 import in.poovi.exception.DBException;
+import in.poovi.logger.Logger;
 import in.poovi.model.SeatAvailable;
 
 public class SeatAvailableTest {
@@ -19,7 +20,7 @@ public class SeatAvailableTest {
 		SeatAvailable seat = new SeatAvailable();
 		seat.setBusnumber(1003);
 		int seats = seatavailableDAO.findSeatDetailByBusnumber(seat.getBusnumber());
-		System.out.println(seats);
+		Logger.info(seats);
 	}
 
 }

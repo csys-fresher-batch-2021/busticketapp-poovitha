@@ -1,11 +1,11 @@
 package in.poovi.test.passenger;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.dao.PassengerListDAO;
 import in.poovi.dao.impl.PassengerListDAOImpl;
 import in.poovi.exception.DBException;
+import in.poovi.logger.Logger;
 import in.poovi.model.PassengerModel;
 
 public class PassengerList {
@@ -19,9 +19,8 @@ public class PassengerList {
 	public static void main(String[] args) throws DBException {
 
 		PassengerListDAO passengerlistDAO = new PassengerListDAOImpl();
-		List<PassengerModel> passenger = new ArrayList<>();
-		passenger=passengerlistDAO.findAll();
-		System.out.println(passenger);
+		List<PassengerModel> passenger = passengerlistDAO.findAll();
+		Logger.info(passenger);
 
 	}
 

@@ -3,6 +3,7 @@ package in.poovi.test.seatavailable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import in.poovi.logger.Logger;
 import in.poovi.model.SeatAvailable;
 import in.poovi.service.SeatAvailableService;
 
@@ -27,7 +28,7 @@ public class AddSeatTest {
         SeatAvailable seatavailable = new SeatAvailable(busnumber, availableseat, totalseat,availableDate);
 		SeatAvailableService seatavailableservice = new SeatAvailableService();
 		seatavailableservice.saveSeat(seatavailable);
-		System.out.println(seatavailable);
+		Logger.info(seatavailable);
 
 	}
 

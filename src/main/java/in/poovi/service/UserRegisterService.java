@@ -1,6 +1,5 @@
 package in.poovi.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import in.poovi.dao.UserRegisterDAO;
@@ -12,9 +11,7 @@ import in.poovi.model.UserRegister;
 
 public class UserRegisterService {
 
-	public static final List<UserRegister> userregister = new ArrayList<>();
-
-	static UserRegisterDAO userregisterdao = new UserRegisterDAOImpl();
+	private static UserRegisterDAO userregisterdao = new UserRegisterDAOImpl();
 
 	/**
 	 * This method is used to display the all users.....
@@ -31,7 +28,7 @@ public class UserRegisterService {
 	 * This method is used to add the user .......
 	 * 
 	 * @param userregister
-	 * @throws ServiceException 
+	 * @throws ServiceException
 	 * @throws Exception
 	 */
 	public void saveUser(UserRegister userregister) throws DBException, ServiceException {
@@ -53,7 +50,7 @@ public class UserRegisterService {
 	 * 
 	 * @param mobileno
 	 * @param username
-	 * @throws DBException 
+	 * @throws DBException
 	 */
 	public void Updateuser(long mobileno, String username) throws DBException {
 		userregisterdao.updateMobileno(mobileno, username);

@@ -57,7 +57,7 @@ public class BusDetailsDAOImpl implements BusDetailsDAO {
 				busDetails.add(bus);
 
 			}
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			Logger.error(e);
 			throw new DBException(e, "unable to execute query");
 		} finally {
@@ -104,7 +104,7 @@ public class BusDetailsDAOImpl implements BusDetailsDAO {
 	 * @param agency
 	 */
 	@Override
-	public void deleteBus(int bno) {
+	public void deleteBus(int bno) throws DBException{
 		Connection connection = null;
 		PreparedStatement pst = null;
 

@@ -71,7 +71,7 @@ public class BookingDAOImpl implements BookingDAO {
 				booking.add(book);
 
 			}
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			Logger.error(e);
 			throw new DBException(e, "no data found");
 		} finally {
@@ -216,9 +216,9 @@ public class BookingDAOImpl implements BookingDAO {
 				amount = rs.getDouble(AMOUNT);
 				System.out.println(amount);
 			} else {
-				throw new Exception("not found");
+				throw new SQLException("not found");
 			}
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			Logger.error(e);
 			throw new DBException(e, MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {
@@ -285,9 +285,9 @@ public class BookingDAOImpl implements BookingDAO {
 			if (rs.next()) {
 				availableDate = rs.getTimestamp("availableDate").toLocalDateTime();
 			} else {
-				throw new Exception("Date Expired");
+				throw new SQLException("Date Expired");
 			}
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			Logger.error(e);
 			throw new DBException(e, MessageConstants.UNABLE_TO_EXECUTE_QUERY);
 		} finally {

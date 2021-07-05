@@ -5,14 +5,16 @@ import java.util.List;
 import in.poovi.model.PassengerModel;
 
 public class PassengerDAO {
-	public static final List<PassengerModel> passengermodel = new ArrayList<>();
+	private static final List<PassengerModel> passengermodel = new ArrayList<>();
 
-	public static final String FEMALE = "F";
-	public static final String MALE = "M";
+	private static final String FEMALE = "F";
+	private static final String MALE = "M";
 
 	static {
 		passengermodel.add(new PassengerModel("poovi", 101, 20, FEMALE, 9876987608L));
 		passengermodel.add(new PassengerModel("yamini", 102, 22, FEMALE, 9999999999L));
+		passengermodel.add(new PassengerModel("madhan", 103, 22, MALE, 9999999998L));
+
 	}
 
 	private static List<PassengerModel> name = new ArrayList<>();
