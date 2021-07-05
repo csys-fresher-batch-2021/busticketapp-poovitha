@@ -13,8 +13,8 @@ public class UpdateDateTest {
 
 	public static void main(String[] args) throws DBException {
 		SeatAvailable seatavailable = new SeatAvailable();
-		seatavailable.setBusnumber(1002);
-		final LocalDateTime availabledate = LocalDateTime.parse("2021-06-30 19:30", formatter);
+		seatavailable.setBusnumber(1006);
+		final LocalDateTime availabledate = LocalDateTime.parse("2021-07-08 19:30", formatter);
 
 		seatavailable.setAvailableDate(availabledate);
 		SeatAvailableDAO seatavailableDAO = new SeatAvailableDAOImpl();

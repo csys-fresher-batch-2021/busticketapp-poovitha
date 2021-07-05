@@ -18,7 +18,7 @@ public class MyTicketTest {
 	 */
 	public static void main(String[] args) throws DBException {
       BookingDAO bookingDAO=new BookingDAOImpl();
-      List<Booking> booking=bookingDAO.findMyTicket(101);// Given the passenger id
+      List<Booking> booking=bookingDAO.findMyTicket(102);// Given the passenger id
       for(Booking book:booking) {
     	  Logger.info(book);
       }

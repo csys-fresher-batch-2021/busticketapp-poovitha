@@ -13,8 +13,8 @@ public class AdminLoginTest {
 	 * @throws ValidationException
 	 */
 	public static void main(String[] args) throws ValidationException {
-		String adminName = "raj";
-		String adminPassword = "raj@19";
+		String adminName = "bala";
+		String adminPassword = "balaji@165";
 		boolean valid = LoginService.adminLogin(adminName, adminPassword);
 		if (valid) {
 			Logger.log("login success");

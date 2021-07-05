@@ -16,9 +16,9 @@ public class AddBusRouteTest {
 	 */
 	public static void main(String[] args) throws DBException, ServiceException {
 
-		int routeno=2;
-		String source="theni";
-		String destination="chennai";
+		int routeno=6;
+		String source="chennai";
+		String destination="kovai";
 		BusRoute busroute=new BusRoute(routeno,source,destination);
 		BusRouteService busrouteservice=new BusRouteService();
 		busrouteservice.addRouteList(busroute);

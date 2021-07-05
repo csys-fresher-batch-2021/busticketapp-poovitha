@@ -5,7 +5,7 @@ import in.poovi.dao.impl.SeatAvailableDAOImpl;
 import in.poovi.exception.DBException;
 import in.poovi.model.SeatAvailable;
 
-public class Test {
+public class SeatAvailableAfterBookingTest {
 	/**
 	 * main method is used to diplay seats after the booking
 	 * 
@@ -14,7 +14,7 @@ public class Test {
 	 */
 	public static void main(String[] args) throws DBException {
 		SeatAvailable seatavailable = new SeatAvailable();
-		seatavailable.setBusnumber(1003);
+		seatavailable.setBusnumber(1000);
 		SeatAvailableDAO seatavailableDAO = new SeatAvailableDAOImpl();
 		seatavailableDAO.updateSeatAvailable1(seatavailable.getBusnumber());
 

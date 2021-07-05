@@ -17,15 +17,15 @@ public class AddReservationTest {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
-		int bookingno = 10009;
-		int pid = 105;
-		String source = "madurai";
-		String destination = "chennai";
-		String agency = "red bus";
-		int busnumber = 1001;
-		String bustype = "NonAc Seater";
-		double amount = 700;
-		int nooftickets = 2;
+		int bookingno = 10011;
+		int pid = 101;
+		String source = "thirchy";
+		String destination = "theni";
+		String agency = "jai travels";
+		int busnumber = 1000;
+		String bustype = "AcSleeper";
+		double amount = 300;
+		int nooftickets = 5;
 		double totalamount=0;
 		LocalDateTime bookingDate = LocalDateTime.now();
 		final LocalDateTime journeyDate = null ;

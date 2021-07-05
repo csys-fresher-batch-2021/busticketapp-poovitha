@@ -14,7 +14,7 @@ public class DeleteBusDetailsTest {
 	 */
 	public static void main(String[] args) throws DBException {
 		Logger.log("Delete Bus:");
-		int busnumber =1006;
+		int busnumber =1007;
 		BusDetailsDAO busdetailsDAO = new BusDetailsDAOImpl();
 		busdetailsDAO.deleteBus(busnumber);
 

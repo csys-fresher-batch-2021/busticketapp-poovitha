@@ -14,7 +14,7 @@ public class DeleteBusRouteTest {
 	 */
 	public static void main(String[] args) throws DBException {
      BusRouteDAOImpl busrouteDAO=new BusRouteDAOImpl();
-     int routeno=1;
+     int routeno=6;
      busrouteDAO.deleteRoute(routeno);
      Logger.log("deleted" + routeno);
 		

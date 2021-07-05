@@ -19,7 +19,7 @@ public class AdminDetailsTest {
 	public static void main(String[] args) throws Exception {
 
 		AdminRegisterDAO adminregisterDAO = new AdminRegisterDAOImpl();
-		List<AdminRegister> adminregister =adminregisterDAO.findByAdminId(1004);
+		List<AdminRegister> adminregister =adminregisterDAO.findByAdminId(1006);
 		for (AdminRegister admindetail : adminregister) {
 		Logger.info(admindetail);
 		}

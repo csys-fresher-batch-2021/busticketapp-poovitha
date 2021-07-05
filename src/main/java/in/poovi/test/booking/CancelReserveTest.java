@@ -14,7 +14,7 @@ public class CancelReserveTest {
 	 */
 	public static void main(String[] args) throws DBException {
 		BookingDAO bookingDAO = new BookingDAOImpl();
-		int bookingNo = 10005;
+		int bookingNo = 10006;
 		bookingDAO.cancelReserve(bookingNo);
 		Logger.log("cancelled" + bookingNo);
 

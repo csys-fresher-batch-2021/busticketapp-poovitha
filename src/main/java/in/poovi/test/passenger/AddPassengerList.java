@@ -19,7 +19,7 @@ public class AddPassengerList {
 		int pid=105;
 		String pname="keerthi";
 		int page=20;
-		String pgender="Female";
+		String pgender="Female";//Male,Female
 		long pmobileno=6666666666L;
 		PassengerModel passenger=new PassengerModel(pname,pid,page,pgender,pmobileno);
 		PassengerListDAO passengerlistDAO=new PassengerListDAOImpl();
